@@ -1,0 +1,8 @@
+# Local agent / editor config
+.claude/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log

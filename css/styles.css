@@ -1,0 +1,86 @@
+body {
+    background-color: #0a0f1e;
+    color: #dee1f7;
+    cursor: none;
+    overflow-x: hidden;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #a8e8ff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 10px #00d4ff;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(168, 232, 255, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.15s ease-out;
+}
+
+.glass-card {
+    background: rgba(27, 58, 107, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+}
+
+.glow-text {
+    text-shadow: 0 0 12px rgba(168, 232, 255, 0.4);
+}
+
+.mono-all-caps {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.grid-overlay {
+    background-size: 64px 64px;
+    background-image: linear-gradient(to right, rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+}
+
+.hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stat-divider {
+    height: 40px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #00d4ff, transparent);
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0f1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00d4ff;
+    border-radius: 10px;
+}

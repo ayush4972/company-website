@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRASIER | Civic Intelligence OS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent" id="main-nav">
+        <div class="flex justify-between items-center px-margin-desktop py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-2">
+                <span class="font-display-lg text-2xl text-primary tracking-tighter">TRASIER TECH</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="#services">Solutions</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="#projects">Intelligence</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="#vision">Manifesto</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="#team">Leadership</a>
+            </div>
+            <a href="#contact"
+                class="mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                MISSION_START
+            </a>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+        <!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full z-0 opacity-40" -->
+        <div class="absolute inset-0 w-full h-full z-0 opacity-40" style="display:block;">
+            <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+        </div>
+        <!-- STITCH_SHADER_END:ANIMATION_2 -->
+        <div class="absolute inset-0 grid-overlay z-1 pointer-events-none"></div>
+        <div class="relative z-10 text-center px-margin-mobile">
+            <h1 class="font-display-lg text-6xl md:text-8xl text-white mb-6" id="hero-title">
+                <span class="hero-word">Think</span>
+                <span class="hero-word text-primary glow-text">Tech.</span>
+                <span class="hero-word">Think</span>
+                <span class="hero-word text-primary glow-text">Trasier.</span>
+            </h1>
+            <p class="font-body-md text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto opacity-0 translate-y-4"
+                id="hero-subtext">
+                Engineering the digital infrastructure of tomorrow, today.
+            </p>
+            <div class="mt-12 opacity-0" id="hero-cta">
+                <a class="inline-flex items-center gap-3 mono-all-caps border border-primary text-primary px-10 py-4 hover:bg-primary hover:text-on-primary transition-all duration-500 group"
+                    href="#projects">
+                    See Our Work
+                    <span
+                        class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+            <span class="material-symbols-outlined text-primary text-3xl">expand_more</span>
+        </div>
+    </section>
+    <!-- Stats & About Section -->
+    <section class="relative py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="about">
+        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 mb-24 py-12 glass-card rounded-xl">
+            <div class="text-center group">
+                <div class="font-display-lg text-4xl text-primary mb-1">24/7</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">System Monitoring</div>
+            </div>
+            <div class="stat-divider hidden md:block"></div>
+            <div class="text-center group">
+                <div class="font-display-lg text-4xl text-primary mb-1">KTM</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">Nepal HQ</div>
+            </div>
+            <div class="stat-divider hidden md:block"></div>
+            <div class="text-center group">
+                <div class="font-display-lg text-4xl text-primary mb-1">2083</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">Est. BS</div>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+                <h2 class="font-headline-lg text-4xl md:text-5xl mb-8 leading-tight">
+                    We Engineer, <br /><span class="text-primary">What Matters.</span>
+                </h2>
+                <div class="space-y-6 font-body-md text-on-surface-variant text-lg">
+                    <p>Trasier Technology is a mission-driven intelligence collective focused on digitizing the civilian
+                        experience in Nepal. We don't just build apps; we architect the operational systems of
+                        modern society.</p>
+                    <p>Based out of Kathmandu, our focus is local, but our standards are global. We believe in
+                        high-density data, low-latency governance, and the power of transparent engineering.</p>
+                </div>
+            </div>
+            <div class="relative group">
+                <div
+                    class="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity">
+                </div>
+                <div
+                    class="relative glass-card p-8 rounded-xl overflow-hidden aspect-video flex items-center justify-center">
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-700"
+                        data-alt="A high-tech digital laboratory with glowing screens displaying complex data visualizations and network maps. The room is dimly lit with deep blue and cyan accents, reflecting a futuristic command center aesthetic. Scientists and engineers are visible in soft focus, working on advanced civic technology solutions for a modern city."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSM9TByRT-hTIyDeS1C3TKqLQGoUVLCutFMVvHni2KtFAgwjT0wNgJsLEPYj87Cg4OxHMXFT7DFv1GGZlSEgQRv72wHZBUdnBASml9t1B56jKPTlx7gutO2urat3ZYagRnUeDHYgbAhLgJO52tv94GzL6qcqBLLjunrrel3yc9dCdkdtoUltSGkKw7zDszcFNB-UZezuL-Udk79AUw949mCE1y9NjjahGS5PgRNMfFwNWjuT4FoOPzWvpWDDSNL7mQKc2PYKEmoQ" />
+                    <div class="z-10 text-center">
+                        <span class="material-symbols-outlined text-6xl text-primary mb-4"
+                            style="font-variation-settings: 'FILL' 1;">insights</span>
+                        <div class="mono-all-caps text-xs">Intelligence Terminal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="relative py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="services">
+        <div class="mb-16">
+            <div class="mono-all-caps text-primary text-xs mb-2">Capabilities_00</div>
+            <h2 class="font-headline-lg text-4xl md:text-5xl mb-6">What We Do</h2>
+            <p class="font-body-md text-on-surface-variant text-lg max-w-2xl">
+                Full-stack engineering for the public good. From citizen-facing platforms to the intelligence
+                layer underneath, we build the systems modern society runs on.
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Civic & GovTech -->
+            <div class="glass-card rounded-xl p-8 group">
+                <span
+                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">account_balance</span>
+                <h3 class="font-headline-lg text-xl mb-3">Civic &amp; GovTech Platforms</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Citizen-to-government systems — complaint tracking, service delivery, and public infrastructure
+                    tools that actually get used.
+                </p>
+            </div>
+            <!-- AI & Machine Learning -->
+            <div class="glass-card rounded-xl p-8 group">
+                <span
+                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">neurology</span>
+                <h3 class="font-headline-lg text-xl mb-3">AI &amp; Machine Learning</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Intelligent automation, predictive models, and AI-assisted decision systems that turn raw data into
+                    action.
+                </p>
+            </div>
+            <!-- Web & Mobile -->
+            <div class="glass-card rounded-xl p-8 group">
+                <span
+                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">devices</span>
+                <h3 class="font-headline-lg text-xl mb-3">Web &amp; Mobile Development</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Full-stack web and mobile apps built to scale — React Native, Node.js, and PostgreSQL at the core.
+                </p>
+            </div>
+            <!-- Geospatial -->
+            <div class="glass-card rounded-xl p-8 group">
+                <span
+                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">map</span>
+                <h3 class="font-headline-lg text-xl mb-3">Geospatial &amp; Mapping</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Real-time geolocation, GIS dashboards, and location intelligence for systems that live in the
+                    physical world.
+                </p>
+            </div>
+            <!-- Data Intelligence -->
+            <div class="glass-card rounded-xl p-8 group">
+                <span
+                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">insights</span>
+                <h3 class="font-headline-lg text-xl mb-3">Data Intelligence</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Analytics, reporting, and decision-support dashboards that make high-density data legible and
+                    actionable.
+                </p>
+            </div>
+            <!-- Systems Integration -->
+            <div class="glass-card rounded-xl p-8 group">
+                <span
+                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">hub</span>
+                <h3 class="font-headline-lg text-xl mb-3">Systems Integration &amp; APIs</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Connecting municipal, legacy, and third-party systems with robust APIs and dependable backend
+                    infrastructure.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- What We Build Section -->
+    <section class="py-24 bg-surface-container-lowest/50 relative overflow-hidden" id="projects">
+        <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <div class="mono-all-caps text-primary text-xs mb-2">Portfolio_01</div>
+                    <h2 class="font-headline-lg text-4xl md:text-5xl">Deployments</h2>
+                </div>
+                <div class="hidden md:block mono-all-caps text-on-surface/30 text-[10px]">Scroll_to_explore</div>
+            </div>
+            <div class="glass-card rounded-2xl overflow-hidden grid lg:grid-cols-12 gap-0 group">
+                <!-- Left: Content -->
+                <div class="lg:col-span-5 p-8 md:p-16 flex flex-col justify-center">
+                    <div class="mb-8">
+                        <span
+                            class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] mono-all-caps border border-primary/20">Operational</span>
+                    </div>
+                    <h3 class="font-display-lg text-3xl md:text-4xl mb-2">Sadak Sujhav</h3>
+                    <h4 class="font-body-md text-primary text-xl mb-6">सडक सुझाव</h4>
+                    <p class="font-body-md text-on-surface-variant text-lg mb-10">
+                        Nepal's first integrated road complaint and maintenance tracking platform. Bridging the gap
+                        between citizen reports and municipal response with real-time geolocation tracking.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-3 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">React
+                            Native</span>
+                        <span
+                            class="px-3 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">Node.js</span>
+                        <span
+                            class="px-3 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">Mapbox</span>
+                    </div>
+                    <a class="inline-flex items-center gap-2 mono-all-caps text-primary group/link" href="#">
+                        Access Application
+                        <span
+                            class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">open_in_new</span>
+                    </a>
+                </div>
+                <!-- Right: Mockup -->
+                <div
+                    class="lg:col-span-7 bg-surface-container-low/50 relative min-h-[400px] flex items-center justify-center overflow-hidden border-l border-outline-variant/20">
+                    <div class="absolute inset-0 grid-overlay opacity-20"></div>
+                    <!-- Desktop Mockup -->
+                    <div
+                        class="relative w-[80%] aspect-video bg-surface rounded-lg border border-primary/30 shadow-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="h-6 border-b border-outline-variant/20 bg-surface-container-high flex items-center px-3 gap-1">
+                            <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                        </div>
+                        <div class="p-4 grid grid-cols-3 gap-4 h-full">
+                            <div class="col-span-2 space-y-4">
+                                <div
+                                    class="h-24 w-full bg-surface-container-high rounded border border-primary/10 relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-primary/5 animate-pulse"></div>
+                                    <div class="p-2 mono-all-caps text-[8px] text-primary/40">Real-time Map Data</div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-16 bg-surface-container-high rounded border border-primary/10"></div>
+                                    <div class="h-16 bg-surface-container-high rounded border border-primary/10"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="h-full w-full bg-surface-container-high rounded border border-primary/10">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Mockup Overlay -->
+                    <div
+                        class="absolute bottom-8 right-8 w-[120px] aspect-[9/19] bg-surface rounded-2xl border-4 border-surface-variant shadow-2xl overflow-hidden transform translate-y-8 group-hover:translate-y-0 transition-transform duration-1000 delay-100">
+                        <div class="h-4 w-full bg-surface-variant flex items-center justify-center">
+                            <div class="h-1 w-8 rounded-full bg-on-surface-variant/20"></div>
+                        </div>
+                        <div class="p-2 space-y-2">
+                            <div class="h-2 w-1/2 bg-primary/20 rounded"></div>
+                            <div class="h-20 w-full bg-primary/10 rounded"></div>
+                            <div class="h-2 w-full bg-on-surface-variant/10 rounded"></div>
+                            <div class="h-2 w-full bg-on-surface-variant/10 rounded"></div>
+                            <div class="h-8 w-full bg-primary rounded-sm mt-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Vision Section -->
+    <section class="py-32 relative" id="vision">
+        <div class="max-w-4xl mx-auto px-margin-mobile text-center">
+            <div class="mono-all-caps text-primary text-xs mb-12 tracking-[0.4em]">The Vision</div>
+            <div class="space-y-12" id="vision-text-container">
+                <div
+                    class="vision-line font-display-lg text-3xl md:text-5xl opacity-30 transition-opacity duration-700">
+                    "We started with one complaint."</div>
+                <div
+                    class="vision-line font-display-lg text-3xl md:text-5xl opacity-30 transition-opacity duration-700">
+                    "Building the infrastructure layer for an entire valley."</div>
+                <div
+                    class="vision-line font-display-lg text-3xl md:text-5xl opacity-30 transition-opacity duration-700">
+                    "Sadak Sujhav is our entry point..."</div>
+                <div class="vision-line font-display-lg text-4xl md:text-6xl text-primary glow-text opacity-0">"This is
+                    what civic technology looks like."</div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section -->
+    <section class="relative py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="team">
+        <div class="mb-16 text-center">
+            <div class="mono-all-caps text-primary text-xs mb-2 tracking-[0.4em]">The Operators</div>
+            <h2 class="font-headline-lg text-4xl md:text-5xl mb-6">Who's Behind It</h2>
+            <p class="font-body-md text-on-surface-variant text-lg max-w-2xl mx-auto">
+                Two engineers building Nepal's civic infrastructure layer — one focused on what we build, the other on
+                who we build it for.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Founder: Ayush Chaudhary -->
+            <div
+                class="glass-card rounded-xl p-8 group flex flex-col items-center text-center md:items-start md:text-left">
+                <div
+                    class="w-20 h-20 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                    <span class="font-display-lg text-2xl text-primary">AC</span>
+                </div>
+                <h3 class="font-headline-lg text-2xl mb-1">Ayush Chaudhary</h3>
+                <div class="mono-all-caps text-primary text-xs mb-4">Founder &amp; CTO</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50 mb-5">B.Tech in Computer Science Engineering —
+                    VIT, India</div>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Technical lead responsible for architecture, development, and ensuring every product meets the
+                    highest engineering standards.
+                </p>
+            </div>
+            <!-- Founder: Akash Chaudhary -->
+            <div
+                class="glass-card rounded-xl p-8 group flex flex-col items-center text-center md:items-start md:text-left">
+                <div
+                    class="w-20 h-20 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                    <span class="font-display-lg text-2xl text-primary">AC</span>
+                </div>
+                <h3 class="font-headline-lg text-2xl mb-1">Akash Chaudhary</h3>
+                <div class="mono-all-caps text-primary text-xs mb-4">Co-Founder &amp; CEO</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50 mb-5">BSc Computer Science — Herald College
+                    Kathmandu</div>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Business strategist leading client acquisition, project management, and ensuring every engagement
+                    delivers real value.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto border-t border-outline-variant/10"
+        id="contact">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-headline-lg text-4xl md:text-6xl mb-8 leading-tight">Have a problem worth solving?</h2>
+                <p class="font-body-md text-on-surface-variant text-xl mb-12">Bring us your hardest problems.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 group">
+                        <div
+                            class="w-12 h-12 glass-card rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined">mail</span>
+                        </div>
+                        <div>
+                            <div class="mono-all-caps text-[10px] text-on-surface/40">Email Protocol</div>
+                            <div class="font-label-sm">ops@trasier.tech</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div
+                            class="w-12 h-12 glass-card rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
+                        <div>
+                            <div class="mono-all-caps text-[10px] text-on-surface/40">Deployment HQ</div>
+                            <div class="font-label-sm">Kathmandu, Nepal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-8 md:p-12 rounded-2xl relative">
+                <form class="space-y-6" id="contact-form">
+                    <div>
+                        <label
+                            class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Terminal_Identity</label>
+                        <input
+                            class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                            placeholder="FULL NAME" required="" type="text" />
+                    </div>
+                    <div>
+                        <label
+                            class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Contact_String</label>
+                        <input
+                            class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                            placeholder="EMAIL ADDRESS" required="" type="email" />
+                    </div>
+                    <div>
+                        <label
+                            class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Mission_Details</label>
+                        <textarea
+                            class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                            placeholder="HOW CAN WE HELP?" required="" rows="4"></textarea>
+                    </div>
+                    <button
+                        class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300"
+                        type="submit">
+                        TRANSMIT_REQUEST
+                    </button>
+                </form>
+                <div class="hidden absolute inset-0 bg-surface-container-lowest/90 backdrop-blur flex flex-col items-center justify-center text-center p-8 z-20"
+                    id="success-message">
+                    <span class="material-symbols-outlined text-6xl text-primary mb-4 animate-pulse">check_circle</span>
+                    <h3 class="font-display-lg text-2xl mb-2">TRANSMISSION RECEIVED</h3>
+                    <p class="font-body-md text-on-surface-variant">We will response shortly on your frequency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low py-24">
+        <div class="max-w-7xl mx-auto px-margin-mobile flex flex-col items-center gap-12 text-center">
+            <div class="flex flex-col items-center gap-4">
+                <img alt="Trasier Logo"
+                    class="w-16 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                <h2 class="font-headline-lg text-3xl text-primary uppercase tracking-widest">TRASIER TECH</h2>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+                <a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase"
+                    href="#">Privacy Protocol</a>
+                <a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase"
+                    href="#">Terms of Service</a>
+                <a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase"
+                    href="#">Security Disclosure</a>
+            </div>
+            <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">
+                © 2024 TRASIER TECHNOLOGY. ALL RIGHTS RESERVED. <br />
+                BUILD_VERSION: 1.0.4-LTS
+            </div>
+        </div>
+    </footer>
+    <script src="js/shader.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
