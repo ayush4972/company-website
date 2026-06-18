@@ -131,72 +131,101 @@
     </section>
     <!-- Services Section -->
     <section class="relative py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="services">
-        <div class="mb-16">
+        <div class="mb-12 max-w-3xl">
             <div class="mono-all-caps text-primary text-xs mb-2">Capabilities_00</div>
             <h2 class="font-headline-lg text-4xl md:text-5xl mb-6">What We Do</h2>
-            <p class="font-body-md text-on-surface-variant text-lg max-w-2xl">
-                Full-stack engineering for the public good. From citizen-facing platforms to the intelligence
-                layer underneath, we build the systems modern society runs on.
+            <p class="font-body-md text-on-surface-variant text-lg">
+                We build the digital backbone of public services — and the intelligence layer on top. Fewer slogans,
+                more systems that ship and stay running.
             </p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Civic & GovTech -->
-            <div class="glass-card rounded-xl p-8 group">
-                <span
-                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">account_balance</span>
-                <h3 class="font-headline-lg text-xl mb-3">Civic &amp; GovTech Platforms</h3>
-                <p class="font-body-md text-on-surface-variant text-base">
-                    Citizen-to-government systems — complaint tracking, service delivery, and public infrastructure
-                    tools that actually get used.
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 lg:auto-rows-fr gap-4">
+            <!-- Featured: Civic & GovTech -->
+            <div class="glass-card rounded-2xl p-8 md:p-10 group lg:col-span-3 lg:row-span-2 flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                    <span
+                        class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform origin-left">account_balance</span>
+                    <span
+                        class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] mono-all-caps border border-primary/20">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Live in Sadak Sujhav
+                    </span>
+                </div>
+                <h3 class="font-headline-lg text-2xl md:text-3xl mb-4">Civic &amp; GovTech Platforms</h3>
+                <p class="font-body-md text-on-surface-variant text-lg mb-8">
+                    Citizen-to-government systems people actually use — complaint intake, status tracking, service
+                    delivery, and the admin tooling municipalities run day to day.
                 </p>
+                <ul class="space-y-2 mb-8 mt-auto">
+                    <li class="flex items-center gap-3 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-primary text-base">check_small</span>
+                        <span class="font-body-md text-base">Complaint &amp; ticketing workflows with SLA tracking</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-primary text-base">check_small</span>
+                        <span class="font-body-md text-base">Citizen apps + municipal admin dashboards</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-primary text-base">check_small</span>
+                        <span class="font-body-md text-base">Real-time status, notifications &amp; audit trails</span>
+                    </li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">React Native</span>
+                    <span class="px-2.5 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">Node.js</span>
+                    <span class="px-2.5 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">PostgreSQL</span>
+                </div>
             </div>
             <!-- AI & Machine Learning -->
-            <div class="glass-card rounded-xl p-8 group">
+            <div class="glass-card rounded-2xl p-8 group lg:col-span-3 flex flex-col">
                 <span
-                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">neurology</span>
+                    class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">neurology</span>
                 <h3 class="font-headline-lg text-xl mb-3">AI &amp; Machine Learning</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Intelligent automation, predictive models, and AI-assisted decision systems that turn raw data into
-                    action.
+                    Models that do real work — complaint routing &amp; classification, document OCR, and demand
+                    forecasting that points crews where they're needed next.
+                </p>
+            </div>
+            <!-- Geospatial & Mapping -->
+            <div class="glass-card rounded-2xl p-8 group lg:col-span-3 flex flex-col">
+                <div class="flex items-center justify-between mb-5">
+                    <span
+                        class="material-symbols-outlined text-3xl text-primary group-hover:scale-110 transition-transform origin-left">map</span>
+                    <span
+                        class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-2.5 py-1 rounded-full text-[10px] mono-all-caps border border-primary/20">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Live
+                    </span>
+                </div>
+                <h3 class="font-headline-lg text-xl mb-3">Geospatial &amp; Mapping</h3>
+                <p class="font-body-md text-on-surface-variant text-base">
+                    Real-time geolocation, complaint heatmaps, and GIS dashboards — so problems are pinned to exactly
+                    where they happen.
                 </p>
             </div>
             <!-- Web & Mobile -->
-            <div class="glass-card rounded-xl p-8 group">
+            <div class="glass-card rounded-2xl p-8 group lg:col-span-2 flex flex-col">
                 <span
-                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">devices</span>
-                <h3 class="font-headline-lg text-xl mb-3">Web &amp; Mobile Development</h3>
+                    class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">devices</span>
+                <h3 class="font-headline-lg text-xl mb-3">Web &amp; Mobile</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Full-stack web and mobile apps built to scale — React Native, Node.js, and PostgreSQL at the core.
-                </p>
-            </div>
-            <!-- Geospatial -->
-            <div class="glass-card rounded-xl p-8 group">
-                <span
-                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">map</span>
-                <h3 class="font-headline-lg text-xl mb-3">Geospatial &amp; Mapping</h3>
-                <p class="font-body-md text-on-surface-variant text-base">
-                    Real-time geolocation, GIS dashboards, and location intelligence for systems that live in the
-                    physical world.
+                    Production apps built to scale — offline-first mobile and fast, accessible web.
                 </p>
             </div>
             <!-- Data Intelligence -->
-            <div class="glass-card rounded-xl p-8 group">
+            <div class="glass-card rounded-2xl p-8 group lg:col-span-2 flex flex-col">
                 <span
-                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">insights</span>
+                    class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">insights</span>
                 <h3 class="font-headline-lg text-xl mb-3">Data Intelligence</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Analytics, reporting, and decision-support dashboards that make high-density data legible and
-                    actionable.
+                    Dashboards and reporting that turn thousands of reports into decisions leaders can act on.
                 </p>
             </div>
             <!-- Systems Integration -->
-            <div class="glass-card rounded-xl p-8 group">
+            <div class="glass-card rounded-2xl p-8 group lg:col-span-2 flex flex-col">
                 <span
-                    class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform origin-left">hub</span>
-                <h3 class="font-headline-lg text-xl mb-3">Systems Integration &amp; APIs</h3>
+                    class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">hub</span>
+                <h3 class="font-headline-lg text-xl mb-3">Integration &amp; APIs</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Connecting municipal, legacy, and third-party systems with robust APIs and dependable backend
-                    infrastructure.
+                    APIs and pipelines that connect municipal and legacy systems without the duct tape.
                 </p>
             </div>
         </div>
