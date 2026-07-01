@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRASIER | Contact</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Global animated background (single WebGL layer behind the whole page) -->
+    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-primary/20 bg-surface/80 backdrop-blur-xl"
+        id="main-nav">
+        <div class="flex justify-between items-center px-margin-desktop py-4 max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="font-display-lg text-2xl text-primary tracking-tighter">TRASIER TECH</span>
+            </a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="index.html#services">Solutions</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="index.html#projects">Intelligence</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="leadership.html">About</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="careers.html">Careers</a>
+            </div>
+            <a href="contact.html"
+                class="mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                MISSION_START
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contact -->
+    <header class="relative pt-40 pb-8 px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <div class="absolute inset-0 grid-overlay z-0 pointer-events-none opacity-60"></div>
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 mono-all-caps text-on-surface/50 hover:text-primary text-[11px] mb-10 transition-colors">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>Back to home
+            </a>
+            <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.4em]">Contact</div>
+        </div>
+    </header>
+
+    <section class="px-margin-mobile md:px-margin-desktop pb-24 max-w-7xl mx-auto w-full">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-headline-lg text-4xl md:text-6xl mb-8 leading-tight">Have a problem worth solving?</h2>
+                <p class="font-body-md text-on-surface-variant text-xl mb-12">Bring us your hardest problems.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 group">
+                        <div
+                            class="w-12 h-12 glass-card rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined">mail</span>
+                        </div>
+                        <div>
+                            <div class="mono-all-caps text-[10px] text-on-surface/40">Email Protocol</div>
+                            <div class="font-label-sm">ops@trasier.tech</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div
+                            class="w-12 h-12 glass-card rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
+                        <div>
+                            <div class="mono-all-caps text-[10px] text-on-surface/40">Deployment HQ</div>
+                            <div class="font-label-sm">Kathmandu, Nepal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-8 md:p-12 rounded-2xl relative">
+                <form class="space-y-6" id="contact-form">
+                    <div>
+                        <label
+                            class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Terminal_Identity</label>
+                        <input
+                            class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                            placeholder="FULL NAME" required="" type="text" />
+                    </div>
+                    <div>
+                        <label
+                            class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Contact_String</label>
+                        <input
+                            class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                            placeholder="EMAIL ADDRESS" required="" type="email" />
+                    </div>
+                    <div>
+                        <label
+                            class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Mission_Details</label>
+                        <textarea
+                            class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                            placeholder="HOW CAN WE HELP?" required="" rows="4"></textarea>
+                    </div>
+                    <button
+                        class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300"
+                        type="submit">
+                        TRANSMIT_REQUEST
+                    </button>
+                </form>
+                <div class="hidden absolute inset-0 bg-surface-container-lowest/90 backdrop-blur flex flex-col items-center justify-center text-center p-8 z-20"
+                    id="success-message">
+                    <span class="material-symbols-outlined text-6xl text-primary mb-4 animate-pulse">check_circle</span>
+                    <h3 class="font-display-lg text-2xl mb-2">TRANSMISSION RECEIVED</h3>
+                    <p class="font-body-md text-on-surface-variant">We will respond shortly on your frequency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low py-24 mt-12">
+        <div class="max-w-7xl mx-auto px-margin-mobile flex flex-col items-center gap-12 text-center">
+            <a href="index.html" class="flex flex-col items-center gap-4">
+                <img alt="Trasier Logo"
+                    class="w-16 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                <h2 class="font-headline-lg text-3xl text-primary uppercase tracking-widest">TRASIER TECH</h2>
+            </a>
+            <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">
+                &copy; 2026 TRASIER TECHNOLOGY. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+    <script src="js/shader.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
