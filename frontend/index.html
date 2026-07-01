@@ -24,6 +24,10 @@
 </head>
 
 <body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Global animated background (single WebGL layer behind the whole page) -->
+    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
     <!-- TopNavBar -->
@@ -38,9 +42,9 @@
                 <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
                     href="#projects">Intelligence</a>
                 <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="#vision">Manifesto</a>
+                    href="leadership.html">Leadership</a>
                 <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="#team">Leadership</a>
+                    href="careers.html">Careers</a>
             </div>
             <a href="#contact"
                 class="mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
@@ -50,11 +54,6 @@
     </nav>
     <!-- Hero Section -->
     <section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-        <!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full z-0 opacity-40" -->
-        <div class="absolute inset-0 w-full h-full z-0 opacity-40" style="display:block;">
-            <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
-        </div>
-        <!-- STITCH_SHADER_END:ANIMATION_2 -->
         <div class="absolute inset-0 grid-overlay z-1 pointer-events-none"></div>
         <div class="relative z-10 text-center px-margin-mobile">
             <h1 class="font-display-lg text-6xl md:text-8xl text-white mb-6" id="hero-title">
@@ -139,10 +138,11 @@
                 more systems that ship and stay running.
             </p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 lg:auto-rows-fr gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 lg:auto-rows-fr gap-5">
             <!-- Featured: Civic & GovTech -->
-            <div class="glass-card rounded-2xl p-8 md:p-10 group lg:col-span-3 lg:row-span-2 flex flex-col relative">
-                <a href="services.html#civic" class="absolute inset-0 z-20" aria-label="Learn more: Civic & GovTech Platforms"></a>
+            <div class="glass-card svc-card rounded-2xl p-8 md:p-10 group lg:col-span-3 lg:row-span-2 flex flex-col relative"
+                data-svc-dir="left">
+                <a href="services/civic.html" class="absolute inset-0 z-20" aria-label="Civic & GovTech Platforms — learn more"></a>
                 <div class="flex items-center justify-between mb-6">
                     <span
                         class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform origin-left">account_balance</span>
@@ -175,23 +175,27 @@
                     <span class="px-2.5 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">Node.js</span>
                     <span class="px-2.5 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">PostgreSQL</span>
                 </div>
+                <span class="mt-8 inline-flex items-center gap-2 mono-all-caps text-primary text-[11px]">Learn more
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
             <!-- AI & Machine Learning -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-span-3 flex flex-col relative">
-                <a href="services.html#ai" class="absolute inset-0 z-20" aria-label="Learn more: AI & Machine Learning"></a>
-                <span
-                    class="material-symbols-outlined absolute top-6 right-6 text-primary/30 group-hover:text-primary transition-colors">arrow_outward</span>
+            <div class="glass-card svc-card rounded-2xl p-8 md:p-9 group lg:col-span-3 flex flex-col relative min-h-[220px]"
+                data-svc-dir="right">
+                <a href="services/ai.html" class="absolute inset-0 z-20" aria-label="AI & Machine Learning — learn more"></a>
                 <span
                     class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">neurology</span>
                 <h3 class="font-headline-lg text-xl mb-3">AI &amp; Machine Learning</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Models that do real work — complaint routing &amp; classification, document OCR, and demand
-                    forecasting that points crews where they're needed next.
+                    Models that do real work — classification and routing, document OCR, forecasting, and
+                    natural-language search grounded in your own data.
                 </p>
+                <span class="mt-auto pt-6 inline-flex items-center gap-2 mono-all-caps text-primary text-[11px]">Learn more
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
             <!-- Geospatial & Mapping -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-span-3 flex flex-col relative">
-                <a href="services.html#geospatial" class="absolute inset-0 z-20" aria-label="Learn more: Geospatial & Mapping"></a>
+            <div class="glass-card svc-card rounded-2xl p-8 md:p-9 group lg:col-span-3 flex flex-col relative min-h-[220px]"
+                data-svc-dir="right">
+                <a href="services/geospatial.html" class="absolute inset-0 z-20" aria-label="Geospatial & Mapping — learn more"></a>
                 <div class="flex items-center justify-between mb-5">
                     <span
                         class="material-symbols-outlined text-3xl text-primary group-hover:scale-110 transition-transform origin-left">map</span>
@@ -202,50 +206,55 @@
                 </div>
                 <h3 class="font-headline-lg text-xl mb-3">Geospatial &amp; Mapping</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Real-time geolocation, complaint heatmaps, and GIS dashboards — so problems are pinned to exactly
-                    where they happen.
+                    Real-time geolocation, heatmaps, and interactive GIS dashboards — turning coordinates into
+                    decisions at any scale.
                 </p>
+                <span class="mt-auto pt-6 inline-flex items-center gap-2 mono-all-caps text-primary text-[11px]">Learn more
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
             <!-- Web & Mobile -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-span-2 flex flex-col relative">
-                <a href="services.html#mobile" class="absolute inset-0 z-20" aria-label="Learn more: Web & Mobile"></a>
-                <span
-                    class="material-symbols-outlined absolute top-6 right-6 text-primary/30 group-hover:text-primary transition-colors">arrow_outward</span>
+            <div class="glass-card svc-card rounded-2xl p-8 md:p-9 group lg:col-span-2 flex flex-col relative min-h-[240px]"
+                data-svc-dir="left">
+                <a href="services/mobile.html" class="absolute inset-0 z-20" aria-label="Web & Mobile — learn more"></a>
                 <span
                     class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">devices</span>
                 <h3 class="font-headline-lg text-xl mb-3">Web &amp; Mobile</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
                     Production apps built to scale — offline-first mobile and fast, accessible web.
                 </p>
+                <span class="mt-auto pt-6 inline-flex items-center gap-2 mono-all-caps text-primary text-[11px]">Learn more
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
             <!-- Data Intelligence -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-span-2 flex flex-col relative">
-                <a href="services.html#data" class="absolute inset-0 z-20" aria-label="Learn more: Data Intelligence"></a>
-                <span
-                    class="material-symbols-outlined absolute top-6 right-6 text-primary/30 group-hover:text-primary transition-colors">arrow_outward</span>
+            <div class="glass-card svc-card rounded-2xl p-8 md:p-9 group lg:col-span-2 flex flex-col relative min-h-[240px]"
+                data-svc-dir="left">
+                <a href="services/data.html" class="absolute inset-0 z-20" aria-label="Data Intelligence — learn more"></a>
                 <span
                     class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">insights</span>
                 <h3 class="font-headline-lg text-xl mb-3">Data Intelligence</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    Dashboards and reporting that turn thousands of reports into decisions leaders can act on.
+                    Dashboards, reporting, and pipelines that turn raw records into decisions leaders can defend.
                 </p>
+                <span class="mt-auto pt-6 inline-flex items-center gap-2 mono-all-caps text-primary text-[11px]">Learn more
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
             <!-- Systems Integration -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-span-2 flex flex-col relative">
-                <a href="services.html#integration" class="absolute inset-0 z-20" aria-label="Learn more: Integration & APIs"></a>
-                <span
-                    class="material-symbols-outlined absolute top-6 right-6 text-primary/30 group-hover:text-primary transition-colors">arrow_outward</span>
+            <div class="glass-card svc-card rounded-2xl p-8 md:p-9 group lg:col-span-2 flex flex-col relative min-h-[240px]"
+                data-svc-dir="right">
+                <a href="services/integration.html" class="absolute inset-0 z-20" aria-label="Integration & APIs — learn more"></a>
                 <span
                     class="material-symbols-outlined text-3xl text-primary mb-5 block group-hover:scale-110 transition-transform origin-left">hub</span>
                 <h3 class="font-headline-lg text-xl mb-3">Integration &amp; APIs</h3>
                 <p class="font-body-md text-on-surface-variant text-base">
-                    APIs and pipelines that connect municipal and legacy systems without the duct tape.
+                    Clean APIs and pipelines that connect legacy, third-party, and modern systems into one.
                 </p>
+                <span class="mt-auto pt-6 inline-flex items-center gap-2 mono-all-caps text-primary text-[11px]">Learn more
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
         </div>
     </section>
     <!-- What We Build Section -->
-    <section class="py-24 bg-surface-container-lowest/50 relative overflow-hidden" id="projects">
+    <section class="py-24 relative overflow-hidden" id="projects">
         <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
             <div class="flex justify-between items-end mb-16">
                 <div>
@@ -254,7 +263,8 @@
                 </div>
                 <div class="hidden md:block mono-all-caps text-on-surface/30 text-[10px]">Scroll_to_explore</div>
             </div>
-            <div class="glass-card rounded-2xl overflow-hidden grid lg:grid-cols-12 gap-0 group">
+            <div class="glass-card rounded-2xl overflow-hidden grid lg:grid-cols-12 gap-0 group relative">
+                <a href="sadak-sujhav.html" class="absolute inset-0 z-20" aria-label="Explore the Sadak Sujhav project"></a>
                 <!-- Left: Content -->
                 <div class="lg:col-span-5 p-8 md:p-16 flex flex-col justify-center">
                     <div class="mb-8">
@@ -277,10 +287,10 @@
                         <span
                             class="px-3 py-1 border border-outline-variant/30 text-[10px] mono-all-caps rounded">Mapbox</span>
                     </div>
-                    <a class="inline-flex items-center gap-2 mono-all-caps text-primary group/link" href="#">
-                        Access Application
+                    <a class="inline-flex items-center gap-2 mono-all-caps text-primary group/link" href="sadak-sujhav.html">
+                        Explore Project
                         <span
-                            class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">open_in_new</span>
+                            class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                 </div>
                 <!-- Right: Mockup -->
@@ -348,79 +358,6 @@
                     "Sadak Sujhav is our entry point..."</div>
                 <div class="vision-line font-display-lg text-4xl md:text-6xl text-primary glow-text opacity-0">"This is
                     what civic technology looks like."</div>
-            </div>
-        </div>
-    </section>
-    <!-- Team Section -->
-    <section class="relative py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="team">
-        <div class="mb-16 text-center">
-            <div class="mono-all-caps text-primary text-xs mb-2 tracking-[0.4em]">The Operators</div>
-            <h2 class="font-headline-lg text-4xl md:text-5xl mb-6">Who's Behind It</h2>
-            <p class="font-body-md text-on-surface-variant text-lg max-w-2xl mx-auto">
-                The team building Nepal's civic infrastructure layer — engineering, strategy, and finance under one
-                mission.
-            </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Founder: Ayush Chaudhary -->
-            <div
-                class="glass-card rounded-xl p-8 group flex flex-col items-center text-center md:items-start md:text-left">
-                <div
-                    class="w-20 h-20 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
-                    <span class="font-display-lg text-2xl text-primary">AC</span>
-                </div>
-                <h3 class="font-headline-lg text-2xl mb-1">Ayush Chaudhary</h3>
-                <div class="mono-all-caps text-primary text-xs mb-4">Founder &amp; CTO</div>
-                <div class="mono-all-caps text-[10px] text-on-surface/50 mb-5">B.Tech in Computer Science Engineering —
-                    VIT, India</div>
-                <p class="font-body-md text-on-surface-variant text-base">
-                    Technical lead responsible for architecture, development, and ensuring every product meets the
-                    highest engineering standards.
-                </p>
-            </div>
-            <!-- Founder: Akash Chaudhary -->
-            <div
-                class="glass-card rounded-xl p-8 group flex flex-col items-center text-center md:items-start md:text-left">
-                <div
-                    class="w-20 h-20 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
-                    <span class="font-display-lg text-2xl text-primary">AC</span>
-                </div>
-                <h3 class="font-headline-lg text-2xl mb-1">Akash Chaudhary</h3>
-                <div class="mono-all-caps text-primary text-xs mb-4">Co-Founder &amp; CEO</div>
-                <div class="mono-all-caps text-[10px] text-on-surface/50 mb-5">BSc Computer Science — Herald College
-                    Kathmandu</div>
-                <p class="font-body-md text-on-surface-variant text-base">
-                    Business strategist leading client acquisition, project management, and ensuring every engagement
-                    delivers real value.
-                </p>
-            </div>
-            <!-- Team: Ayush Giri -->
-            <div
-                class="glass-card rounded-xl p-8 group flex flex-col items-center text-center md:items-start md:text-left">
-                <div
-                    class="w-20 h-20 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
-                    <span class="font-display-lg text-2xl text-primary">AG</span>
-                </div>
-                <h3 class="font-headline-lg text-2xl mb-1">Ayush Giri</h3>
-                <div class="mono-all-caps text-primary text-xs mb-4">Technical Lead</div>
-                <div class="mono-all-caps text-[10px] text-on-surface/50 mb-5">B.Tech CSE — VIT, India</div>
-                <p class="font-body-md text-on-surface-variant text-base">
-                    Hands-on engineer driving day-to-day development and turning architecture into shipped, working code.
-                </p>
-            </div>
-            <!-- Team: Aditya Raj Sapkota -->
-            <div
-                class="glass-card rounded-xl p-8 group flex flex-col items-center text-center md:items-start md:text-left">
-                <div
-                    class="w-20 h-20 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
-                    <span class="font-display-lg text-2xl text-primary">AS</span>
-                </div>
-                <h3 class="font-headline-lg text-2xl mb-1">Aditya Raj Sapkota</h3>
-                <div class="mono-all-caps text-primary text-xs mb-4">Senior Developer</div>
-                <div class="mono-all-caps text-[10px] text-on-surface/50 mb-5">B.Tech CSE — VIT, India</div>
-                <p class="font-body-md text-on-surface-variant text-base">
-                    Senior engineer building the core of our platforms — from backend systems to the features users rely on.
-                </p>
             </div>
         </div>
     </section>

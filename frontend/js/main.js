@@ -91,7 +91,8 @@ if (form) {
 }
 
 // Framer-Motion style entry animations via GSAP for elements
-gsap.utils.toArray('.glass-card').forEach(card => {
+// (service cards get their own side-slide below, so exclude them here)
+gsap.utils.toArray('.glass-card:not(.svc-card)').forEach(card => {
     gsap.from(card, {
         scrollTrigger: {
             trigger: card,
@@ -102,6 +103,22 @@ gsap.utils.toArray('.glass-card').forEach(card => {
         y: 50,
         scale: 0.95,
         duration: 1,
+        ease: "power3.out"
+    });
+});
+
+// Services cards — slide in from the side on scroll
+gsap.utils.toArray('.svc-card').forEach(card => {
+    const fromRight = card.dataset.svcDir === 'right';
+    gsap.from(card, {
+        scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none"
+        },
+        opacity: 0,
+        x: fromRight ? 120 : -120,
+        duration: 0.9,
         ease: "power3.out"
     });
 });

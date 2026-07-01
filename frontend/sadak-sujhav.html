@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRASIER | Sadak Sujhav — सडक सुझाव</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Global animated background (single WebGL layer behind the whole page) -->
+    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-primary/20 bg-surface/80 backdrop-blur-xl"
+        id="main-nav">
+        <div class="flex justify-between items-center px-margin-desktop py-4 max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="font-display-lg text-2xl text-primary tracking-tighter">TRASIER TECH</span>
+            </a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="index.html#services">Solutions</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="index.html#projects">Intelligence</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="leadership.html">Leadership</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="careers.html">Careers</a>
+            </div>
+            <a href="index.html#contact"
+                class="mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                MISSION_START
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-40 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <div class="absolute inset-0 grid-overlay z-0 pointer-events-none opacity-60"></div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <a href="index.html#projects"
+                class="inline-flex items-center gap-2 mono-all-caps text-on-surface/50 hover:text-primary text-[11px] mb-10 transition-colors">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>All projects
+            </a>
+            <div class="mb-6">
+                <span
+                    class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] mono-all-caps border border-primary/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Operational · Live &amp; public
+                </span>
+            </div>
+            <h1 class="font-display-lg text-5xl md:text-7xl text-white mb-3 leading-tight">Sadak Sujhav</h1>
+            <p class="font-headline-lg text-primary text-2xl md:text-3xl mb-6 glow-text">सडक सुझाव</p>
+            <p class="font-body-md text-on-surface-variant text-xl md:text-2xl max-w-2xl mx-auto mb-10">
+                Nepal's integrated road complaint and maintenance tracking platform — connecting citizen reports to
+                municipal response, in real time.
+            </p>
+            <!-- App store buttons -->
+            <div class="flex flex-wrap gap-4 justify-center">
+                <!-- TODO: replace href="#" with your Google Play URL -->
+                <a href="#"
+                    class="inline-flex items-center gap-3 border border-primary/40 hover:border-primary bg-surface-container-low/40 px-6 py-3 rounded-xl transition-all group">
+                    <span class="material-symbols-outlined text-primary text-2xl">android</span>
+                    <span class="text-left">
+                        <span class="block mono-all-caps text-[9px] text-on-surface/50">Get it on</span>
+                        <span class="block font-headline-lg text-sm">Google Play</span>
+                    </span>
+                </a>
+                <!-- TODO: replace href="#" with your Apple App Store URL -->
+                <a href="#"
+                    class="inline-flex items-center gap-3 border border-primary/40 hover:border-primary bg-surface-container-low/40 px-6 py-3 rounded-xl transition-all group">
+                    <span class="material-symbols-outlined text-primary text-2xl">phone_iphone</span>
+                    <span class="text-left">
+                        <span class="block mono-all-caps text-[9px] text-on-surface/50">Download on the</span>
+                        <span class="block font-headline-lg text-sm">App Store</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats strip (replace the dashes with real figures) -->
+    <section class="px-margin-mobile md:px-margin-desktop py-8 max-w-5xl mx-auto w-full">
+        <div class="glass-card rounded-2xl py-10 px-6 flex flex-wrap items-center justify-center gap-10 md:gap-16 text-center">
+            <!-- TODO: fill in real numbers -->
+            <div>
+                <div class="font-display-lg text-4xl text-primary mb-1">—</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">Reports Filed</div>
+            </div>
+            <div class="stat-divider hidden md:block"></div>
+            <div>
+                <div class="font-display-lg text-4xl text-primary mb-1">—</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">Areas Covered</div>
+            </div>
+            <div class="stat-divider hidden md:block"></div>
+            <div>
+                <div class="font-display-lg text-4xl text-primary mb-1">—</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">Active Users</div>
+            </div>
+            <div class="stat-divider hidden md:block"></div>
+            <div>
+                <div class="font-display-lg text-4xl text-primary mb-1">—</div>
+                <div class="mono-all-caps text-[10px] text-on-surface/50">Avg. Response</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The problem -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12">
+        <div class="max-w-3xl mx-auto">
+            <div class="mono-all-caps text-primary text-xs mb-3 tracking-[0.3em]">The problem</div>
+            <h2 class="font-headline-lg text-3xl md:text-4xl mb-6">A broken road, and nowhere to report it</h2>
+            <p class="font-body-md text-on-surface-variant text-lg md:text-xl leading-relaxed mb-6">
+                A pothole, a broken streetlight, a blocked drain — everyone sees them, but reporting one used to mean a
+                phone call to the right office, on the right day, to the right person. Most reports never made it, and
+                the ones that did vanished into a queue no citizen could see.
+            </p>
+            <p class="font-body-md text-on-surface-variant text-lg md:text-xl leading-relaxed">
+                Sadak Sujhav closes that loop. Anyone with a phone can report a road issue in seconds, watch it move
+                through the system, and see it resolved — while municipalities get a single, organized stream of what's
+                broken and where.
+            </p>
+        </div>
+    </section>
+
+    <!-- Feature 1: Citizen complaint flow -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="mono-all-caps text-primary text-xs mb-2 tracking-[0.3em]">How it works</div>
+        <h2 class="font-headline-lg text-3xl md:text-4xl mb-10">Reporting a problem takes seconds</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="glass-card rounded-xl p-6 group">
+                <div class="font-display-lg text-primary/40 text-3xl mb-4">01</div>
+                <span class="material-symbols-outlined text-3xl text-primary mb-3 block">photo_camera</span>
+                <h3 class="font-headline-lg text-lg mb-2">Snap a photo</h3>
+                <p class="font-body-md text-on-surface-variant text-base">Capture the issue right where it is — a
+                    picture is the report.</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 group">
+                <div class="font-display-lg text-primary/40 text-3xl mb-4">02</div>
+                <span class="material-symbols-outlined text-3xl text-primary mb-3 block">my_location</span>
+                <h3 class="font-headline-lg text-lg mb-2">Auto-location</h3>
+                <p class="font-body-md text-on-surface-variant text-base">GPS pins the exact spot automatically, so no
+                    one has to describe an address.</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 group">
+                <div class="font-display-lg text-primary/40 text-3xl mb-4">03</div>
+                <span class="material-symbols-outlined text-3xl text-primary mb-3 block">category</span>
+                <h3 class="font-headline-lg text-lg mb-2">Pick a category</h3>
+                <p class="font-body-md text-on-surface-variant text-base">Pothole, drainage, streetlight, and more — so
+                    it reaches the right team.</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 group">
+                <div class="font-display-lg text-primary/40 text-3xl mb-4">04</div>
+                <span class="material-symbols-outlined text-3xl text-primary mb-3 block">send</span>
+                <h3 class="font-headline-lg text-lg mb-2">Submit</h3>
+                <p class="font-body-md text-on-surface-variant text-base">One tap and it's filed — logged, located, and
+                    on its way to the right office.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 2: Notifications & tracking -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="glass-card rounded-2xl p-8 md:p-12 grid lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7">
+                <div class="mono-all-caps text-primary text-xs mb-3 tracking-[0.3em]">Stay in the loop</div>
+                <h2 class="font-headline-lg text-3xl md:text-4xl mb-6">Follow your complaint to resolution</h2>
+                <p class="font-body-md text-on-surface-variant text-lg mb-8">
+                    Filing a report is only half the story. Sadak Sujhav keeps citizens informed at every step — no more
+                    wondering whether anyone saw it or whether anything will happen.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary mt-0.5">notifications_active</span>
+                        <div>
+                            <div class="font-headline-lg text-lg">Real-time status updates</div>
+                            <p class="font-body-md text-on-surface-variant text-base">Submitted, acknowledged, in
+                                progress, resolved — as it happens.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary mt-0.5">timeline</span>
+                        <div>
+                            <div class="font-headline-lg text-lg">A visible history</div>
+                            <p class="font-body-md text-on-surface-variant text-base">Every report keeps a timeline, so
+                                progress is transparent and accountable.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary mt-0.5">verified</span>
+                        <div>
+                            <div class="font-headline-lg text-lg">Confirmation on resolution</div>
+                            <p class="font-body-md text-on-surface-variant text-base">Citizens are notified — and can
+                                confirm — when the issue is fixed.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- Phone mockup -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="w-[200px] aspect-[9/19] bg-surface rounded-[2rem] border-4 border-surface-variant shadow-2xl overflow-hidden relative">
+                    <div class="h-5 w-full bg-surface-variant flex items-center justify-center">
+                        <div class="h-1 w-10 rounded-full bg-on-surface-variant/20"></div>
+                    </div>
+                    <div class="p-3 space-y-3">
+                        <div class="h-3 w-1/2 bg-primary/30 rounded"></div>
+                        <div class="glass-card rounded-lg p-3 space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                <div class="h-2 w-2/3 bg-on-surface-variant/20 rounded"></div>
+                            </div>
+                            <div class="h-2 w-full bg-on-surface-variant/10 rounded"></div>
+                            <div class="h-2 w-5/6 bg-on-surface-variant/10 rounded"></div>
+                        </div>
+                        <div class="glass-card rounded-lg p-3 space-y-2">
+                            <div class="h-2 w-3/4 bg-on-surface-variant/20 rounded"></div>
+                            <div class="h-2 w-full bg-on-surface-variant/10 rounded"></div>
+                        </div>
+                        <div class="h-24 w-full bg-primary/10 rounded-lg border border-primary/20 relative overflow-hidden">
+                            <div class="absolute inset-0 grid-overlay opacity-30"></div>
+                            <span class="material-symbols-outlined text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">location_on</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="glass-card rounded-2xl p-8 md:p-10">
+            <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.3em]">Built with</div>
+            <div class="flex flex-wrap gap-3">
+                <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">React Native</span>
+                <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">Node.js</span>
+                <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">PostgreSQL</span>
+                <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">Mapbox</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="glass-card rounded-2xl p-10 md:p-16 text-center">
+            <h2 class="font-headline-lg text-3xl md:text-4xl mb-4">Get Sadak Sujhav</h2>
+            <p class="font-body-md text-on-surface-variant text-lg mb-8 max-w-xl mx-auto">
+                Report a road issue in your area — or talk to us about bringing it to your municipality.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <!-- TODO: replace href="#" with your Google Play URL -->
+                <a href="#"
+                    class="inline-flex items-center gap-3 mono-all-caps bg-primary text-on-primary px-8 py-4 font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300">
+                    <span class="material-symbols-outlined">android</span>Google Play
+                </a>
+                <!-- TODO: replace href="#" with your Apple App Store URL -->
+                <a href="#"
+                    class="inline-flex items-center gap-3 mono-all-caps border border-primary text-primary px-8 py-4 font-bold hover:bg-primary hover:text-on-primary transition-all duration-300">
+                    <span class="material-symbols-outlined">phone_iphone</span>App Store
+                </a>
+                <a href="index.html#contact"
+                    class="inline-flex items-center gap-3 mono-all-caps border border-outline-variant/40 text-on-surface hover:border-primary hover:text-primary px-8 py-4 transition-all duration-300">
+                    Talk to us
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low py-24 mt-12">
+        <div class="max-w-7xl mx-auto px-margin-mobile flex flex-col items-center gap-12 text-center">
+            <a href="index.html" class="flex flex-col items-center gap-4">
+                <img alt="Trasier Logo"
+                    class="w-16 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                <h2 class="font-headline-lg text-3xl text-primary uppercase tracking-widest">TRASIER TECH</h2>
+            </a>
+            <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">
+                &copy; 2024 TRASIER TECHNOLOGY. ALL RIGHTS RESERVED. <br />
+                BUILD_VERSION: 1.0.4-LTS
+            </div>
+        </div>
+    </footer>
+    <script src="js/shader.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

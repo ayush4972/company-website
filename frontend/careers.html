@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRASIER | Careers</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Global animated background (single WebGL layer behind the whole page) -->
+    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-primary/20 bg-surface/80 backdrop-blur-xl"
+        id="main-nav">
+        <div class="flex justify-between items-center px-margin-desktop py-4 max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="font-display-lg text-2xl text-primary tracking-tighter">TRASIER TECH</span>
+            </a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="index.html#services">Solutions</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="index.html#projects">Intelligence</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="leadership.html">Leadership</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="careers.html">Careers</a>
+            </div>
+            <a href="index.html#contact"
+                class="mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                MISSION_START
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-40 pb-12 px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <div class="absolute inset-0 grid-overlay z-0 pointer-events-none opacity-60"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 mono-all-caps text-on-surface/50 hover:text-primary text-[11px] mb-10 transition-colors">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>Back to home
+            </a>
+            <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.4em]">Careers</div>
+            <h1 class="font-display-lg text-5xl md:text-7xl text-white mb-6 leading-tight">Join the mission</h1>
+            <p class="font-body-md text-on-surface-variant text-xl md:text-2xl max-w-3xl leading-relaxed">
+                We're not hiring for specific roles today, but we're always meeting builders, engineers, and strategists
+                who thrive at the edge of civic technology, AI, and infrastructure. Share your story so we can reach out
+                the moment a mission match appears.
+            </p>
+        </div>
+    </header>
+
+    <!-- Info cards -->
+    <section class="px-margin-mobile md:px-margin-desktop py-8 max-w-7xl mx-auto w-full">
+        <div class="grid md:grid-cols-2 gap-5">
+            <!-- Current status -->
+            <div class="glass-card rounded-2xl p-8 md:p-10">
+                <div class="flex items-center gap-2 mono-all-caps text-primary text-xs mb-6 tracking-[0.2em]">
+                    <span class="material-symbols-outlined text-lg">event_upcoming</span>Current status
+                </div>
+                <h2 class="font-headline-lg text-2xl md:text-3xl mb-4">No open roles right now</h2>
+                <p class="font-body-md text-on-surface-variant text-lg">
+                    We update this page the moment a role opens. In the meantime, keep your details with us and we'll
+                    reach out first.
+                </p>
+            </div>
+            <!-- Stay connected -->
+            <div class="glass-card rounded-2xl p-8 md:p-10">
+                <div class="flex items-center gap-2 mono-all-caps text-primary text-xs mb-6 tracking-[0.2em]">
+                    <span class="material-symbols-outlined text-lg">mail</span>Stay connected
+                </div>
+                <h2 class="font-headline-lg text-2xl md:text-3xl mb-4">Join the Trasier talent list</h2>
+                <p class="font-body-md text-on-surface-variant text-lg mb-8">
+                    Send your CV or portfolio link and a note on your areas of expertise — we'll keep you on our radar.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" id="open-cv"
+                        class="mono-all-caps bg-primary text-on-primary px-6 py-3 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                        Upload your CV
+                    </button>
+                    <a href="index.html#contact"
+                        class="mono-all-caps border border-primary/40 text-primary px-6 py-3 font-bold text-xs hover:border-primary transition-all duration-300">
+                        Talk to us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV upload modal (opens on "Upload your CV") -->
+    <div id="cv-modal" class="hidden fixed inset-0 z-[100] items-center justify-center px-4 py-8">
+        <div class="absolute inset-0 bg-surface/80 backdrop-blur-sm" id="cv-modal-overlay"></div>
+        <div class="glass-card rounded-2xl p-8 md:p-12 relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <button type="button" id="close-cv" aria-label="Close"
+                class="absolute top-4 right-4 text-on-surface/50 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="mono-all-caps text-primary text-xs mb-2 tracking-[0.3em]">Send us your profile</div>
+            <h2 class="font-headline-lg text-3xl md:text-4xl mb-8">Drop your CV</h2>
+            <form class="space-y-6" id="careers-form">
+                <div>
+                    <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Full name</label>
+                    <input
+                        class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                        placeholder="YOUR NAME" required="" type="text" />
+                </div>
+                <div>
+                    <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Email</label>
+                    <input
+                        class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                        placeholder="EMAIL ADDRESS" required="" type="email" />
+                </div>
+                <div>
+                    <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Areas of
+                        expertise</label>
+                    <input
+                        class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
+                        placeholder="E.G. BACKEND, MOBILE, AI, GIS" type="text" />
+                </div>
+                <div>
+                    <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">CV / Resume</label>
+                    <label for="cv-file"
+                        class="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-outline-variant/40 hover:border-primary rounded-xl py-10 px-6 text-center cursor-pointer transition-all group">
+                        <span
+                            class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform">upload_file</span>
+                        <span class="font-body-md text-on-surface-variant" id="cv-filename">Click to upload — PDF, DOC,
+                            or DOCX</span>
+                        <span class="mono-all-caps text-[10px] text-on-surface/40">Max 10MB</span>
+                        <input id="cv-file" name="cv" type="file" class="hidden"
+                            accept=".pdf,.doc,.docx,application/pdf" />
+                    </label>
+                </div>
+                <button
+                    class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300"
+                    type="submit">
+                    Submit Application
+                </button>
+            </form>
+            <div class="hidden absolute inset-0 bg-surface-container-lowest/90 backdrop-blur flex flex-col items-center justify-center text-center p-8 z-20"
+                id="careers-success">
+                <span class="material-symbols-outlined text-6xl text-primary mb-4 animate-pulse">check_circle</span>
+                <h3 class="font-display-lg text-2xl mb-2">PROFILE RECEIVED</h3>
+                <p class="font-body-md text-on-surface-variant">Thanks — you're on our radar. We'll reach out the moment
+                    a role matches.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low py-24 mt-12">
+        <div class="max-w-7xl mx-auto px-margin-mobile flex flex-col items-center gap-12 text-center">
+            <a href="index.html" class="flex flex-col items-center gap-4">
+                <img alt="Trasier Logo"
+                    class="w-16 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                <h2 class="font-headline-lg text-3xl text-primary uppercase tracking-widest">TRASIER TECH</h2>
+            </a>
+            <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">
+                &copy; 2024 TRASIER TECHNOLOGY. ALL RIGHTS RESERVED. <br />
+                BUILD_VERSION: 1.0.4-LTS
+            </div>
+        </div>
+    </footer>
+    <script src="js/shader.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Modal open/close
+        const openBtn = document.getElementById('open-cv');
+        const modal = document.getElementById('cv-modal');
+        const closeBtn = document.getElementById('close-cv');
+        const overlay = document.getElementById('cv-modal-overlay');
+        const careersForm = document.getElementById('careers-form');
+        const careersSuccess = document.getElementById('careers-success');
+        const cvInput = document.getElementById('cv-file');
+        const cvName = document.getElementById('cv-filename');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            gsap.from(modal.querySelector('.glass-card'), { opacity: 0, y: 20, duration: 0.4, ease: 'power2.out' });
+        }
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            careersSuccess.classList.add('hidden');
+        }
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        // Show selected filename
+        cvInput.addEventListener('change', () => {
+            cvName.textContent = cvInput.files.length ? cvInput.files[0].name : 'Click to upload — PDF, DOC, or DOCX';
+        });
+
+        // Front-end submit feedback (no backend yet — see note)
+        careersForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            careersSuccess.classList.remove('hidden');
+            gsap.from(careersSuccess, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
+            careersForm.reset();
+            cvName.textContent = 'Click to upload — PDF, DOC, or DOCX';
+        });
+    </script>
+</body>
+
+</html>

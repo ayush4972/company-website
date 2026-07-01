@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRASIER | Civic & GovTech Platforms</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/tailwind.config.js"></script>
+    <link href="../css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Global animated background (single WebGL layer behind the whole page) -->
+    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-primary/20 bg-surface/80 backdrop-blur-xl"
+        id="main-nav">
+        <div class="flex justify-between items-center px-margin-desktop py-4 max-w-7xl mx-auto">
+            <a href="../index.html" class="flex items-center gap-2">
+                <span class="font-display-lg text-2xl text-primary tracking-tighter">TRASIER TECH</span>
+            </a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="../index.html#services">Solutions</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../index.html#projects">Intelligence</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../leadership.html">About</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../careers.html">Careers</a>
+            </div>
+            <a href="../index.html#contact"
+                class="mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                MISSION_START
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-40 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <div class="absolute inset-0 grid-overlay z-0 pointer-events-none opacity-60"></div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <a href="../index.html#services"
+                class="inline-flex items-center gap-2 mono-all-caps text-on-surface/50 hover:text-primary text-[11px] mb-10 transition-colors">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>All services
+            </a>
+            <span
+                class="material-symbols-outlined text-6xl text-primary mb-6 block glow-text">account_balance</span>
+                <div class="mb-6"><span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] mono-all-caps border border-primary/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Live in Sadak Sujhav
+                </span></div>
+            <h1 class="font-display-lg text-4xl md:text-6xl text-white mb-6 leading-tight">Civic &amp; GovTech Platforms</h1>
+            <p class="font-body-md text-on-surface-variant text-xl md:text-2xl max-w-2xl mx-auto">Digital public services that citizens trust and institutions can run.</p>
+        </div>
+    </header>
+
+    <!-- Overview -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12">
+        <div class="max-w-3xl mx-auto">
+                <p class="font-body-md text-on-surface-variant text-lg md:text-xl leading-relaxed mb-6">Public-sector software tends to fail for predictable reasons: it's built for a launch event rather than the years of daily use that follow. We design civic platforms the other way around — for the officer processing the hundredth request of the day, the citizen on a slow connection, and the administrator who needs to prove exactly what happened and when.</p>
+                <p class="font-body-md text-on-surface-variant text-lg md:text-xl leading-relaxed mb-6">Our platforms span the full service lifecycle: how a request arrives, how it's routed and prioritized, how it's resolved, and how that resolution is recorded and reported. Every layer is built to be transparent, auditable, and resilient in the low-connectivity conditions that real deployments face.</p>
+                <p class="font-body-md text-on-surface-variant text-lg md:text-xl leading-relaxed mb-6">The result is technology an institution can stand behind and the public will actually use — not another portal that's abandoned once the ribbon is cut.</p>
+        </div>
+    </section>
+
+    <!-- What we deliver -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="mono-all-caps text-primary text-xs mb-2 tracking-[0.3em]">What we deliver</div>
+        <h2 class="font-headline-lg text-3xl md:text-4xl mb-10">The building blocks</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass-card rounded-xl p-6 group">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+                        <h3 class="font-headline-lg text-lg">Intake &amp; case management</h3>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant text-base pl-8">Configurable workflows for requests, applications, and cases — with categories, priorities, and SLA timers.</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 group">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+                        <h3 class="font-headline-lg text-lg">Public &amp; staff interfaces</h3>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant text-base pl-8">Clean citizen-facing apps paired with powerful internal dashboards for the teams behind them.</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 group">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+                        <h3 class="font-headline-lg text-lg">Notifications &amp; transparency</h3>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant text-base pl-8">Automated status updates, reminders, and public progress so no one is left guessing.</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 group">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+                        <h3 class="font-headline-lg text-lg">Audit &amp; compliance</h3>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant text-base pl-8">Complete, tamper-evident logs of every action for accountability and reporting.</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 group">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+                        <h3 class="font-headline-lg text-lg">Access &amp; governance</h3>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant text-base pl-8">Granular, role-based permissions across departments, field teams, and administrators.</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 group">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+                        <h3 class="font-headline-lg text-lg">Resilient by design</h3>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant text-base pl-8">Offline tolerance, graceful degradation, and performance tuned for real-world networks.</p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="glass-card rounded-2xl p-8 md:p-10">
+            <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.3em]">Typical stack</div>
+            <div class="flex flex-wrap gap-3">
+                    <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">React Native</span>
+                    <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">Node.js</span>
+                    <span class="px-3 py-1.5 border border-outline-variant/30 text-[11px] mono-all-caps rounded">PostgreSQL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="glass-card rounded-2xl p-10 md:p-16 text-center">
+            <h2 class="font-headline-lg text-3xl md:text-4xl mb-4">Need this built?</h2>
+            <p class="font-body-md text-on-surface-variant text-lg mb-8 max-w-xl mx-auto">
+                Tell us the problem. We'll tell you honestly what's buildable and how we'd approach it.
+            </p>
+            <a href="../index.html#contact"
+                class="inline-flex items-center gap-3 mono-all-caps bg-primary text-on-primary px-10 py-4 font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300">
+                Start a Mission
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Explore other services -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <h2 class="font-headline-lg text-2xl md:text-3xl mb-8">Explore other services</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="ai.html" class="glass-card rounded-xl p-5 group flex items-center gap-4">
+                    <span class="material-symbols-outlined text-2xl text-primary group-hover:scale-110 transition-transform">neurology</span>
+                    <span class="font-headline-lg text-base flex-1">AI &amp; Machine Learning</span>
+                    <span class="material-symbols-outlined text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+                </a>
+                <a href="geospatial.html" class="glass-card rounded-xl p-5 group flex items-center gap-4">
+                    <span class="material-symbols-outlined text-2xl text-primary group-hover:scale-110 transition-transform">map</span>
+                    <span class="font-headline-lg text-base flex-1">Geospatial &amp; Mapping</span>
+                    <span class="material-symbols-outlined text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+                </a>
+                <a href="mobile.html" class="glass-card rounded-xl p-5 group flex items-center gap-4">
+                    <span class="material-symbols-outlined text-2xl text-primary group-hover:scale-110 transition-transform">devices</span>
+                    <span class="font-headline-lg text-base flex-1">Web &amp; Mobile Development</span>
+                    <span class="material-symbols-outlined text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+                </a>
+                <a href="data.html" class="glass-card rounded-xl p-5 group flex items-center gap-4">
+                    <span class="material-symbols-outlined text-2xl text-primary group-hover:scale-110 transition-transform">insights</span>
+                    <span class="font-headline-lg text-base flex-1">Data Intelligence</span>
+                    <span class="material-symbols-outlined text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+                </a>
+                <a href="integration.html" class="glass-card rounded-xl p-5 group flex items-center gap-4">
+                    <span class="material-symbols-outlined text-2xl text-primary group-hover:scale-110 transition-transform">hub</span>
+                    <span class="font-headline-lg text-base flex-1">Systems Integration &amp; APIs</span>
+                    <span class="material-symbols-outlined text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+                </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low py-24 mt-12">
+        <div class="max-w-7xl mx-auto px-margin-mobile flex flex-col items-center gap-12 text-center">
+            <a href="../index.html" class="flex flex-col items-center gap-4">
+                <img alt="Trasier Logo"
+                    class="w-16 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                <h2 class="font-headline-lg text-3xl text-primary uppercase tracking-widest">TRASIER TECH</h2>
+            </a>
+            <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">
+                &copy; 2024 TRASIER TECHNOLOGY. ALL RIGHTS RESERVED. <br />
+                BUILD_VERSION: 1.0.4-LTS
+            </div>
+        </div>
+    </footer>
+    <script src="../js/shader.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
