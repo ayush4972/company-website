@@ -70,21 +70,25 @@ visionLines.forEach((line, index) => {
     });
 });
 
-// Form Submission Interaction
+// Form Submission Interaction (only present on the homepage)
 const form = document.getElementById('contact-form');
 const success = document.getElementById('success-message');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    success.classList.remove('hidden');
-    gsap.from(success, {
-        opacity: 0,
-        y: 20,
-        duration: 0.5,
-        ease: "power2.out"
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (success) {
+            success.classList.remove('hidden');
+            gsap.from(success, {
+                opacity: 0,
+                y: 20,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        }
+        form.reset();
     });
-    form.reset();
-});
+}
 
 // Framer-Motion style entry animations via GSAP for elements
 gsap.utils.toArray('.glass-card').forEach(card => {
