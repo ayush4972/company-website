@@ -165,16 +165,76 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low py-24 mt-12">
-        <div class="max-w-7xl mx-auto px-margin-mobile flex flex-col items-center gap-12 text-center">
-            <a href="index.html" class="flex flex-col items-center gap-4">
-                <img alt="Trasier Logo"
-                    class="w-16 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
-                <h2 class="font-headline-lg text-3xl text-primary uppercase tracking-widest">TRASIER TECH</h2>
-            </a>
-            <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">
-                &copy; 2026 TRASIER TECHNOLOGY. ALL RIGHTS RESERVED.
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low/60">
+        <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-5">
+                        <img alt="Trasier Logo"
+                            class="w-10 h-10 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                        <span class="font-display-lg text-lg text-primary uppercase tracking-widest">Trasier Tech</span>
+                    </a>
+                    <p class="font-body-md text-on-surface-variant text-sm mb-5 max-w-xs">
+                        Engineering the digital infrastructure of public life — built in Kathmandu, for the public good.
+                    </p>
+                    <div class="inline-flex items-center gap-2 mono-all-caps text-[10px] text-on-surface/40">
+                        <span class="material-symbols-outlined text-sm">location_on</span>Kathmandu, Nepal
+                    </div>
+                </div>
+                <!-- Solutions -->
+                <div>
+                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Solutions</div>
+                    <ul class="space-y-3 font-body-md text-sm">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/civic.html">Civic &amp; GovTech</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/ai.html">AI &amp; Machine Learning</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/geospatial.html">Geospatial &amp; Mapping</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/mobile.html">Web &amp; Mobile</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/data.html">Data Intelligence</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/integration.html">Integration &amp; APIs</a></li>
+                    </ul>
+                </div>
+                <!-- Company -->
+                <div>
+                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Company</div>
+                    <ul class="space-y-3 font-body-md text-sm">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="leadership.html">About</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="sadak-sujhav.html">Sadak Sujhav</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="careers.html">Careers</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Get in touch -->
+                <div>
+                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Get in touch</div>
+                    <a href="mailto:ops@trasier.tech"
+                        class="inline-flex items-center gap-2 font-body-md text-sm text-on-surface-variant hover:text-primary transition-colors mb-5">
+                        <span class="material-symbols-outlined text-base">mail</span>ops@trasier.tech
+                    </a>
+                    <a href="contact.html"
+                        class="block mono-all-caps bg-primary text-on-primary px-5 py-3 font-bold text-[11px] text-center hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300 mb-6">
+                        Start a Mission
+                    </a>
+                    <div class="flex gap-3">
+                        <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-full border border-outline-variant/30 flex items-center justify-center mono-all-caps text-[10px] text-on-surface-variant hover:border-primary hover:text-primary transition-all">GH</a>
+                        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-outline-variant/30 flex items-center justify-center mono-all-caps text-[10px] text-on-surface-variant hover:border-primary hover:text-primary transition-all">in</a>
+                        <a href="#" aria-label="X" class="w-9 h-9 rounded-full border border-outline-variant/30 flex items-center justify-center mono-all-caps text-[10px] text-on-surface-variant hover:border-primary hover:text-primary transition-all">X</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-outline-variant/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">&copy; 2026 Trasier Technology. All
+                    rights reserved.</div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a class="mono-all-caps text-[10px] text-on-surface-variant/60 hover:text-primary transition-colors"
+                        href="#">Privacy</a>
+                    <a class="mono-all-caps text-[10px] text-on-surface-variant/60 hover:text-primary transition-colors"
+                        href="#">Terms</a>
+                    <a class="mono-all-caps text-[10px] text-on-surface-variant/60 hover:text-primary transition-colors"
+                        href="#">Security</a>
+                </div>
             </div>
         </div>
     </footer>
