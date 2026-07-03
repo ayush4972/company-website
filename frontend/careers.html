@@ -89,7 +89,7 @@
                 </div>
                 <h2 class="font-headline-lg text-2xl md:text-3xl mb-4">Join the Trasier talent list</h2>
                 <p class="font-body-md text-on-surface-variant text-lg mb-8">
-                    Send your CV or portfolio link and a note on your areas of expertise — we'll keep you on our radar.
+                    Send your CV or portfolio link and a note on your areas of expertise, and we'll keep you on our radar.
                 </p>
                 <div class="flex flex-wrap gap-3">
                     <button type="button" id="open-cv"
@@ -141,7 +141,7 @@
                         class="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-outline-variant/40 hover:border-primary rounded-xl py-10 px-6 text-center cursor-pointer transition-all group">
                         <span
                             class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform">upload_file</span>
-                        <span class="font-body-md text-on-surface-variant" id="cv-filename">Click to upload — PDF, DOC,
+                        <span class="font-body-md text-on-surface-variant" id="cv-filename">Click to upload: PDF, DOC,
                             or DOCX</span>
                         <span class="mono-all-caps text-[10px] text-on-surface/40">Max 10MB</span>
                         <input id="cv-file" name="cv" type="file" class="hidden"
@@ -158,7 +158,7 @@
                 id="careers-success">
                 <span class="material-symbols-outlined text-6xl text-primary mb-4 animate-pulse">check_circle</span>
                 <h3 class="font-display-lg text-2xl mb-2">PROFILE RECEIVED</h3>
-                <p class="font-body-md text-on-surface-variant">Thanks — you're on our radar. We'll reach out the moment
+                <p class="font-body-md text-on-surface-variant">Thanks, you're on our radar. We'll reach out the moment
                     a role matches.</p>
             </div>
         </div>
@@ -177,7 +177,7 @@
                         <span class="font-display-lg text-lg text-primary uppercase tracking-widest">Trasier Tech</span>
                     </a>
                     <p class="font-body-md text-on-surface-variant text-sm mb-5 max-w-xs">
-                        Engineering the digital infrastructure of public life — built in Kathmandu, for the public good.
+                        Engineering the digital infrastructure of public life, built in Kathmandu, for the public good.
                     </p>
                     <div class="inline-flex items-center gap-2 mono-all-caps text-[10px] text-on-surface/40">
                         <span class="material-symbols-outlined text-sm">location_on</span>Kathmandu, Nepal
@@ -268,16 +268,16 @@
 
         // Show selected filename
         cvInput.addEventListener('change', () => {
-            cvName.textContent = cvInput.files.length ? cvInput.files[0].name : 'Click to upload — PDF, DOC, or DOCX';
+            cvName.textContent = cvInput.files.length ? cvInput.files[0].name : 'Click to upload: PDF, DOC, or DOCX';
         });
 
-        // Front-end submit feedback (no backend yet — see note)
+        // Front-end submit feedback (no backend yet; see note)
         careersForm.addEventListener('submit', (e) => {
             e.preventDefault();
             careersSuccess.classList.remove('hidden');
             gsap.from(careersSuccess, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
             careersForm.reset();
-            cvName.textContent = 'Click to upload — PDF, DOC, or DOCX';
+            cvName.textContent = 'Click to upload: PDF, DOC, or DOCX';
         });
     </script>
 </body>
