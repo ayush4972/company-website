@@ -120,20 +120,20 @@
                     <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Full name</label>
                     <input
                         class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
-                        placeholder="YOUR NAME" required="" type="text" />
+                        placeholder="YOUR NAME" required="" type="text" name="name" />
                 </div>
                 <div>
                     <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Email</label>
                     <input
                         class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
-                        placeholder="EMAIL ADDRESS" required="" type="email" />
+                        placeholder="EMAIL ADDRESS" required="" type="email" name="email" />
                 </div>
                 <div>
                     <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Areas of
                         expertise</label>
                     <input
                         class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
-                        placeholder="E.G. BACKEND, MOBILE, AI, GIS" type="text" />
+                        placeholder="E.G. BACKEND, MOBILE, AI, GIS" type="text" name="expertise" />
                 </div>
                 <div>
                     <label class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">CV / Resume</label>
@@ -143,13 +143,14 @@
                             class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform">upload_file</span>
                         <span class="font-body-md text-on-surface-variant" id="cv-filename">Click to upload: PDF, DOC,
                             or DOCX</span>
-                        <span class="mono-all-caps text-[10px] text-on-surface/40">Max 10MB</span>
+                        <span class="mono-all-caps text-[10px] text-on-surface/40">Max 4MB</span>
                         <input id="cv-file" name="cv" type="file" class="hidden"
                             accept=".pdf,.doc,.docx,application/pdf" />
                     </label>
                 </div>
+                <p class="hidden text-[12px] text-error mono-all-caps" id="careers-form-error"></p>
                 <button
-                    class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300"
+                    class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="submit">
                     Submit Application
                 </button>
@@ -266,18 +267,66 @@
         overlay.addEventListener('click', closeModal);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
+        const MAX_CV_BYTES = 4 * 1024 * 1024; // 4MB
+        const careersError = document.getElementById('careers-form-error');
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1] || '');
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
         // Show selected filename
         cvInput.addEventListener('change', () => {
             cvName.textContent = cvInput.files.length ? cvInput.files[0].name : 'Click to upload: PDF, DOC, or DOCX';
         });
 
-        // Front-end submit feedback (no backend yet; see note)
-        careersForm.addEventListener('submit', (e) => {
+        careersForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            careersSuccess.classList.remove('hidden');
-            gsap.from(careersSuccess, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
-            careersForm.reset();
-            cvName.textContent = 'Click to upload: PDF, DOC, or DOCX';
+            if (careersError) careersError.classList.add('hidden');
+
+            const submitBtn = careersForm.querySelector('button[type="submit"]');
+            const data = Object.fromEntries(new FormData(careersForm).entries());
+            delete data.cv;
+
+            const file = cvInput.files[0];
+            if (file) {
+                if (file.size > MAX_CV_BYTES) {
+                    if (careersError) {
+                        careersError.textContent = 'CV file is too large. Please keep it under 4MB.';
+                        careersError.classList.remove('hidden');
+                    }
+                    return;
+                }
+                data.filename = file.name;
+                data.fileBase64 = await fileToBase64(file);
+            }
+
+            submitBtn.disabled = true;
+            try {
+                const res = await fetch('/api/careers', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                const result = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(result.error || 'Something went wrong.');
+
+                careersSuccess.classList.remove('hidden');
+                gsap.from(careersSuccess, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
+                careersForm.reset();
+                cvName.textContent = 'Click to upload: PDF, DOC, or DOCX';
+            } catch (err) {
+                if (careersError) {
+                    careersError.textContent = err.message || 'Could not send your application. Please try again.';
+                    careersError.classList.remove('hidden');
+                }
+            } finally {
+                submitBtn.disabled = false;
+            }
         });
     </script>
 </body>

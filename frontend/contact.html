@@ -97,24 +97,25 @@
                             class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Terminal_Identity</label>
                         <input
                             class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
-                            placeholder="FULL NAME" required="" type="text" />
+                            placeholder="FULL NAME" required="" type="text" name="name" />
                     </div>
                     <div>
                         <label
                             class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Contact_String</label>
                         <input
                             class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
-                            placeholder="EMAIL ADDRESS" required="" type="email" />
+                            placeholder="EMAIL ADDRESS" required="" type="email" name="email" />
                     </div>
                     <div>
                         <label
                             class="mono-all-caps text-[10px] text-on-surface-variant/70 mb-2 block">Mission_Details</label>
                         <textarea
                             class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-white mono-all-caps placeholder:text-on-surface/20 py-4 transition-all"
-                            placeholder="HOW CAN WE HELP?" required="" rows="4"></textarea>
+                            placeholder="HOW CAN WE HELP?" required="" rows="4" name="message"></textarea>
                     </div>
+                    <p class="hidden text-[12px] text-error mono-all-caps" id="contact-form-error"></p>
                     <button
-                        class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300"
+                        class="w-full bg-primary text-on-primary py-4 mono-all-caps font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                         type="submit">
                         TRANSMIT_REQUEST
                     </button>

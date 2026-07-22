@@ -70,23 +70,47 @@ visionLines.forEach((line, index) => {
     });
 });
 
-// Form Submission Interaction (only present on the homepage)
+// Contact form submission (present on the homepage and the dedicated contact page)
 const form = document.getElementById('contact-form');
 const success = document.getElementById('success-message');
+const formError = document.getElementById('contact-form-error');
 
 if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (success) {
-            success.classList.remove('hidden');
-            gsap.from(success, {
-                opacity: 0,
-                y: 20,
-                duration: 0.5,
-                ease: "power2.out"
+        if (formError) formError.classList.add('hidden');
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        submitBtn.disabled = true;
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             });
+            const result = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(result.error || 'Something went wrong.');
+
+            if (success) {
+                success.classList.remove('hidden');
+                gsap.from(success, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            }
+            form.reset();
+        } catch (err) {
+            if (formError) {
+                formError.textContent = err.message || 'Could not send your message. Please try again.';
+                formError.classList.remove('hidden');
+            }
+        } finally {
+            submitBtn.disabled = false;
         }
-        form.reset();
     });
 }
 
