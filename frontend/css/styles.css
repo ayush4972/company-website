@@ -31,6 +31,21 @@ body {
     transition: transform 0.15s ease-out;
 }
 
+/* Touch devices have no mouse to drive the custom cursor (it would
+   otherwise sit stuck in the top-left corner), so fall back to the
+   normal system cursor / no cursor UI at all there. */
+@media (hover: none), (pointer: coarse) {
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+}
+
 .glass-card {
     background: rgba(27, 58, 107, 0.2);
     backdrop-filter: blur(20px);
