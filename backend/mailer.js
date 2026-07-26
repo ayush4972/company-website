@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const TO = 'techtrasier@gmail.com';
+const TO = 'info@trasiertech.com.np';
 const FROM = 'Trasier Tech <onboarding@resend.dev>';
 
 function getClient() {
