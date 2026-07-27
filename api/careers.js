@@ -1,6 +1,6 @@
 import { sendCareersEmail } from '../backend/mailer.js';
+import { isValidEmail } from '../backend/validateEmail.js';
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FILE_BYTES = 4 * 1024 * 1024; // 4MB, comfortably under Vercel's request body limit
 
 export default async function handler(req, res) {
@@ -14,8 +14,8 @@ export default async function handler(req, res) {
     if (!name || !email) {
         return res.status(400).json({ error: 'Name and email are required.' });
     }
-    if (!EMAIL_RE.test(email)) {
-        return res.status(400).json({ error: 'Please provide a valid email address.' });
+    if (!(await isValidEmail(email))) {
+        return res.status(400).json({ error: 'Please provide a valid, deliverable email address.' });
     }
     if (fileBase64) {
         const approxBytes = fileBase64.length * 0.75;

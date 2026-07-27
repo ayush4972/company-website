@@ -1,6 +1,5 @@
 import { sendContactEmail } from '../backend/mailer.js';
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { isValidEmail } from '../backend/validateEmail.js';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -13,8 +12,8 @@ export default async function handler(req, res) {
     if (!name || !email || !message) {
         return res.status(400).json({ error: 'Name, email, and message are required.' });
     }
-    if (!EMAIL_RE.test(email)) {
-        return res.status(400).json({ error: 'Please provide a valid email address.' });
+    if (!(await isValidEmail(email))) {
+        return res.status(400).json({ error: 'Please provide a valid, deliverable email address.' });
     }
 
     try {
