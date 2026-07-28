@@ -66,16 +66,6 @@
             letter-spacing: 0.05em;
             color: #a8e8ff;
         }
-
-        .fill-in {
-            background: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 4px;
-            padding: 0.05em 0.4em;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
     </style>
 </head>
 
@@ -138,18 +128,6 @@
             <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.4em]">Legal</div>
             <h1 class="font-display-lg text-4xl md:text-6xl text-white mb-4 leading-tight">Privacy Policy</h1>
             <p class="font-headline-lg text-primary text-xl mb-8">Sadak Sujhav</p>
-
-            <!-- Draft notice: keep visible until every [FILL IN] below is replaced -->
-            <div class="glass-card rounded-2xl p-6 flex items-start gap-4 border border-amber-500/30">
-                <span class="material-symbols-outlined text-amber-400 text-2xl shrink-0">warning</span>
-                <p class="font-body-md text-on-surface-variant text-sm leading-relaxed">
-                    <strong class="text-amber-400">This page is a draft.</strong> Every block highlighted like
-                    <span class="fill-in">this</span> is a placeholder that must be replaced with real information
-                    (legal entity name, addresses, dates, retention periods, applicable law) before this URL is
-                    submitted to Google Play or Apple App Store, and before real users rely on it. Play Store
-                    reviewers do check that a linked privacy policy is complete and accurate, not template text.
-                </p>
-            </div>
         </div>
     </header>
 
@@ -176,13 +154,13 @@
             <p>The Authority is the data controller for information collected through the App.</p>
             <ul>
                 <li><strong class="text-white">Organisation:</strong> Trasier Technology</li>
-                <li><strong class="text-white">Address:</strong> Kathmandu, Nepal <span class="fill-in">FILL IN:
-                        precise street address, if you want one listed</span></li>
+                <li><strong class="text-white">Address:</strong> Kathmandu, Nepal</li>
                 <li><strong class="text-white">Contact for privacy matters:</strong> <a
                         class="text-primary hover:underline" href="mailto:info@trasiertech.com.np">info@trasiertech.com.np</a>
                 </li>
-                <li><strong class="text-white">Grievance / data protection officer:</strong> <span
-                        class="fill-in">FILL IN: name/role + contact</span></li>
+                <li><strong class="text-white">Grievance / data protection officer:</strong> Akash Chaudhary,
+                    Founder — <a class="text-primary hover:underline"
+                        href="mailto:info@trasiertech.com.np">info@trasiertech.com.np</a></li>
             </ul>
 
             <hr />
@@ -291,8 +269,6 @@
             <h2 class="font-headline-lg text-2xl text-white">5. Legal basis and consent</h2>
             <p>We process your information on the basis of your consent (given when you sign up and grant
                 permissions) and to carry out the Authority's public function of maintaining public roads.
-                <span class="fill-in">FILL IN: reference any applicable Nepali data-protection law/regulation your
-                    legal team wants cited.</span>
             </p>
 
             <hr />
@@ -308,11 +284,9 @@
                 <li><strong class="text-white">Google Maps</strong> — displaying maps within the App.</li>
                 <li><strong class="text-white">Geoapify</strong> — map tiles and converting coordinates to addresses.
                 </li>
-                <li><strong class="text-white"><span class="fill-in">FILL IN: SMS gateway provider, e.g. the SMS
-                            aggregator used for OTP</span></strong> — sending the OTP to your mobile number.</li>
-                <li><strong class="text-white">Hosting and storage</strong> — your reports and photos are
-                    stored on Trasier Technology's server infrastructure <span class="fill-in">FILL IN: name the
-                        hosting/object-storage provider, e.g. AWS, DigitalOcean, a local data centre</span>.</li>
+                <li><strong class="text-white">SMS Pasal</strong> — sending the OTP to your mobile number.</li>
+                <li><strong class="text-white">Government of Nepal hosting</strong> — your reports and photos are
+                    stored on Government of Nepal server infrastructure.</li>
             </ul>
             <p>We may also disclose information where required by law, court order, or to protect the safety and
                 rights of users and the public.</p>
@@ -322,8 +296,7 @@
 
             <h2 class="font-headline-lg text-2xl text-white">7. Data storage and security</h2>
             <ul>
-                <li>Data is stored on Trasier Technology's server infrastructure, located in <span class="fill-in">FILL IN:
-                        e.g. Nepal, or the region of your hosting provider</span>.</li>
+                <li>Data is stored on Government of Nepal server infrastructure, located in Nepal.</li>
                 <li>Data transmitted between the App and our servers is encrypted in transit (HTTPS/TLS).</li>
                 <li>Access to reports is restricted to authorised administrators.</li>
                 <li>We apply reasonable administrative and technical safeguards to protect your information. No
@@ -334,16 +307,15 @@
 
             <h2 class="font-headline-lg text-2xl text-white">8. Data retention</h2>
             <ul>
-                <li><strong class="text-white">Reports and their photos:</strong> <span class="fill-in">FILL IN: e.g.
-                        retained as public records for X years / indefinitely for road-maintenance and audit
-                        purposes</span>.</li>
+                <li><strong class="text-white">Reports and their photos:</strong> retained for 2 years from the date
+                    of resolution, then deleted.</li>
                 <li><strong class="text-white">Account information (name, mobile number):</strong> kept while your
                     account is active.</li>
                 <li><strong class="text-white">OTP records:</strong> short-lived and deleted after they expire.</li>
             </ul>
-            <p>When you delete your account (see Section 9), your profile is removed. <span class="fill-in">FILL IN:
-                    State whether previously submitted reports are anonymised or retained as public records after
-                    account deletion — decide this with your legal team.</span></p>
+            <p>When you delete your account (see Section 9), your profile is removed. Reports you previously
+                submitted are anonymised (no longer linked to your name or account) and kept as road-maintenance
+                records for the retention period above.</p>
 
             <hr />
 
@@ -384,7 +356,8 @@
                         target="_blank" rel="noopener">policies.google.com/privacy</a></li>
                 <li>Geoapify — <a class="text-primary hover:underline" href="https://www.geoapify.com/privacy-policy/"
                         target="_blank" rel="noopener">geoapify.com/privacy-policy</a></li>
-                <li><span class="fill-in">FILL IN: SMS provider privacy policy link</span></li>
+                <li>SMS Pasal — <a class="text-primary hover:underline" href="https://smspasal.com/privacy-policy/"
+                        target="_blank" rel="noopener">smspasal.com/privacy-policy</a></li>
             </ul>
 
             <hr />
@@ -403,8 +376,7 @@
                 <li><strong class="text-white">Email:</strong> <a class="text-primary hover:underline"
                         href="mailto:info@trasiertech.com.np">info@trasiertech.com.np</a></li>
                 <li><strong class="text-white">Address:</strong> Kathmandu, Nepal</li>
-                <li><strong class="text-white">Grievance officer:</strong> <span class="fill-in">FILL IN: name/role +
-                        contact</span></li>
+                <li><strong class="text-white">Grievance officer:</strong> Akash Chaudhary, Founder</li>
             </ul>
         </div>
     </section>
