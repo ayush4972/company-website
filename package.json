@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "animejs": "^4.5.0",
     "resend": "^4.0.1"
   }
 }
