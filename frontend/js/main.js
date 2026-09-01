@@ -152,18 +152,20 @@ gsap.utils.toArray('.glass-card:not(.svc-card)').forEach(card => {
     });
 });
 
-// Services cards — slide in from the side on scroll
-gsap.utils.toArray('.svc-card').forEach(card => {
-    const fromRight = card.dataset.svcDir === 'right';
-    gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        x: fromRight ? 120 : -120,
-        duration: 0.9,
-        ease: "power3.out"
+// Services cards — anime.js grid-stagger reveal on scroll (animejs.com-style
+// cascading entrance: fade + rise + spring bounce, staggered outward from
+// the center of the grid instead of a straight top-to-bottom order)
+if (window.anime && document.querySelector('.svc-card')) {
+    anime.animate('.svc-card', {
+        opacity: [0, 1],
+        translateY: [60, 0],
+        scale: [0.9, 1],
+        delay: anime.stagger(90, { from: 'center' }),
+        duration: 900,
+        ease: 'outElastic(1, .7)',
+        autoplay: anime.onScroll({
+            target: '#services',
+            enter: 'bottom-=10% top'
+        })
     });
-});
+}
