@@ -21,6 +21,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/4.5.0/anime.umd.min.js"></script>
     <script src="js/tailwind.config.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
+    <!-- Homepage-only visual pass toward an animejs.com-style near-black
+         look (deeper background, subtle section-to-section alternation,
+         a bit of hover lift on cards). Scoped to this page only, on top
+         of the shared css/styles.css, so every other page is untouched. -->
+    <style>
+        body {
+            background-color: #0a0a0b;
+        }
+
+        /* The site's global WebGL shader background sits fixed behind every
+           page. It's a nice ambient texture for the rest of the site, but
+           the hero now has its own purpose-built particle canvas, so give
+           the hero an opaque background to mask the shader there only
+           (nothing else on the page, or any other page, is affected). */
+        #hero {
+            background-color: #0a0a0b;
+        }
+
+        #about {
+            background-color: #0a0a0b;
+        }
+
+        #services {
+            background-color: #0e0e10;
+        }
+
+        #projects,
+        #vision {
+            background-color: #0a0a0b;
+        }
+
+        #contact {
+            background-color: #0e0e10;
+        }
+
+        .svc-card:hover,
+        #projects .glass-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
 </head>
 
 <body class="dark selection:bg-primary-container selection:text-on-primary-container">
@@ -70,8 +110,8 @@
             </div>
     </nav>
     <!-- Hero Section -->
-    <section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 grid-overlay z-1 pointer-events-none"></div>
+    <section id="hero" class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+        <canvas id="hero-particles" class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></canvas>
         <div class="relative z-10 text-center px-margin-mobile">
             <h1 class="font-display-lg text-6xl md:text-8xl text-white mb-6" id="hero-title">
                 <span class="hero-word">Think</span>
@@ -518,6 +558,7 @@
         </div>
     </footer>
     <script src="js/shader.js"></script>
+    <script src="js/hero-particles.js"></script>
     <script src="js/main.js"></script>
 </body>
 

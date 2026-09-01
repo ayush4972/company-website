@@ -1,6 +1,11 @@
 // GSAP Setup
 gsap.registerPlugin(ScrollTrigger);
 
+// Respect prefers-reduced-motion: every scroll/entry reveal below checks
+// this once and, when true, snaps straight to the animation's end state
+// instead of playing it.
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Custom Cursor Logic
 const dot = document.getElementById('cursor-dot');
 const outline = document.getElementById('cursor-outline');
@@ -26,21 +31,21 @@ const tl = gsap.timeline();
 tl.to('.hero-word', {
     opacity: 1,
     y: 0,
-    duration: 0.8,
-    stagger: 0.2,
+    duration: reduceMotion ? 0 : 0.8,
+    stagger: reduceMotion ? 0 : 0.2,
     ease: "power4.out"
 })
     .to('#hero-subtext', {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: reduceMotion ? 0 : 1,
         ease: "power2.out"
-    }, "-=0.4")
+    }, reduceMotion ? 0 : "-=0.4")
     .to('#hero-cta', {
         opacity: 1,
-        duration: 0.8,
+        duration: reduceMotion ? 0 : 0.8,
         ease: "power2.out"
-    }, "-=0.6");
+    }, reduceMotion ? 0 : "-=0.6");
 
 // Mobile nav menu toggle
 const menuBtn = document.getElementById('mobile-menu-btn');
@@ -76,8 +81,15 @@ window.addEventListener('scroll', () => {
 });
 
 // Vision Text Staggered Reveal
+// These lines start dimmed/hidden via static Tailwind classes (opacity-30 /
+// opacity-0) in the HTML itself, so under reduced-motion we can't just skip
+// the animation — jump straight to the fully-revealed end state instead.
 const visionLines = document.querySelectorAll('.vision-line');
 visionLines.forEach((line, index) => {
+    if (reduceMotion) {
+        gsap.set(line, { opacity: 1, y: -10 });
+        return;
+    }
     gsap.to(line, {
         scrollTrigger: {
             trigger: line,
@@ -137,25 +149,31 @@ if (form) {
 
 // Framer-Motion style entry animations via GSAP for elements
 // (service cards get their own side-slide below, so exclude them here)
-gsap.utils.toArray('.glass-card:not(.svc-card)').forEach(card => {
-    gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: "top bottom-=100",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        y: 50,
-        scale: 0.95,
-        duration: 1,
-        ease: "power3.out"
+// Skipped entirely under reduced-motion: these elements have no static
+// hidden/opacity-0 classes in the HTML, so simply not animating them
+// leaves them in their normal, fully visible resting state.
+if (!reduceMotion) {
+    gsap.utils.toArray('.glass-card:not(.svc-card)').forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top bottom-=100",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+            duration: 1,
+            ease: "power3.out"
+        });
     });
-});
+}
 
 // Services cards — anime.js grid-stagger reveal on scroll (animejs.com-style
 // cascading entrance: fade + rise + spring bounce, staggered outward from
 // the center of the grid instead of a straight top-to-bottom order)
-if (window.anime && document.querySelector('.svc-card')) {
+// Same reduced-motion handling as above: skipping leaves the cards visible.
+if (!reduceMotion && window.anime && document.querySelector('.svc-card')) {
     anime.animate('.svc-card', {
         opacity: [0, 1],
         translateY: [60, 0],
