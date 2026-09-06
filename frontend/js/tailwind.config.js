@@ -41,11 +41,11 @@ tailwind.config = {
                 "margin-desktop": "64px"
             },
             "fontFamily": {
-                "headline-lg-mobile": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Space Grotesk"],
                 "label-sm": ["JetBrains Mono"],
-                "headline-lg": ["Hanken Grotesk"],
+                "headline-lg": ["Space Grotesk"],
                 "body-md": ["Inter"],
-                "display-lg": ["Hanken Grotesk"]
+                "display-lg": ["Space Grotesk"]
             },
             "fontSize": {
                 "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
