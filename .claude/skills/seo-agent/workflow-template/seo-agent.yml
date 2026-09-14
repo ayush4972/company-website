@@ -1,0 +1,44 @@
+# Copy this file to .github/workflows/seo-agent.yml in the client's repo.
+# Requires: ANTHROPIC_API_KEY and (optionally) GSC_SERVICE_ACCOUNT_JSON set as repo secrets.
+# The GITHUB_TOKEN below is provided automatically by Actions — no setup needed for that one.
+
+name: SEO Agent — Weekly Run
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"   # every Monday 03:00 UTC — adjust per client's timezone/preference
+  workflow_dispatch: {}     # lets you trigger it manually from the Actions tab too
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-seo-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Official Anthropic action — wraps headless Claude Code, wires up GitHub context,
+      # and handles the PR/commit plumbing. Verify current inputs at
+      # https://github.com/anthropics/claude-code-action before relying on this in
+      # production; the action evolves and flags can change.
+      - name: Run SEO agent skill
+        uses: anthropics/claude-code-action@v1
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "Run the seo-agent skill for this repository."
+          claude_args: "--allowedTools Bash,Read,Write,Edit,Grep,Glob --permission-mode acceptEdits --permission-prompts none"
+
+      # Notes:
+      # - PR creation happens because the skill's instructions (Phase 4) tell Claude to use
+      #   `gh pr create` via Bash, using the github_token the action already wires up.
+      # - --permission-prompts none is what makes this safe to run unattended — it denies
+      #   anything that would otherwise need a human to click "allow", rather than hanging
+      #   or guessing. Combined with --allowedTools scoping this to only what the skill needs.

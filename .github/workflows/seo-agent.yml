@@ -1,0 +1,46 @@
+# Installed for: Trasier Technology (www.trasiertech.com.np).
+# Requires repo secrets: ANTHROPIC_API_KEY (required), GSC_SERVICE_ACCOUNT_JSON (optional,
+# see .claude/skills/seo-agent/gsc-integration.md). GITHUB_TOKEN is automatic.
+# This file is a copy of .claude/skills/seo-agent/workflow-template/seo-agent.yml — that's
+# the reusable template for onboarding other client repos onto this same skill.
+
+name: SEO Agent — Weekly Run
+
+on:
+  schedule:
+    - cron: "15 3 * * 1"   # every Monday 03:15 UTC = 9:00am Nepal time (UTC+5:45)
+  workflow_dispatch: {}     # lets you trigger it manually from the Actions tab too
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-seo-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Official Anthropic action — wraps headless Claude Code, wires up GitHub context,
+      # and handles the PR/commit plumbing. Verify current inputs at
+      # https://github.com/anthropics/claude-code-action before relying on this in
+      # production; the action evolves and flags can change.
+      - name: Run SEO agent skill
+        uses: anthropics/claude-code-action@v1
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "Run the seo-agent skill for this repository."
+          claude_args: "--allowedTools Bash,Read,Write,Edit,Grep,Glob --permission-mode acceptEdits --permission-prompts none"
+
+      # Notes:
+      # - PR creation happens because the skill's instructions (Phase 4) tell Claude to use
+      #   `gh pr create` via Bash, using the github_token the action already wires up.
+      # - --permission-prompts none is what makes this safe to run unattended — it denies
+      #   anything that would otherwise need a human to click "allow", rather than hanging
+      #   or guessing. Combined with --allowedTools scoping this to only what the skill needs.

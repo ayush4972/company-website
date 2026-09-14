@@ -1,0 +1,34 @@
+site_name: "Trasier Technology"
+url: "https://www.trasiertech.com.np"
+industry: "software technology company, Nepal (civic/govtech, AI, geospatial, and data systems)"
+goal: >
+  Findability for the company name and its specific product/service categories, plus
+  the flagship product (Sadak Sujhav). Not competing for broad generic terms like
+  "software company" alone — realistic targets are the company name, product names,
+  and specific service phrases.
+
+target_queries:
+  - "Trasier Technology"
+  - "Sadak Sujhav"
+  - "software company Kathmandu Nepal"
+  - "civic software Nepal government"
+  - "road complaint management system Nepal"
+  - "government software vendor Nepal"
+  # Add more as they're identified. On first run, the agent proposes additions from
+  # the site's own content — confirm/edit before relying on them.
+
+competitors:
+  # Left empty on purpose — the agent finds some itself each run. Fill in here if
+  # specific competitors are already known, to save it the work.
+  - ""
+
+gsc_property: "https://www.trasiertech.com.np/"   # Search Console property, already verified
+# GSC API data requires the GSC_SERVICE_ACCOUNT_JSON repo secret to also be set
+# (see .claude/skills/seo-agent/gsc-integration.md) — the property being verified in the
+# Search Console UI is a separate step from the API service-account access this skill needs.
+
+measure_window_days: 14
+
+pr_settings:
+  reviewers: ["ayush4972"]   # GitHub username on this repo — update if it should be someone else
+  labels: ["seo-agent"]

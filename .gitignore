@@ -1,5 +1,14 @@
-# Local agent / editor config
-.claude/
+# Local agent / editor config — everything here stays untracked/personal (settings,
+# session state, marketplace-installed plugin skills like gsap-*) EXCEPT the
+# first-party seo-agent skill, which is shared logic this repo's GitHub Actions
+# workflow depends on and other client repos reuse. Must use ".claude/*" and
+# ".claude/skills/*" (not trailing-slash directory excludes) so git still descends
+# far enough for the negations below to apply — a trailing-slash exclusion prunes
+# the whole tree before any "!" pattern can re-include anything inside it.
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/seo-agent/
 
 # OS files
 .DS_Store
