@@ -25,6 +25,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.trasiertech.com.np/blog.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.trasiertech.com.np/blog/2026-09-14-site-and-product-updates.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.trasiertech.com.np/services/civic.html</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
