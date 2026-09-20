@@ -26,8 +26,14 @@
   </url>
   <url>
     <loc>https://www.trasiertech.com.np/blog.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.trasiertech.com.np/blog/2026-09-20-sadak-sujhav-launch.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
