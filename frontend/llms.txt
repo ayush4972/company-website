@@ -1,0 +1,36 @@
+# Trasier Technology
+
+> Trasier Technology builds Nepal's everyday digital infrastructure — civic & govtech platforms, AI, geospatial, and data systems — based in Kathmandu, Nepal.
+
+Trasier Technology is a software company building AI, geospatial, data, and civic platforms for government and private organizations in Nepal. Its flagship product, Sadak Sujhav (सडक सुझाव), is Nepal's first integrated road complaint and maintenance platform, used by Road Division Kathmandu to let citizens report and track road damage.
+
+## Company
+
+- [Homepage](https://www.trasiertech.com.np/): Overview of Trasier Technology and its work.
+- [Company](https://www.trasiertech.com.np/company.html): Who Trasier Technology is and what it builds.
+- [Leadership](https://www.trasiertech.com.np/leadership.html): The story behind the company and its founding motivation.
+- [Careers](https://www.trasiertech.com.np/careers.html): Open roles on the engineering team.
+- [Contact](https://www.trasiertech.com.np/contact.html): How to get in touch.
+
+## Product
+
+- [Sadak Sujhav](https://www.trasiertech.com.np/sadak-sujhav.html): Nepal's first integrated road complaint and maintenance platform, connecting citizens with municipal response.
+- [Sadak Sujhav case study](https://www.trasiertech.com.np/case-study-sadak-sujhav.html): How Trasier Technology built Sadak Sujhav.
+
+## Services
+
+- [AI & Machine Learning](https://www.trasiertech.com.np/services/ai.html): Classification and routing, document OCR, forecasting, and natural-language search.
+- [Civic & GovTech](https://www.trasiertech.com.np/services/civic.html): Complaint intake, status tracking, service delivery, and admin tooling for municipalities.
+- [Data Intelligence](https://www.trasiertech.com.np/services/data.html): Dashboards, reporting, and pipelines that turn raw records into decisions.
+- [Geospatial & Mapping](https://www.trasiertech.com.np/services/geospatial.html): Real-time geolocation, heatmaps, and interactive GIS dashboards.
+- [Integration & APIs](https://www.trasiertech.com.np/services/integration.html): APIs and pipelines that connect legacy, third-party, and modern systems.
+- [Web & Mobile](https://www.trasiertech.com.np/services/mobile.html): Offline-first mobile and fast, accessible web development.
+
+## Blog
+
+- [Blog](https://www.trasiertech.com.np/blog.html): Build notes and product updates from Trasier Technology.
+
+## Optional
+
+- [Privacy Policy](https://www.trasiertech.com.np/privacy-policy.html)
+- [Terms of Service](https://www.trasiertech.com.np/terms-of-service.html)
