@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TRASIER | Blog — Sadak Sujhav at Two Months: From Citizen Reports to Repaired Roads</title>
+    <meta name="description" content="Two months in, Sadak Sujhav has 12,000+ registered users, reports from 66 of Nepal's 77 districts, and 69 completed repairs, each documented with before-and-after photos." />
+    <link rel="canonical" href="https://www.trasiertech.com.np/blog/2026-10-16-sadak-sujhav-two-months.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.trasiertech.com.np/blog/2026-10-16-sadak-sujhav-two-months.html" />
+    <meta property="og:title" content="TRASIER | Blog — Sadak Sujhav at Two Months: From Citizen Reports to Repaired Roads" />
+    <meta property="og:description" content="Two months in, Sadak Sujhav has 12,000+ registered users, reports from 66 of Nepal's 77 districts, and 69 completed repairs, each documented with before-and-after photos." />
+    <meta property="og:image" content="https://www.trasiertech.com.np/assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Trasier Technology" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TRASIER | Blog — Sadak Sujhav at Two Months: From Citizen Reports to Repaired Roads" />
+    <meta name="twitter:description" content="Two months in, Sadak Sujhav has 12,000+ registered users, reports from 66 of Nepal's 77 districts, and 69 completed repairs, each documented with before-and-after photos." />
+    <meta name="twitter:image" content="https://www.trasiertech.com.np/assets/images/og-image.jpg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/4.5.0/anime.umd.min.js"></script>
+    <script src="../js/tailwind.config.js"></script>
+    <link href="../css/styles.css" rel="stylesheet" />
+    <style>
+        .policy p,
+        .policy ul {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+
+        .policy ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        .policy h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy hr {
+            border-color: rgba(60, 73, 78, 0.4);
+            margin: 2.5rem 0;
+        }
+
+        /* Key figures */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .stat-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .stat {
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            background: rgba(0, 212, 255, 0.04);
+            border-radius: 0.75rem;
+            padding: 1rem 1.1rem;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            line-height: 1.1;
+            color: #fff;
+        }
+
+        .stat-label {
+            margin-top: 0.35rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Before / after pairs */
+        .ba-pair {
+            margin: 0 0 2.25rem;
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .ba-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .ba-photo {
+            position: relative;
+            margin: 0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid rgba(60, 73, 78, 0.5);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .ba-photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .ba-tag {
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+        }
+
+        .ba-tag.after {
+            background: #00d4ff;
+            color: #001f28;
+        }
+
+        .ba-caption {
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Sadak Sujhav at two months: from citizen reports to repaired roads",
+        "description": "Two months in, Sadak Sujhav has 12,000+ registered users, reports from 66 of Nepal's 77 districts, and 69 completed repairs, each documented with before-and-after photos.",
+        "datePublished": "2026-10-16",
+        "url": "https://www.trasiertech.com.np/blog/2026-10-16-sadak-sujhav-two-months.html",
+        "image": [
+            "https://www.trasiertech.com.np/assets/images/og-image.jpg",
+            "https://www.trasiertech.com.np/assets/images/blog/sadak-sujhav-two-months/samakhushi-tokha-pothole-after.jpg"
+        ],
+        "publisher": {
+            "@type": "Organization",
+            "name": "Trasier Technology",
+            "url": "https://www.trasiertech.com.np/"
+        },
+        "about": {
+            "@type": "SoftwareApplication",
+            "name": "Sadak Sujhav",
+            "alternateName": "सडक सुझाव",
+            "applicationCategory": "GovernmentApplication",
+            "operatingSystem": "Android, iOS"
+        }
+    }
+    </script>
+</head>
+
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Global animated background (single WebGL layer behind the whole page) -->
+    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-primary/20 bg-surface/80 backdrop-blur-xl"
+        id="main-nav">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+            <a href="../index.html" class="flex items-center gap-2">
+                <span class="font-display-lg text-2xl text-primary tracking-tighter whitespace-nowrap">TRASIER TECH</span>
+            </a>
+            <div class="hidden lg:flex gap-8 items-center">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../index.html#services">Services</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../index.html#projects">Deployments</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../leadership.html">Our Story</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="../blog.html">Blog</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../careers.html">Careers</a>
+            </div>
+            <a href="../contact.html"
+                class="hidden sm:inline-flex mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
+                MISSION_START
+            </a>
+            <button type="button" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false"
+                class="lg:hidden flex items-center justify-center w-10 h-10 text-on-surface hover:text-primary transition-colors shrink-0">
+                <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
+            </button>
+        </div>
+            <div id="mobile-menu" class="hidden lg:hidden border-t border-outline-variant/10 bg-surface/95 backdrop-blur-xl">
+                <div class="flex flex-col px-margin-mobile py-2 max-w-7xl mx-auto [&>a]:block [&>a]:py-3 [&>a]:border-b [&>a]:border-outline-variant/10 [&>a:last-child]:border-b-0">
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../index.html#services">Services</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../index.html#projects">Deployments</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../leadership.html">Our Story</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="../blog.html">Blog</a>
+                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
+                    href="../careers.html">Careers</a>
+                <a href="../contact.html" class="sm:hidden mt-2 block text-center mono-all-caps bg-primary text-on-primary px-6 py-3 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">MISSION_START</a>
+            </div>
+            </div>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="relative pt-40 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <div class="absolute inset-0 grid-overlay z-0 pointer-events-none opacity-60"></div>
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+            <a href="../blog.html"
+                class="inline-flex items-center gap-2 mono-all-caps text-on-surface/50 hover:text-primary text-[11px] mb-10 transition-colors">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>Back to the blog
+            </a>
+            <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.4em]">October 16, 2026</div>
+            <h1 class="font-display-lg text-3xl md:text-5xl text-white mb-6 leading-tight">
+                Sadak Sujhav at two months: <span class="text-primary glow-text">from citizen reports to repaired roads.</span>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Body -->
+    <section class="px-margin-mobile md:px-margin-desktop pb-24">
+        <div class="policy max-w-3xl mx-auto font-body-md text-on-surface-variant text-base">
+            <p>
+                Sadak Sujhav first went live on 13 August 2026, and Road Division Kathmandu put it into formal
+                operation on 17 September after a trial period. The idea is simple: a citizen photographs a problem
+                on a road, the report reaches the road office responsible for that road, and the road office closes
+                it with a photo of the finished work. This post sets out what that has added up to in the first two
+                months, with figures as of 15 October 2026.
+            </p>
+
+            <h2 class="font-headline-lg text-2xl text-white">The first two months in numbers</h2>
+            <div class="stat-grid">
+                <div class="stat">
+                    <div class="stat-value">12,000+</div>
+                    <div class="stat-label">registered app users</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">66 of 77</div>
+                    <div class="stat-label">districts of Nepal that citizens have reported from</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">69</div>
+                    <div class="stat-label">repairs completed, each with before-and-after photos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">199</div>
+                    <div class="stat-label">repairs in progress</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">9.7 days</div>
+                    <div class="stat-label">average time from report to repair</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">73 + 14</div>
+                    <div class="stat-label">field officers and road-office admins using the system</div>
+                </div>
+            </div>
+
+            <h2 class="font-headline-lg text-2xl text-white">Every report goes to the office that maintains the road</h2>
+            <p>
+                All 33 Department of Roads (DoR) divisions and 1,104 road sections are mapped in the system. When a
+                citizen submits a report, its GPS location is matched to the road section it sits on, and from there
+                to the DoR division that maintains that road. Nobody has to sort reports by hand or forward them
+                between offices.
+            </p>
+            <p>
+                Three divisions are working on the Sadak Sujhav dashboard today: Kathmandu, Lalitpur and Bhaktapur.
+                The reach of the app is already wider than that. Citizens have sent reports from 66 of Nepal's 77
+                districts, and because the whole national network is mapped, the system is ready for further
+                divisions to come onto the dashboard.
+            </p>
+
+            <h2 class="font-headline-lg text-2xl text-white">From report to repair</h2>
+            <p>
+                Each completed repair carries two photos: the one the citizen took when reporting the problem, and
+                the one the road office took after the work was done. On
+                average, a problem has gone from report to repair in 9.7 days. 73 field officers and 14 road-office
+                admins now use the system.
+            </p>
+            <p>
+                Below are five of the 69 completed repairs, all from roads maintained by the Kathmandu division
+                road office.
+            </p>
+
+            <div class="ba-pair">
+                <div class="ba-grid">
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/nagdhunga-tankeswor-road-damage-before.jpg"
+                            width="880" height="660" loading="lazy"
+                            alt="Before: broken, patchy asphalt with loose gravel on a sloping section of the Nagdhunga–Tankeswor road." />
+                        <span class="ba-tag">Before</span>
+                    </figure>
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/nagdhunga-tankeswor-road-damage-after.jpg"
+                            width="960" height="720" loading="lazy"
+                            alt="After: a long strip of fresh asphalt laid over the damaged section, photographed at night with traffic cones in place." />
+                        <span class="ba-tag after">After</span>
+                    </figure>
+                </div>
+                <p class="ba-caption">Road damage · Nagdhunga–Tankeswor · Kathmandu Division · repaired 15 October</p>
+            </div>
+
+            <div class="ba-pair">
+                <div class="ba-grid">
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/baniyatar-samakhusi-water-on-road-before.jpg"
+                            width="1000" height="750" loading="lazy"
+                            alt="Before: standing water and a broken, gravel-filled patch at the edge of the Baniyatar–Samakhusi–Lainchaur road." />
+                        <span class="ba-tag">Before</span>
+                    </figure>
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/baniyatar-samakhusi-water-on-road-after.jpg"
+                            width="650" height="488" loading="lazy"
+                            alt="After: the area resurfaced with a smooth asphalt patch around the drain cover." />
+                        <span class="ba-tag after">After</span>
+                    </figure>
+                </div>
+                <p class="ba-caption">Water on road · Baniyatar–Samakhusi–Lainchaur · Kathmandu Division · repaired 15 October</p>
+            </div>
+
+            <div class="ba-pair">
+                <div class="ba-grid">
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/samakhushi-tokha-pothole-before.jpg"
+                            width="880" height="660" loading="lazy"
+                            alt="Before: several water-filled potholes across a bend on the Samakhushi Chowk–Tokha road." />
+                        <span class="ba-tag">Before</span>
+                    </figure>
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/samakhushi-tokha-pothole-after.jpg"
+                            width="1200" height="900" loading="lazy"
+                            alt="After: the bend covered with a wide, even layer of new asphalt." />
+                        <span class="ba-tag after">After</span>
+                    </figure>
+                </div>
+                <p class="ba-caption">Pothole · Samakhushi Chowk–Tokha · Kathmandu Division · repaired 9 October</p>
+            </div>
+
+            <div class="ba-pair">
+                <div class="ba-grid">
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/maharajgunj-bansbari-footpath-before.jpg"
+                            width="720" height="540" loading="lazy"
+                            alt="Before: loose, uneven paving bricks with a puddle on the footpath along the Maharajgunj–Bansbari road." />
+                        <span class="ba-tag">Before</span>
+                    </figure>
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/maharajgunj-bansbari-footpath-after.jpg"
+                            width="720" height="540" loading="lazy"
+                            alt="After: the footpath relaid with level paving bricks and sand-filled joints." />
+                        <span class="ba-tag after">After</span>
+                    </figure>
+                </div>
+                <p class="ba-caption">Footpath · Maharajgunj–Bansbari · Kathmandu Division · repaired 9 October</p>
+            </div>
+
+            <div class="ba-pair">
+                <div class="ba-grid">
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/dandagaun-gurjebhanjyang-road-damage-before.jpg"
+                            width="1100" height="825" loading="lazy"
+                            alt="Before: a large area of broken asphalt and loose stones on the Dandagaun–Gurjebhanjyang road." />
+                        <span class="ba-tag">Before</span>
+                    </figure>
+                    <figure class="ba-photo">
+                        <img src="../assets/images/blog/sadak-sujhav-two-months/dandagaun-gurjebhanjyang-road-damage-after.jpg"
+                            width="760" height="570" loading="lazy"
+                            alt="After: the damaged area covered with a fresh asphalt patch." />
+                        <span class="ba-tag after">After</span>
+                    </figure>
+                </div>
+                <p class="ba-caption">Road damage · Dandagaun–Gurjebhanjyang · Kathmandu Division · repaired 15 October</p>
+            </div>
+
+            <p>
+                Credit for these repairs belongs to the Department of Roads division road offices that carried out
+                the work, and to the citizens who took the time to report the problems.
+            </p>
+
+            <h2 class="font-headline-lg text-2xl text-white">What we have added since launch</h2>
+            <ul>
+                <li><strong>Push notifications</strong>, so citizens hear about progress on their report without opening the app.</li>
+                <li><strong>In-app messaging</strong> between citizens and road offices, for questions and clarifications about a report.</li>
+                <li><strong>Nepali maps</strong>, provided by Galli Maps.</li>
+                <li><strong>A road-division check before submitting</strong>, which matches the location to the responsible DoR division before the report is sent.</li>
+                <li><strong>An offline outbox</strong>: a report made without signal is saved on the phone and sent automatically when the network returns.</li>
+            </ul>
+
+            <h2 class="font-headline-lg text-2xl text-white">Built to run on government infrastructure</h2>
+            <p>
+                Sadak Sujhav runs in the government data centre (NITC), with its official address at
+                sadaksujhav.dor.gov.np.
+            </p>
+
+            <h2 class="font-headline-lg text-2xl text-white">Find out more</h2>
+            <p>
+                You can see the product on the <a class="text-primary hover:underline" href="../sadak-sujhav.html">Sadak Sujhav page</a>,
+                read about the design in the <a class="text-primary hover:underline" href="../case-study-sadak-sujhav.html">case study</a>,
+                or catch up on the <a class="text-primary hover:underline" href="2026-09-20-sadak-sujhav-launch.html">launch</a> and the
+                <a class="text-primary hover:underline" href="2026-10-11-sadak-sujhav-lalitpur-bhaktapur.html">expansion to Lalitpur and Bhaktapur</a>.
+                The app is available on
+                <a class="text-primary hover:underline" href="https://play.google.com/store/apps/details?id=com.nepal.sadaksujav" target="_blank" rel="noopener">Google Play</a>
+                and the
+                <a class="text-primary hover:underline" href="https://apps.apple.com/np/app/sadak-sujhav/id6796215640" target="_blank" rel="noopener">App Store</a>.
+            </p>
+
+            <hr />
+
+            <p>
+                We built Sadak Sujhav so that a damaged road becomes a report, the report reaches the right office,
+                and the fix is there for everyone to see. Two months in, 69 repaired sites show that loop working.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-margin-mobile md:px-margin-desktop py-12 max-w-7xl mx-auto w-full">
+        <div class="glass-card rounded-2xl p-10 md:p-16 text-center">
+            <h2 class="font-headline-lg text-3xl md:text-4xl mb-4">Have a problem worth solving?</h2>
+            <p class="font-body-md text-on-surface-variant text-lg mb-8 max-w-xl mx-auto">
+                Bring us your hardest problems. We'll tell you honestly what's buildable and how we'd approach it.
+            </p>
+            <a href="../contact.html"
+                class="inline-flex items-center gap-3 mono-all-caps bg-primary text-on-primary px-10 py-4 font-bold hover:shadow-[0_0_20px_#00d4ff] transition-all duration-300">
+                Start a Mission
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low/60">
+        <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="../index.html" class="flex items-center gap-3 mb-5">
+                        <img alt="Trasier Logo"
+                            class="w-10 h-10 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
+                        <span class="font-display-lg text-lg text-primary uppercase tracking-widest">Trasier Tech</span>
+                    </a>
+                    <p class="font-body-md text-on-surface-variant text-sm mb-5 max-w-xs">
+                        Engineering the digital infrastructure of public life, built in Kathmandu, for the public good.
+                    </p>
+                    <div class="inline-flex items-center gap-2 mono-all-caps text-[10px] text-on-surface/40">
+                        <span class="material-symbols-outlined text-sm">location_on</span>Kathmandu, Nepal
+                    </div>
+                </div>
+                <!-- Solutions -->
+                <div>
+                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Services</div>
+                    <ul class="space-y-3 font-body-md text-sm">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../services/civic.html">Civic &amp; GovTech</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../services/ai.html">AI &amp; Machine Learning</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../services/geospatial.html">Geospatial &amp; Mapping</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../services/mobile.html">Web &amp; Mobile</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../services/data.html">Data Intelligence</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../services/integration.html">Integration &amp; APIs</a></li>
+                    </ul>
+                </div>
+                <!-- Company -->
+                <div>
+                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Company</div>
+                    <ul class="space-y-3 font-body-md text-sm">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../leadership.html">Our Story</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../company.html">Why Trasier</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../blog.html">Blog</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sadak-sujhav.html">Sadak Sujhav</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../case-study-sadak-sujhav.html">Case Study</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../careers.html">Careers</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Get in touch -->
+                <div>
+                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Get in touch</div>
+                    <a href="mailto:info@trasiertech.com.np"
+                        class="inline-flex items-center gap-2 font-body-md text-sm text-on-surface-variant hover:text-primary transition-colors mb-5">
+                        <span class="material-symbols-outlined text-base">mail</span>info@trasiertech.com.np
+                    </a>
+                    <a href="../contact.html"
+                        class="block mono-all-caps bg-primary text-on-primary px-5 py-3 font-bold text-[11px] text-center hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300 mb-6">
+                        Start a Mission
+                    </a>
+                    <ul class="space-y-2 font-body-md text-xs">
+                        <li><a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="../terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-outline-variant/10 pt-8 text-center">
+                <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">&copy; 2026 Trasier Technology. All
+                    rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/shader.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
