@@ -1,6 +1,6 @@
 # Trasier Technology website
 
-A responsive, buildless HTML/CSS/JavaScript site for Trasier Technology, Kathmandu, Nepal. The 2026 redesign adapts Open Design’s editorial token foundation into a dark-blue, blue, and white design system: deep navy backgrounds, layered blue surfaces, white text, and bright-blue accents drawn from the supplied Trasier owl logo.
+A responsive, buildless HTML/CSS/JavaScript site for Trasier Technology, Kathmandu, Nepal. The 2026 redesign adapts Open Design’s editorial token foundation into an airy blue-and-white design system: white backgrounds, powder-blue surfaces, navy text, and clear blue accents drawn from the supplied Trasier owl logo.
 
 ## Run locally
 
@@ -40,7 +40,7 @@ The site check verifies local links/assets, metadata, main landmarks, unique pag
 - `frontend/services/` — six service detail pages.
 - `frontend/blog/` — existing dated company updates.
 - `frontend/css/site.css`, `frontend/js/site.js` — shared responsive design, navigation, accessible interactions, form states.
-- `frontend/css/theme-navy.css` — the final shared theme layer: navy `#0e203b`, blue surfaces `#142e50`/`#1b3a60`, white `#f4f8ff`, muted `#b5c6df`, accent `#8abbff`, and action blue `#2364d6`.
+- `frontend/css/theme.css` — the final shared theme layer: page white `#f8fbff`, white cards `#ffffff`, powder blue `#eaf4ff`, navy text `#16385f`, muted text `#526b88`, link blue `#1d5fbf`, and action blue `#2364d6`.
 - `frontend/css/motion.css`, `frontend/js/motion.js` — native scroll reveals, staggered entrances, a reading-progress line, and reduced-motion support.
 - `frontend/css/creative-home.css`, `frontend/js/creative-motion.js` — scroll-driven CSS 3D hero, kinetic typography, and a three-stage reporting story using adapted Hyperframes orbital math.
 - `frontend/css/creative-buttons.css`, `frontend/js/creative-buttons.js` — directional arrow capsules, local spotlight, and bounded magnetic interactions with touch/keyboard fallbacks.
