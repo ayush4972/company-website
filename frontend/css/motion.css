@@ -1,0 +1,22 @@
+/* Small composited transitions; scrolling remains native. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+.scroll-progress{position:fixed;inset:0 0 auto;height:3px;z-index:120;pointer-events:none;background:linear-gradient(90deg,var(--brand),#4dc7ff);transform:scaleX(0);transform-origin:left;box-shadow:0 1px 7px #1764cc25}
+.motion-enabled .site-header{transition:box-shadow 260ms ease,background-color 260ms ease}
+.motion-enabled .site-header.is-scrolled{background:#fffffff7;box-shadow:0 7px 28px #163a6510}
+@media(prefers-reduced-motion:no-preference){
+  .motion-enabled [data-tabs-ready] [role=tabpanel]:not([hidden]){animation:motion-panel-in 300ms var(--motion-ease) both}
+  .motion-enabled [data-tabs-ready] [role=tabpanel]:focus-within{animation:none}
+  .motion-enabled .button{transition:background-color 220ms ease,color 220ms ease,border-color 220ms ease,transform 280ms var(--motion-ease),box-shadow 280ms ease}
+  .motion-enabled .button-primary:hover{box-shadow:0 7px 20px #1764cc1c}
+}
+@keyframes motion-panel-in{from{opacity:0;translate:0 9px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){
+  .scroll-progress{display:none}
+  .motion-enabled .site-header{transition:none}
+  .motion-enabled [role=tabpanel]{animation:none!important}
+}
+@media print{
+  .scroll-progress{display:none!important}
+  .motion-enabled .site-header{box-shadow:none}
+  [data-motion-state],[role=tabpanel]{animation:none!important;opacity:1!important;translate:none!important}
+}

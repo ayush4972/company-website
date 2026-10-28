@@ -1,7 +1,8 @@
 import { sendCareersEmail } from '../backend/mailer.js';
 import { isValidEmail } from '../backend/validateEmail.js';
 
-const MAX_FILE_BYTES = 4 * 1024 * 1024; // 4MB, comfortably under Vercel's request body limit
+// Base64 adds roughly 33%; 3 MiB keeps the JSON request below Vercel's 4.5 MB cap.
+const MAX_FILE_BYTES = 3 * 1024 * 1024;
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -18,9 +19,12 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Please provide a valid, deliverable email address.' });
     }
     if (fileBase64) {
-        const approxBytes = fileBase64.length * 0.75;
-        if (approxBytes > MAX_FILE_BYTES) {
-            return res.status(413).json({ error: 'CV file is too large. Please keep it under 4MB.' });
+        if (typeof fileBase64 !== 'string' || !filename || !/\.(pdf|doc|docx)$/i.test(String(filename))) {
+            return res.status(400).json({ error: 'Please attach a PDF, DOC, or DOCX file.' });
+        }
+        const fileBytes = Buffer.byteLength(fileBase64, 'base64');
+        if (fileBytes > MAX_FILE_BYTES) {
+            return res.status(413).json({ error: 'CV file is too large. Please keep it under 3 MB.' });
         }
     }
 
@@ -28,7 +32,7 @@ export default async function handler(req, res) {
         await sendCareersEmail({
             name: String(name).slice(0, 200),
             email: String(email).slice(0, 200),
-            expertise: expertise ? String(expertise).slice(0, 300) : '',
+            expertise: expertise ? String(expertise).slice(0, 5000) : '',
             filename: filename ? String(filename).slice(0, 200) : undefined,
             fileBase64: fileBase64 || undefined,
         });

@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { deliverEmail } from './deliverEmail.js';
 
 const TO = 'info@trasiertech.com.np';
 const FROM = 'Trasier Tech <onboarding@resend.dev>';
@@ -13,7 +14,7 @@ function getClient() {
 
 export async function sendContactEmail({ name, email, message }) {
     const resend = getClient();
-    return resend.emails.send({
+    return deliverEmail(resend, {
         from: FROM,
         to: TO,
         replyTo: email,
@@ -30,7 +31,7 @@ export async function sendContactEmail({ name, email, message }) {
 
 export async function sendCareersEmail({ name, email, expertise, filename, fileBase64 }) {
     const resend = getClient();
-    return resend.emails.send({
+    return deliverEmail(resend, {
         from: FROM,
         to: TO,
         replyTo: email,
