@@ -10,6 +10,19 @@ Use case: background-extraction. Edit target: the supplied existing Trasier Tech
 
 ## Integration
 
-The shared header/footer and favicons use the PNG. CSS background, frame shadow,
+The shared header/footer use the PNG. CSS background, frame shadow,
 and corner radius are removed. `object-fit: contain` preserves the full artwork.
 The PNG's transparent corner and top-edge samples were verified (alpha 0).
+
+Every public content page declares root-relative favicon links, including nested
+blog and service pages. The dedicated icon files preserve the source artwork and
+alpha transparency, resized with Pillow's LANCZOS filter:
+
+- `frontend/favicon.ico`: 16, 32, 48, and 64 px frames for browser tabs and fallback discovery.
+- `frontend/favicon.png`: 96 × 96 px PNG for browsers and search crawlers.
+- `frontend/apple-touch-icon.png`: 180 × 180 px PNG for Apple bookmarks.
+
+Keep these public icon URLs stable. The homepage's Organization structured data
+also points to the full-size transparent logo. `robots.txt` allows crawlers to
+fetch the homepage and images. Search engines must recrawl the deployed homepage
+before search results can reflect the icon; changes are not immediate.
