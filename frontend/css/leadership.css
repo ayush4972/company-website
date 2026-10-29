@@ -1,0 +1,11 @@
+/* Leadership profiles share the site's light-blue and white card treatment. */
+.team-layout{align-items:center}
+.team-profiles{display:grid;gap:22px;min-width:0}
+.team-profile h2{font-size:clamp(28px,3vw,40px);line-height:1.2;letter-spacing:-.04em}
+.team-profile .eyebrow{margin-bottom:14px}
+.team-profile>.muted{font-size:14px;line-height:1.75;margin-top:10px}
+.team-profile-links{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:14px}
+.team-profile-links .text-link{font-size:12px}
+.team-copy>.eyebrow{margin-top:0}
+@media(max-width:900px){.team-layout{gap:32px}.team-profile{padding:28px}.team-profile h2{font-size:30px}}
+@media(max-width:640px){.team-profiles{gap:18px}.team-profile{padding:26px}.team-profile h2{font-size:30px}.team-profile-links{gap:8px 18px}.team-profile-links .text-link{font-size:11px}}

@@ -20,7 +20,8 @@ export default async function handler(req, res) {
         await sendContactEmail({
             name: String(name).slice(0, 200),
             email: String(email).slice(0, 200),
-            message: String(message).slice(0, 5000),
+            // Includes the optional service/topic prefix added by the form.
+            message: String(message).slice(0, 5200),
         });
         return res.status(200).json({ ok: true });
     } catch (err) {

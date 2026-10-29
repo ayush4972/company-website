@@ -1,306 +1,102 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TRASIER | Terms of Service</title>
-    <meta name="description" content="Terms of service for the Trasier Technology website — acceptable use, intellectual property, and the legal terms governing trasiertech.com.np." />
-    <link rel="canonical" href="https://www.trasiertech.com.np/terms-of-service.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.trasiertech.com.np/terms-of-service.html" />
-    <meta property="og:title" content="TRASIER | Terms of Service" />
-    <meta property="og:description" content="Terms of service for the Trasier Technology website — acceptable use, intellectual property, and the legal terms governing trasiertech.com.np." />
-    <meta property="og:image" content="https://www.trasiertech.com.np/assets/images/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Trasier Technology" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TRASIER | Terms of Service" />
-    <meta name="twitter:description" content="Terms of service for the Trasier Technology website — acceptable use, intellectual property, and the legal terms governing trasiertech.com.np." />
-    <meta name="twitter:image" content="https://www.trasiertech.com.np/assets/images/og-image.jpg" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/4.5.0/anime.umd.min.js"></script>
-    <script src="js/tailwind.config.js"></script>
-    <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        .policy p,
-        .policy ul {
-            margin-bottom: 1rem;
-            line-height: 1.75;
-        }
-
-        .policy ul {
-            list-style: disc;
-            padding-left: 1.5rem;
-        }
-
-        .policy h2 {
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .policy hr {
-            border-color: rgba(60, 73, 78, 0.4);
-            margin: 2.5rem 0;
-        }
-    </style>
+<html lang="en">
+<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>TRASIER | Terms of Service</title><meta content="Terms of service for the Trasier Technology website — acceptable use, intellectual property, and the legal terms governing trasiertech.com.np." name="description"/><link href="https://www.trasiertech.com.np/terms-of-service.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="https://www.trasiertech.com.np/terms-of-service.html" property="og:url"/><meta content="TRASIER | Terms of Service" property="og:title"/><meta content="Terms of service for the Trasier Technology website — acceptable use, intellectual property, and the legal terms governing trasiertech.com.np." property="og:description"/><meta content="https://www.trasiertech.com.np/assets/images/og-image.jpg" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="Trasier Technology" property="og:site_name"/><meta content="summary_large_image" name="twitter:card"/><meta content="TRASIER | Terms of Service" name="twitter:title"/><meta content="Terms of service for the Trasier Technology website — acceptable use, intellectual property, and the legal terms governing trasiertech.com.np." name="twitter:description"/><meta content="https://www.trasiertech.com.np/assets/images/og-image.jpg" name="twitter:image"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;650;700;750;800&amp;display=swap" rel="stylesheet"/><link href="/css/site.css" rel="stylesheet"/><link href="/css/journal.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/theme.css"><script defer="" src="/js/site.js"></script><meta name="theme-color" content="#f8fbff">
 </head>
-
-<body class="dark selection:bg-primary-container selection:text-on-primary-container">
-    <!-- Global animated background (single WebGL layer behind the whole page) -->
-    <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none">
-        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
-    </div>
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-    <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-primary/20 bg-surface/80 backdrop-blur-xl"
-        id="main-nav">
-        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
-            <a href="index.html" class="flex items-center gap-2">
-                <span class="font-display-lg text-2xl text-primary tracking-tighter whitespace-nowrap">TRASIER TECH</span>
-            </a>
-            <div class="hidden lg:flex gap-8 items-center">
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="index.html#services">Services</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="index.html#projects">Deployments</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="leadership.html">Our Story</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="blog.html">Blog</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="careers.html">Careers</a>
-            </div>
-            <a href="contact.html"
-                class="hidden sm:inline-flex mono-all-caps bg-primary text-on-primary px-6 py-2 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">
-                MISSION_START
-            </a>
-            <button type="button" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false"
-                class="lg:hidden flex items-center justify-center w-10 h-10 text-on-surface hover:text-primary transition-colors shrink-0">
-                <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden lg:hidden border-t border-outline-variant/10 bg-surface/95 backdrop-blur-xl">
-            <div class="flex flex-col px-margin-mobile py-2 max-w-7xl mx-auto [&>a]:block [&>a]:py-3 [&>a]:border-b [&>a]:border-outline-variant/10 [&>a:last-child]:border-b-0">
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="index.html#services">Services</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="index.html#projects">Deployments</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="leadership.html">Our Story</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="blog.html">Blog</a>
-                <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/70 hover:text-primary transition-colors duration-300"
-                    href="careers.html">Careers</a>
-                <a href="contact.html" class="sm:hidden mt-2 block text-center mono-all-caps bg-primary text-on-primary px-6 py-3 font-bold text-xs hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300">MISSION_START</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Header -->
-    <header class="relative pt-40 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden">
-        <div class="absolute inset-0 grid-overlay z-0 pointer-events-none opacity-60"></div>
-        <div class="relative z-10 max-w-3xl mx-auto">
-            <a href="index.html"
-                class="inline-flex items-center gap-2 mono-all-caps text-on-surface/50 hover:text-primary text-[11px] mb-10 transition-colors">
-                <span class="material-symbols-outlined text-sm">arrow_back</span>Back to home
-            </a>
-            <div class="mono-all-caps text-primary text-xs mb-4 tracking-[0.4em]">Legal</div>
-            <h1 class="font-display-lg text-4xl md:text-6xl text-white mb-4 leading-tight">Terms of Service</h1>
-            <p class="font-headline-lg text-primary text-xl">Trasier Technology</p>
-        </div>
-    </header>
-
-    <!-- Terms content -->
-    <section class="px-margin-mobile md:px-margin-desktop pb-24">
-        <div class="policy max-w-3xl mx-auto font-body-md text-on-surface-variant text-base">
-
-            <p>
-                <strong class="text-white">Effective date:</strong> 28 July 2026<br />
-                <strong class="text-white">Last updated:</strong> 28 July 2026
+<body data-page="legal">
+<div data-site-header=""></div>
+<main id="main-content">
+<header class="page-hero"><div class="container"><nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Privacy &amp; terms</span></nav><p class="eyebrow">Terms of use</p><h1>Terms of service</h1><p>The terms that apply when you use the Trasier Technology website.</p><div class="article-meta"><span>Trasier Technology website</span></div></div></header>
+<section class="section"><div class="container article-layout"><nav aria-label="On this page" class="article-toc"><details><summary>On this page <span>9 sections</span></summary><ol><li><a href="#section-1">1. Use of the Site</a></li><li><a href="#section-2">2. Intellectual property</a></li><li><a href="#section-3">3. Information you submit</a></li><li><a href="#section-4">4. Third-party links and services</a></li><li><a href="#section-5">5. No warranty</a></li><li><a href="#section-6">6. Limitation of liability</a></li><li><a href="#section-7">7. Governing law</a></li><li><a href="#section-8">8. Changes to these Terms</a></li><li><a href="#section-9">9. Contact us</a></li></ol></details></nav><div class="prose legal-content">
+<div>
+<p>
+<strong>Effective date:</strong> 28 July 2026<br/>
+<strong>Last updated:</strong> 28 July 2026
             </p>
-
-            <p>
+<p>
                 These Terms of Service ("Terms") govern your use of
-                <strong class="text-white">trasiertech.com.np</strong> ("the Site"), operated by
-                <strong class="text-white">Trasier Technology</strong> ("we", "us", "our"), based in Kathmandu,
+                <strong>trasiertech.com.np</strong> ("the Site"), operated by
+                <strong>Trasier Technology</strong> ("we", "us", "our"), based in Kathmandu,
                 Nepal. By visiting or using the Site, you agree to these Terms.
             </p>
-            <p>
+<p>
                 These Terms cover the Site only. Our products, such as the Sadak Sujhav mobile app, may be governed
-                by their own terms and are covered separately by our <a class="text-primary hover:underline"
-                    href="sadak-sujhav-privacy.html">Sadak Sujhav Privacy Policy</a>.
+                by their own terms and are covered separately by our <a href="/sadak-sujhav-privacy.html">Sadak Sujhav Privacy Policy</a>.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">1. Use of the Site</h2>
-            <p>You may browse the Site and use its contact and careers forms for their intended purpose: learning
+<hr/>
+<h2 id="section-1">1. Use of the Site</h2>
+<p>You may browse the Site and use its contact and careers forms for their intended purpose: learning
                 about our work, getting in touch, and applying for roles. You agree not to:</p>
-            <ul>
-                <li>Use the Site for any unlawful purpose, or in a way that could damage, disable, or impair it;</li>
-                <li>Attempt to gain unauthorised access to any part of the Site or its underlying systems;</li>
-                <li>Scrape, harvest, or misuse content from the Site beyond normal browsing;</li>
-                <li>Submit false, misleading, or malicious information through our forms.</li>
-            </ul>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">2. Intellectual property</h2>
-            <p>
+<ul>
+<li>Use the Site for any unlawful purpose, or in a way that could damage, disable, or impair it;</li>
+<li>Attempt to gain unauthorised access to any part of the Site or its underlying systems;</li>
+<li>Scrape, harvest, or misuse content from the Site beyond normal browsing;</li>
+<li>Submit false, misleading, or malicious information through our forms.</li>
+</ul>
+<hr/>
+<h2 id="section-2">2. Intellectual property</h2>
+<p>
                 The Site's design, layout, text, graphics, and the Trasier Technology name and logo are owned by
                 Trasier Technology, unless otherwise credited, and are protected by applicable intellectual property
                 laws. You may view and share pages of the Site for personal, non-commercial reference, but may not
                 reproduce, redistribute, or create derivative works from the Site's content without our written
                 permission.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">3. Information you submit</h2>
-            <p>
+<hr/>
+<h2 id="section-3">3. Information you submit</h2>
+<p>
                 When you submit a message, application, or CV through the Site, you confirm that the information is
                 accurate and that you have the right to share it with us (for example, that a CV or portfolio link
                 you submit is your own). We use what you submit as described in our
-                <a class="text-primary hover:underline" href="privacy-policy.html">Privacy Policy</a>.
+                <a href="/privacy-policy.html">Privacy Policy</a>.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">4. Third-party links and services</h2>
-            <p>
+<hr/>
+<h2 id="section-4">4. Third-party links and services</h2>
+<p>
                 The Site may link to third-party websites or rely on third-party services (for example, to deliver
                 emails or load fonts). We don't control these third parties and aren't responsible for their content
                 or practices. Visiting a linked site is at your own discretion and subject to that site's own terms.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">5. No warranty</h2>
-            <p>
+<hr/>
+<h2 id="section-5">5. No warranty</h2>
+<p>
                 The Site and its content are provided "as is" and "as available", without warranties of any kind,
                 express or implied. We don't guarantee the Site will be uninterrupted, error-free, or free of
                 harmful components, and information on the Site (including service descriptions) is provided for
                 general informational purposes and may change without notice.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">6. Limitation of liability</h2>
-            <p>
+<hr/>
+<h2 id="section-6">6. Limitation of liability</h2>
+<p>
                 To the maximum extent permitted by law, Trasier Technology is not liable for any indirect,
                 incidental, or consequential damages arising from your use of, or inability to use, the Site. Nothing
                 in these Terms limits liability that cannot be excluded under applicable law.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">7. Governing law</h2>
-            <p>
+<hr/>
+<h2 id="section-7">7. Governing law</h2>
+<p>
                 These Terms are governed by the laws of Nepal. Any disputes arising from these Terms or your use of
                 the Site will be subject to the exclusive jurisdiction of the courts of Nepal.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">8. Changes to these Terms</h2>
-            <p>
+<hr/>
+<h2 id="section-8">8. Changes to these Terms</h2>
+<p>
                 We may update these Terms from time to time. Changes take effect when posted at this URL, and we
                 will update the "Last updated" date above. Continued use of the Site after changes are posted means
                 you accept the updated Terms.
             </p>
-
-            <hr />
-
-            <h2 class="font-headline-lg text-2xl text-white">9. Contact us</h2>
-            <ul>
-                <li><strong class="text-white">Trasier Technology</strong></li>
-                <li><strong class="text-white">Email:</strong> <a class="text-primary hover:underline"
-                        href="mailto:info@trasiertech.com.np">info@trasiertech.com.np</a></li>
-                <li><strong class="text-white">Address:</strong> Kathmandu, Nepal</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="w-full border-t border-outline-variant/20 bg-surface-container-low/60">
-        <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                <!-- Brand -->
-                <div>
-                    <a href="index.html" class="flex items-center gap-3 mb-5">
-                        <img alt="Trasier Logo"
-                            class="w-10 h-10 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBci8k7mkEiYa_WtQoDKYs-z-GwJ_EDZ4X3cTO8cxqYIjWPz6hE84ZZDyMqRYR7oq6A-foUOWmt34OeYnMa86vCv298NswaO6sF8i8VP2lspICO5YO94vCRwM9EMMxIJZtW9ZbqePb8rnIyWhDuySS-jKdZugl-FMxLKuE94UrO8Hv8O6YxxrKMlkR42NDizTV6sVdc0RR8yszeEy_BzvUNSKEu-LwPyrWzh3tRCaFjXzyg28v1WhOrWSngiRCR05KJbsUdpTRPjg" />
-                        <span class="font-display-lg text-lg text-primary uppercase tracking-widest">Trasier Tech</span>
-                    </a>
-                    <p class="font-body-md text-on-surface-variant text-sm mb-5 max-w-xs">
-                        Engineering the digital infrastructure of public life, built in Kathmandu, for the public good.
-                    </p>
-                    <div class="inline-flex items-center gap-2 mono-all-caps text-[10px] text-on-surface/40">
-                        <span class="material-symbols-outlined text-sm">location_on</span>Kathmandu, Nepal
-                    </div>
-                </div>
-                <!-- Solutions -->
-                <div>
-                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Services</div>
-                    <ul class="space-y-3 font-body-md text-sm">
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/civic.html">Civic &amp; GovTech</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/ai.html">AI &amp; Machine Learning</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/geospatial.html">Geospatial &amp; Mapping</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/mobile.html">Web &amp; Mobile</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/data.html">Data Intelligence</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="services/integration.html">Integration &amp; APIs</a></li>
-                    </ul>
-                </div>
-                <!-- Company -->
-                <div>
-                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Company</div>
-                    <ul class="space-y-3 font-body-md text-sm">
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="leadership.html">Our Story</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="company.html">Why Trasier</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="sadak-sujhav.html">Sadak Sujhav</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="case-study-sadak-sujhav.html">Case Study</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="careers.html">Careers</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Get in touch -->
-                <div>
-                    <div class="mono-all-caps text-primary text-[11px] mb-5 tracking-[0.2em]">Get in touch</div>
-                    <a href="mailto:info@trasiertech.com.np"
-                        class="inline-flex items-center gap-2 font-body-md text-sm text-on-surface-variant hover:text-primary transition-colors mb-5">
-                        <span class="material-symbols-outlined text-base">mail</span>info@trasiertech.com.np
-                    </a>
-                    <a href="contact.html"
-                        class="block mono-all-caps bg-primary text-on-primary px-5 py-3 font-bold text-[11px] text-center hover:shadow-[0_0_15px_#00d4ff] transition-all duration-300 mb-6">
-                        Start a Mission
-                    </a>
-                    <ul class="space-y-2 font-body-md text-xs">
-                        <li><a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="terms-of-service.html">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-outline-variant/10 pt-8 text-center">
-                <div class="text-on-surface-variant/40 mono-all-caps text-[10px]">&copy; 2026 Trasier Technology. All
-                    rights reserved.</div>
-            </div>
-        </div>
-    </footer>
-    <script src="js/shader.js"></script>
-    <script src="js/main.js"></script>
+<hr/>
+<h2 id="section-9">9. Contact us</h2>
+<ul>
+<li><strong>Trasier Technology</strong></li>
+<li><strong>Email:</strong> <a href="mailto:info@trasiertech.com.np">info@trasiertech.com.np</a></li>
+<li><strong>Address:</strong> Kathmandu, Nepal</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section-sm"><div class="container"><div class="legal-help"><div><p class="eyebrow">Need a hand?</p><h2>Talk to a real person.</h2><p>Questions about your account or your data? Contact the Trasier team.</p></div><a class="button button-outline" href="mailto:info@trasiertech.com.np">Email us <span data-icon="arrow-up-right"></span></a></div></div></section>
+</main>
+<div data-site-footer=""></div>
 </body>
-
 </html>

@@ -1,0 +1,202 @@
+/* Directional controls: a blue capsule, a satellite arrow, and a local light field. */
+.button.button {
+  --control-fill: var(--brand, #1764cc);
+  --control-ink: #fff;
+  --control-glow: #073c9b;
+  --control-cap: #fff;
+  --control-cap-ink: #155bc1;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  gap: 22px;
+  min-height: 54px;
+  padding: 10px 12px 10px 22px;
+  border-radius: 999px;
+  background: var(--control-fill);
+  color: var(--control-ink);
+  border-color: transparent;
+  box-shadow: 0 3px 0 #153c7112;
+  transition: background .25s, color .25s, border-color .25s, box-shadow .3s,
+    transform .25s, translate .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+.button.button::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(ellipse at var(--control-spot-x, 88%) var(--control-spot-y, 50%), var(--control-glow), transparent 75%);
+  opacity: 0;
+  transition: opacity .35s;
+}
+
+.button.button:hover,
+.button.button:focus-visible {
+  background: var(--control-fill);
+  color: var(--control-ink);
+  box-shadow: 0 7px 22px #1453a424;
+}
+
+.button.button:hover::before,
+.button.button:focus-visible::before { opacity: .78; }
+
+.button.button > [data-icon],
+.button.button > svg {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--control-cap);
+  color: var(--control-cap-ink);
+  box-shadow: 0 0 0 1px #ffffff24;
+  transition: background .25s, color .25s, rotate .4s cubic-bezier(.22, 1, .36, 1);
+}
+
+.button.button > svg { padding: 8px; }
+.button.button > [data-icon] > svg { width: 16px; height: 16px; }
+.button.button:hover > [data-icon],
+.button.button:hover > svg { rotate: -8deg; }
+
+.button.button.button-small {
+  gap: 15px;
+  min-height: 44px;
+  padding: 6px 8px 6px 17px;
+}
+.button.button.button-small > [data-icon],
+.button.button.button-small > svg { width: 29px; height: 29px; min-width: 29px; }
+.button.button.button-small > svg { padding: 7px; }
+
+.button.button.button-dark { --control-fill: #15538f; --control-glow: #052e64; }
+.button.button.button-light {
+  --control-fill: #d9f1ff;
+  --control-ink: #143957;
+  --control-glow: #a9d9fc;
+  --control-cap: #fff;
+  --control-cap-ink: #15538f;
+}
+.button.button.button-outline {
+  --control-fill: #fff;
+  --control-ink: #155bc1;
+  --control-glow: #dceeff;
+  --control-cap: #eaf3ff;
+  border-color: #b9d0ee;
+  box-shadow: none;
+}
+.dark-section .button.button.button-outline {
+  --control-fill: transparent;
+  --control-ink: #fff;
+  --control-glow: #0d3971;
+  --control-cap: #fff;
+  border-color: #ffffff66;
+}
+.button.button:focus-visible { outline: 3px solid #4ac4ff; outline-offset: 4px; translate: none; transform: none; }
+.button.button:disabled { box-shadow: none; }
+.button.button:disabled::before { opacity: 0; }
+.button.button:not(:disabled):active { box-shadow: 0 1px 0 #153c7112; }
+
+/* Anime.js animates these local surfaces; the control and its label stay put. */
+.button.button[data-button-enhanced],
+.text-link.text-link[data-button-enhanced] {
+  --control-cap-rotate: 0deg;
+  --control-cap-scale: 1;
+  --control-icon-x: 0px;
+  --control-icon-y: 0px;
+  --control-pulse-scale: 0;
+  --control-pulse-opacity: 0;
+}
+.button.button[data-button-enhanced] { transform: none; translate: none; }
+.button.button[data-button-enhanced] > [data-icon],
+.button.button[data-button-enhanced] > svg,
+.text-link.text-link[data-button-enhanced] > [data-icon],
+.text-link.text-link[data-button-enhanced] > svg {
+  rotate: none;
+  transform: translate(var(--control-icon-x, 0px), var(--control-icon-y, 0px))
+    rotate(var(--control-cap-rotate, 0deg)) scale(var(--control-cap-scale, 1));
+  transition: background .25s, color .25s, border-color .25s;
+}
+.button.button[data-button-enhanced]::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  left: var(--control-pulse-x, 50%);
+  top: var(--control-pulse-y, 50%);
+  width: 220%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--control-cap);
+  opacity: var(--control-pulse-opacity, 0);
+  transform: translate(-50%, -50%) scale(var(--control-pulse-scale, 0));
+}
+
+.text-link.text-link {
+  gap: 12px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  background-position: left calc(100% - 4px);
+  transition: color .2s, background-size .4s cubic-bezier(.22, 1, .36, 1);
+}
+.text-link.text-link > [data-icon],
+.text-link.text-link > svg {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-color: color-mix(in srgb, currentColor 24%, transparent);
+  border-radius: 50%;
+  background: #1764cc08;
+  transition: background .25s, border-color .25s, rotate .35s;
+}
+.text-link.text-link > svg { padding: 5px; }
+.text-link.text-link > [data-icon] > svg { width: 15px; height: 15px; }
+.text-link.text-link:hover,
+.text-link.text-link:focus-visible { background-size: calc(100% - 39px) 1px; }
+.text-link.text-link:hover > [data-icon],
+.text-link.text-link:focus-visible > [data-icon] { border-color: currentColor; rotate: -8deg; }
+.text-link.text-link[data-button-enhanced]:hover > [data-icon],
+.text-link.text-link[data-button-enhanced]:focus-visible > [data-icon] { rotate: none; }
+.text-link.text-link:not([data-button-enhanced]):hover svg { transform: none; }
+.text-link.text-link[data-button-enhanced] > [data-icon] > svg { transform: none; }
+
+@media (max-width: 640px) {
+  .button.button { gap: 17px; padding: 10px 11px 10px 20px; }
+  .button.button.header-cta { gap: 9px; min-height: 42px; padding: 6px 7px 6px 13px; font-size: 10px; }
+  .button.button.header-cta > svg { width: 27px; height: 27px; min-width: 27px; }
+}
+@media (max-width: 370px) {
+  .button.button.header-cta { padding-left: 11px; font-size: 9px; }
+}
+@media (hover: none), (pointer: coarse) {
+  .button.button[data-button-enhanced] { translate: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button.button,
+  .button.button::before,
+  .button.button > [data-icon],
+  .button.button > svg,
+  .text-link.text-link,
+  .text-link.text-link > [data-icon],
+  .text-link.text-link > svg { transition: none; }
+  .button.button[data-button-enhanced],
+  .button.button:not(:disabled):active { translate: none; }
+  .button.button:hover > [data-icon],
+  .button.button:hover > svg,
+  .text-link.text-link:hover > [data-icon],
+  .text-link.text-link:focus-visible > [data-icon] { rotate: none; }
+  .button.button[data-button-enhanced] > [data-icon],
+  .button.button[data-button-enhanced] > svg,
+  .text-link.text-link[data-button-enhanced] > [data-icon],
+  .text-link.text-link[data-button-enhanced] > svg { transform: none; }
+  .button.button[data-button-enhanced]::after { display: none; }
+}
+@media print {
+  .button.button[data-button-enhanced]::after { display: none; }
+}

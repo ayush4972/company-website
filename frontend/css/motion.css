@@ -1,0 +1,16 @@
+/* Small composited transitions; scrolling remains native. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+.motion-enabled [data-motion-state=animating]{will-change:opacity,translate}
+@media(prefers-reduced-motion:no-preference){
+  .motion-enabled [data-tabs-ready] [role=tabpanel]:not([hidden]){animation:motion-panel-in 180ms ease-out both}
+  .motion-enabled [data-tabs-ready] [role=tabpanel]:focus-within{animation:none}
+  .motion-enabled .button{transition:background-color 220ms ease,color 220ms ease,border-color 220ms ease,transform 280ms var(--motion-ease),box-shadow 280ms ease}
+  .motion-enabled .button-primary:hover{box-shadow:0 7px 20px #1764cc1c}
+}
+@keyframes motion-panel-in{from{opacity:.65}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  .motion-enabled [role=tabpanel]{animation:none!important}
+}
+@media print{
+  [data-motion-state],[role=tabpanel]{animation:none!important;opacity:1!important;translate:none!important}
+}

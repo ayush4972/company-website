@@ -1,0 +1,37 @@
+/* Physical depth belongs to the illustration, never its caption or controls. */
+[data-depth-scene][data-depth-ready="true"] {
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+[data-depth-scene] [data-depth-layer][data-depth-ready="true"] {
+  translate: var(--depth-travel-x, 0px) calc(var(--depth-travel-y, 0px) + var(--depth-scroll-y, 0px));
+  rotate: var(--depth-axis-x, 1) var(--depth-axis-y, 0) 0 var(--depth-angle, 0deg);
+  transition: rotate .12s ease-out;
+}
+[data-depth-scene][data-depth-pointer="true"] [data-depth-layer][data-depth-ready="true"] {
+  will-change: translate, rotate;
+}
+[data-depth-scene][data-depth-active="false"] [data-depth-layer][data-depth-ready="true"] {
+  translate: none;
+  rotate: none;
+  transition: none;
+  will-change: auto;
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  [data-depth-scene][data-depth-ready="true"] { perspective: none; }
+  [data-depth-scene] [data-depth-layer][data-depth-ready="true"] {
+    translate: none;
+    rotate: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+@media print {
+  [data-depth-scene][data-depth-ready="true"] { perspective: none; }
+  [data-depth-scene] [data-depth-layer][data-depth-ready="true"] {
+    translate: none;
+    rotate: none;
+    transition: none;
+    will-change: auto;
+  }
+}
