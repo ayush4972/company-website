@@ -36,7 +36,7 @@
     'bell': '<path d="M5 17h14l-2-3V8a5 5 0 0 0-10 0v6l-2 3Zm5 4h4"/>',
   };
   const svg = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name] || icons['arrow-up-right']}</svg>`;
-  const brand = `<a class="brand" href="/" aria-label="Trasier Technology home"><img class="brand-logo" src="/assets/images/trasier-logo.jpeg" alt="Trasier Tech owl logo" width="512" height="512"></a>`;
+  const brand = `<a class="brand" href="/" aria-label="Trasier Technology home"><img class="brand-logo" src="/assets/images/trasier-logo-transparent.png" alt="Trasier Tech owl logo" width="1254" height="1254"></a>`;
   const page = document.body.dataset.page;
   const links = [
     { href: '/#projects', label: 'Our work', active: ['work', 'product'] },
@@ -46,9 +46,13 @@
   ];
   const navLinks = links.map(({ href, label, active }) => `<a href="${href}"${active.includes(page) ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   const header = document.querySelector('[data-site-header]');
+  const announcementHref = page === 'home' ? '/company.html' : '/sadak-sujhav.html';
+  const announcementCopy = page === 'home'
+    ? '<strong>Built in Nepal. Designed for everyday life.</strong><span class="announcement-extra"> Meet Trasier Technology.</span>'
+    : '<strong>Better roads start with a voice.</strong><span class="announcement-extra"> Meet Sadak Sujhav, built by Trasier.</span>';
   if (header) {
     header.innerHTML = `<a class="skip-link" href="#main-content">Skip to content</a>
-      <div class="announcement"><a href="/sadak-sujhav.html"><strong>Better roads start with a voice.</strong><span class="announcement-extra"> Meet Sadak Sujhav, built by Trasier.</span>${svg('arrow-up-right')}</a></div>
+      <div class="announcement"><a href="${announcementHref}">${announcementCopy}${svg('arrow-up-right')}</a></div>
       <header class="site-header"><div class="container header-inner">${brand}<nav class="desktop-nav" aria-label="Main navigation">${navLinks}</nav><a class="button button-primary button-small header-cta" href="/contact.html">Let’s talk ${svg('arrow-up-right')}</a><button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-navigation" aria-expanded="false">${svg('menu')}</button></div><nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden>${links.map(({ href, label, active }) => `<a href="${href}"${active.includes(page) ? ' aria-current="page"' : ''}>${label}${svg('arrow-up-right')}</a>`).join('')}<a href="/sadak-sujhav.html">Sadak Sujhav ${svg('arrow-up-right')}</a><a href="/careers.html">Careers ${svg('arrow-up-right')}</a><a href="/contact.html">Start a conversation ${svg('arrow-up-right')}</a></nav></header>`;
     // Keep the sticky header outside its short placeholder's containing block.
     header.replaceWith(...header.childNodes);
@@ -61,7 +65,7 @@
   document.querySelectorAll('[data-icon]').forEach(el => { el.innerHTML = svg(el.dataset.icon); });
   if (!document.querySelector('link[rel="icon"]')) {
     const favicon = document.createElement('link');
-    favicon.rel = 'icon'; favicon.type = 'image/jpeg'; favicon.href = '/assets/images/trasier-logo.jpeg';
+    favicon.rel = 'icon'; favicon.type = 'image/png'; favicon.href = '/assets/images/trasier-logo-transparent.png';
     document.head.appendChild(favicon);
   }
 
@@ -201,6 +205,16 @@
   // Optional enhancement: a loading failure never prevents navigation or readable content.
   import('./motion.js').then(({ initMotion }) => initMotion()).catch(() => {});
   import('./creative-buttons.js').then(({ initCreativeButtons }) => initCreativeButtons()).catch(() => {});
-  import('./creative-motion.js').then(({ initCreativeMotion }) => initCreativeMotion()).catch(() => {});
-  import('./depth-scenes.js').then(({ initDepthScenes }) => initDepthScenes()).catch(() => {});
+  if (document.querySelector('[data-signal-scene], [data-signal-story], [data-kinetic-strip]')) {
+    import('./creative-motion.js').then(({ initCreativeMotion }) => initCreativeMotion()).catch(() => {});
+  }
+  if (document.querySelector('[data-depth-scene]')) {
+    import('./depth-scenes.js').then(({ initDepthScenes }) => initDepthScenes()).catch(() => {});
+  }
+  if (document.querySelector('[data-company-scene]')) {
+    import('./company-scene.js').then(({ initCompanyScene }) => initCompanyScene()).catch(() => {});
+  }
+  if (document.querySelector('[data-hero-motion]')) {
+    import('./hero-motion.js').then(({ initHeroMotion }) => initHeroMotion()).catch(() => {});
+  }
 })();

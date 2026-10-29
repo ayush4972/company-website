@@ -4,10 +4,9 @@
   perspective-origin: 50% 50%;
 }
 [data-depth-scene] [data-depth-layer][data-depth-ready="true"] {
-  translate: var(--depth-travel-x, 0px) var(--depth-travel-y, 0px);
+  translate: var(--depth-travel-x, 0px) calc(var(--depth-travel-y, 0px) + var(--depth-scroll-y, 0px));
   rotate: var(--depth-axis-x, 1) var(--depth-axis-y, 0) 0 var(--depth-angle, 0deg);
-  transition: translate .6s cubic-bezier(.22, 1, .36, 1),
-    rotate .7s cubic-bezier(.22, 1, .36, 1);
+  transition: rotate .12s ease-out;
 }
 [data-depth-scene][data-depth-pointer="true"] [data-depth-layer][data-depth-ready="true"] {
   will-change: translate, rotate;

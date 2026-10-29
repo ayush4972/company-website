@@ -97,11 +97,42 @@
 .button.button:focus-visible { outline: 3px solid #4ac4ff; outline-offset: 4px; translate: none; transform: none; }
 .button.button:disabled { box-shadow: none; }
 .button.button:disabled::before { opacity: 0; }
-.button.button[data-button-enhanced] {
-  translate: var(--control-shift-x, 0px) var(--control-shift-y, 0px);
+.button.button:not(:disabled):active { box-shadow: 0 1px 0 #153c7112; }
+
+/* Anime.js animates these local surfaces; the control and its label stay put. */
+.button.button[data-button-enhanced],
+.text-link.text-link[data-button-enhanced] {
+  --control-cap-rotate: 0deg;
+  --control-cap-scale: 1;
+  --control-icon-x: 0px;
+  --control-icon-y: 0px;
+  --control-pulse-scale: 0;
+  --control-pulse-opacity: 0;
 }
-.button.button[data-button-enhanced]:focus-visible { translate: none; transform: none; }
-.button.button:not(:disabled):active { translate: 0 1px; box-shadow: 0 1px 0 #153c7112; }
+.button.button[data-button-enhanced] { transform: none; translate: none; }
+.button.button[data-button-enhanced] > [data-icon],
+.button.button[data-button-enhanced] > svg,
+.text-link.text-link[data-button-enhanced] > [data-icon],
+.text-link.text-link[data-button-enhanced] > svg {
+  rotate: none;
+  transform: translate(var(--control-icon-x, 0px), var(--control-icon-y, 0px))
+    rotate(var(--control-cap-rotate, 0deg)) scale(var(--control-cap-scale, 1));
+  transition: background .25s, color .25s, border-color .25s;
+}
+.button.button[data-button-enhanced]::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  left: var(--control-pulse-x, 50%);
+  top: var(--control-pulse-y, 50%);
+  width: 220%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--control-cap);
+  opacity: var(--control-pulse-opacity, 0);
+  transform: translate(-50%, -50%) scale(var(--control-pulse-scale, 0));
+}
 
 .text-link.text-link {
   gap: 12px;
@@ -130,7 +161,10 @@
 .text-link.text-link:focus-visible { background-size: calc(100% - 39px) 1px; }
 .text-link.text-link:hover > [data-icon],
 .text-link.text-link:focus-visible > [data-icon] { border-color: currentColor; rotate: -8deg; }
-.text-link.text-link:hover svg { transform: none; }
+.text-link.text-link[data-button-enhanced]:hover > [data-icon],
+.text-link.text-link[data-button-enhanced]:focus-visible > [data-icon] { rotate: none; }
+.text-link.text-link:not([data-button-enhanced]):hover svg { transform: none; }
+.text-link.text-link[data-button-enhanced] > [data-icon] > svg { transform: none; }
 
 @media (max-width: 640px) {
   .button.button { gap: 17px; padding: 10px 11px 10px 20px; }
@@ -141,7 +175,7 @@
   .button.button.header-cta { padding-left: 11px; font-size: 9px; }
 }
 @media (hover: none), (pointer: coarse) {
-  .button.button[data-button-enhanced] { translate: 0 0; }
+  .button.button[data-button-enhanced] { translate: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .button.button,
@@ -157,4 +191,12 @@
   .button.button:hover > svg,
   .text-link.text-link:hover > [data-icon],
   .text-link.text-link:focus-visible > [data-icon] { rotate: none; }
+  .button.button[data-button-enhanced] > [data-icon],
+  .button.button[data-button-enhanced] > svg,
+  .text-link.text-link[data-button-enhanced] > [data-icon],
+  .text-link.text-link[data-button-enhanced] > svg { transform: none; }
+  .button.button[data-button-enhanced]::after { display: none; }
+}
+@media print {
+  .button.button[data-button-enhanced]::after { display: none; }
 }

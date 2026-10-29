@@ -24,13 +24,13 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.button:hover,.card-link:hover{transform:none}}
 /* Blue brand surfaces use the cyan/royal-blue palette of the supplied owl logo. */
 :root{color-scheme:light;--on-brand:#ffffff;--royal-blue:#287af4;--button-blue:#185d9c;--bg:var(--page-bg);--surface:var(--surface-card);--surface-warm:var(--surface-soft);--fg:var(--text);--fg-2:var(--muted);--border:var(--line);--accent:var(--brand);--accent-on:var(--on-brand);--accent-hover:#0e53b3;--accent-active:#0a479b;--meta:var(--muted);--focus-ring:0 0 0 4px #65ccff55}
-.brand{gap:0}.brand-logo{display:block;width:132px;height:88px;object-fit:cover;object-position:center;border-radius:10px;background:#fff;box-shadow:0 0 0 1px #9bdfff30}.header-inner{height:104px}.footer-brand .brand-logo{width:160px;height:112px}
+.brand{gap:0}.brand-logo{display:block;width:132px;height:104px;object-fit:contain;object-position:left center;border-radius:0;background:transparent;box-shadow:none}.header-inner{height:104px}.footer-brand .brand-logo{width:160px;height:136px}
 .announcement{background:#244969;color:#e9f6ff}.announcement a:hover{color:#b8eaff}.button-primary{background:var(--brand);color:var(--on-brand)}.button-primary:hover{background:#a4e6ff;color:var(--on-brand)}.button-dark{background:var(--button-blue);color:#fff}.button-dark:hover{background:#134f88;color:#fff}.button-light{background:var(--brand-light);color:var(--on-brand)}.button-light:hover{background:#c3edff;color:var(--on-brand)}.skip-link{color:var(--on-brand)}
 .approach-section,.dark-section{background:#234563}.approach-section p,.dark-section p{color:#c7dbed}.approach-section .eyebrow,.dark-section .eyebrow{color:var(--brand-light)}
 .home-cta,.cta-band{background:#e3f1ff;color:#133653}.home-cta h2,.cta-band h2{color:#133653}.home-cta .eyebrow,.cta-band .eyebrow{color:#174a70}.home-cta p,.cta-band p{color:#284c6a}.home-cta::after{color:#163e6412}
 .art-bottom>a,.journal-map span{color:var(--on-brand)}.art-bottom>a:hover{background:#e6f7ff;color:var(--on-brand)}.journal-map{background-color:#244d75}.work-visual-label{color:#e0f0ff}.form-status[data-state=success]{color:#bbecff;background:#244f66}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--brand)}
-@media(max-width:900px){.header-inner{height:96px}.brand-logo{width:120px;height:80px}}
-@media(max-width:640px){.header-inner{height:84px}.brand-logo{width:98px;height:68px}.footer-brand .brand-logo{width:146px;height:102px}}
+@media(max-width:900px){.header-inner{height:96px}.brand-logo{width:120px;height:96px}}
+@media(max-width:640px){.header-inner{height:84px}.brand-logo{width:98px;height:80px}.footer-brand .brand-logo{width:146px;height:122px}}
 /* White-and-blue presentation: light surfaces with legible royal-blue actions. */
 .announcement{background:#eaf3ff;color:#215690}.announcement a:hover{color:#124c99}.button-primary:hover{background:#0e53b3;color:#fff}.button-light,.button-light:hover,.skip-link{color:#153653}.art-bottom>a,.art-bottom>a:hover,.journal-map span{color:#153653}.work-visual-label{color:#1c5285}.dark-section{color:#fff}.form-status[data-state=success]{background:#e8f5ff;color:#155581}.service-item-top>[data-icon]{color:var(--brand)}
 .approach-section,.dark-section{color:#fff}

@@ -15,6 +15,7 @@ function withBrowser(options, check) {
       emit(type, event = {}) {
         for (const handler of handlers.get(type) || []) handler(event);
       },
+      listenerCount(type) { return handlers.get(type)?.length || 0; },
     };
   };
   const classList = () => {
@@ -73,20 +74,22 @@ function withBrowser(options, check) {
       return false;
     }
     getClientRects() { return this.hidden ? [] : [this.getBoundingClientRect()]; }
-    getBoundingClientRect() { return { top: 300, bottom: 420, height: 120 }; }
+    getBoundingClientRect() {
+      const top = options.aboveFold ? 300 : 1000;
+      return { top, bottom: top + 120, height: 120 };
+    }
   }
-  if (options.waapi !== false) {
-    FakeElement.prototype.animate = function (keyframes) {
+  if (options.animation !== false) {
+    FakeElement.prototype.animate = function (keyframes, parameters) {
+      if (options.animationThrows) throw new Error('Animation initialization unavailable');
       const animation = {
         element: this,
         keyframes,
+        parameters,
         cancelled: false,
+        playing: true,
         onfinish: null,
-        oncancel: null,
-        cancel() {
-          this.cancelled = true;
-          this.oncancel?.();
-        },
+        cancel() { this.cancelled = true; this.playing = false; },
       };
       animations.push(animation);
       return animation;
@@ -158,9 +161,10 @@ function withBrowser(options, check) {
   };
   const progressElements = () => body.children.filter(child => child.className === 'scroll-progress');
   const readable = () => !animations.some(animation => animation.element === target && !animation.cancelled && animation.keyframes[0].opacity === 0);
+  const isAnimating = () => animations.some(animation => animation.element === target && !animation.cancelled);
   try {
     for (const [key, value] of Object.entries(globals)) Object.defineProperty(globalThis, key, { configurable: true, writable: true, value });
-    check({ root, body, target, anchor, header, preference, window: browserWindow, document: browserDocument, observers, animations, flushFrames, progressElements, readable });
+    check({ root, body, target, anchor, header, preference, window: browserWindow, document: browserDocument, observers, animations, flushFrames, progressElements, readable, isAnimating, frames, init: () => initMotion() });
   } finally {
     for (const [key, descriptor] of original) {
       if (descriptor) Object.defineProperty(globalThis, key, descriptor);
@@ -171,7 +175,7 @@ function withBrowser(options, check) {
 
 test('reduced-motion visitors get readable content without reveals or a progress indicator', () => {
   withBrowser({ reduce: true }, env => {
-    initMotion();
+    env.init();
     env.flushFrames();
     assert.equal(env.animations.length, 0);
     assert.equal(env.observers.length, 0);
@@ -184,12 +188,13 @@ test('reduced-motion visitors get readable content without reveals or a progress
 
 test('changing to reduced motion cancels active effects and restores the normal page', () => {
   withBrowser({}, env => {
-    initMotion();
+    env.init();
     env.flushFrames();
     env.observers[0].intersect(env.target);
     assert.equal(env.animations.length, 1);
-    assert.equal(env.readable(), false, 'the stub must represent an active reveal effect');
-    assert.equal(env.progressElements().length, 1);
+    assert.equal(env.isAnimating(), true, 'the stub must represent an active reveal effect');
+    assert.equal(env.readable(), true, 'a short entrance never starts fully transparent');
+    assert.equal(env.progressElements().length, 0);
     env.preference.matches = true;
     env.preference.emit('change');
     env.flushFrames();
@@ -203,10 +208,10 @@ test('changing to reduced motion cancels active effects and restores the normal 
   });
 });
 
-for (const unavailable of ['intersection', 'waapi']) {
+for (const unavailable of ['intersection', 'animation']) {
   test(`missing ${unavailable} support leaves page content readable`, () => {
     withBrowser({ [unavailable]: false }, env => {
-      initMotion();
+      env.init();
       env.flushFrames();
       assert.equal(env.animations.length, 0);
       assert.equal(env.observers.length, 0);
@@ -220,7 +225,7 @@ for (const unavailable of ['intersection', 'waapi']) {
 
 test('keyboard focus cancels a reveal on the focused content immediately', () => {
   withBrowser({}, env => {
-    initMotion();
+    env.init();
     env.flushFrames();
     env.observers[0].intersect(env.target);
     env.document.activeElement = env.target;
@@ -233,7 +238,7 @@ test('keyboard focus cancels a reveal on the focused content immediately', () =>
 
 test('printing cancels active reveal effects before content is captured', () => {
   withBrowser({}, env => {
-    initMotion();
+    env.init();
     env.flushFrames();
     env.observers[0].intersect(env.target);
     env.window.emit('beforeprint');
@@ -243,16 +248,79 @@ test('printing cancels active reveal effects before content is captured', () => 
   });
 });
 
-test('an anchor jump makes its animated containing block readable immediately', () => {
+test('completing a browser entrance clears its temporary effect and stays settled', () => {
   withBrowser({}, env => {
-    initMotion();
+    env.init();
     env.flushFrames();
     env.observers[0].intersect(env.target);
-    assert.equal(env.readable(), false);
+    assert.equal(env.animations[0].playing, true);
+    env.animations[0].onfinish();
+    assert.equal(env.animations[0].cancelled, true);
+    assert.equal(env.target.dataset.motionState, 'revealed');
+    env.observers[0].intersect(env.target);
+    assert.equal(env.animations.length, 1, 'revealed content must not restart');
+    env.flushFrames();
+  });
+});
+
+test('hiding the document clears active browser entrances immediately', () => {
+  withBrowser({}, env => {
+    env.init();
+    env.flushFrames();
+    env.observers[0].intersect(env.target);
+    env.document.hidden = true;
+    env.document.emit('visibilitychange');
+    assert.equal(env.animations[0].cancelled, true);
+    assert.equal(env.readable(), true);
+    env.flushFrames();
+  });
+});
+
+test('an animation startup failure keeps its content visible', () => {
+  withBrowser({ animationThrows: true }, env => {
+    env.init();
+    env.flushFrames();
+    env.observers[0].intersect(env.target);
+    assert.equal(env.animations.length, 0);
+    assert.equal(env.target.dataset.motionState, 'revealed');
+    assert.equal(env.readable(), true);
+    assert.equal(env.target.style.opacity, undefined);
+  });
+});
+
+test('an anchor jump makes its animated containing block readable immediately', () => {
+  withBrowser({}, env => {
+    env.init();
+    env.flushFrames();
+    env.observers[0].intersect(env.target);
+    assert.equal(env.isAnimating(), true);
     env.window.location.hash = `#${env.anchor.id}`;
     env.window.emit('hashchange');
     assert.equal(env.animations[0].cancelled, true);
     assert.equal(env.target.dataset.motionState, 'revealed');
     assert.equal(env.readable(), true);
+  });
+});
+
+test('first-screen content is immediately visible without an entrance', () => {
+  withBrowser({ aboveFold: true }, env => {
+    env.init();
+    assert.equal(env.target.dataset.motionState, 'revealed');
+    env.observers[0].intersect(env.target);
+    assert.equal(env.animations.length, 0);
+    assert.equal(env.frames.size, 0);
+    assert.equal(env.readable(), true);
+  });
+});
+
+test('scrolling schedules no JavaScript paints or document-height measurements', () => {
+  withBrowser({}, env => {
+    Object.defineProperty(env.root, 'scrollHeight', { get() { throw new Error('scrollHeight measured during scroll'); } });
+    env.init();
+    assert.equal(env.window.listenerCount('scroll'), 0);
+    for (let i = 0; i < 20; i++) env.window.emit('scroll');
+    assert.equal(env.frames.size, 0);
+    assert.equal(env.animations.length, 0);
+    assert.equal(env.progressElements().length, 0);
   });
 });

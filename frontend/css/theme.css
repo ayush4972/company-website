@@ -36,14 +36,15 @@ body { background: var(--page-bg); color: var(--text); }
 .announcement { background: #e3f1ff; color: #285c96; border-bottom: 1px solid #d4e7fa; }
 .announcement a:hover { color: #164b8b; }
 .site-header,.motion-enabled .site-header.is-scrolled {
-  background: #ffffffed;
+  background: #ffffff;
+  backdrop-filter: none;
   border-color: #d8e6f5;
   box-shadow: 0 8px 30px #3677bc08;
 }
 .desktop-nav>a { color: #345574; }
 .desktop-nav>a:hover,.desktop-nav>a[aria-current] { color: #1d5fbf; }
 .desktop-nav>a::after { background: #579beb; }
-.brand-logo { background: #fff; box-shadow: 0 0 0 1px #d8e8f744; }
+.brand-logo { background: transparent; box-shadow: none; border-radius: 0; }
 .menu-toggle { background: #eff7ff; color: #235889; border-color: #c4d9ef; }
 .mobile-nav { background: #f5faff; border-color: var(--line); }
 .mobile-nav a { color: #234e7a; border-color: var(--line); }
@@ -215,7 +216,7 @@ body { background: var(--page-bg); color: var(--text); }
 .product-editorial-image { background: #fff; }
 .comparison-label,.case-pair>div>span { background: #f3f9ff; color: #153b64; }
 .comparison-divider>span { background: #f6fbff; color: #215ab1; }
-.case-page-nav { background: #f6fbfff5; border-color: #bfd6ee; }
+.case-page-nav { background: #f6fbff; border-color: #bfd6ee; backdrop-filter: none; }
 .case-page-nav a { color: #526b88; }
 .case-page-nav a:hover,.case-page-nav a[aria-current=location] { color: #1d5fbf; }
 .case-page-nav a::after { background: #4b91d9; }
