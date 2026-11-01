@@ -3,6 +3,7 @@ import { createReadStream, existsSync } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { emailConfiguration } from '../backend/mailer.js';
 
 const project = fileURLToPath(new URL('../', import.meta.url));
 const publicRoot = path.join(project, 'frontend');
@@ -14,6 +15,13 @@ function json(response, status, body) {
   response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
   response.end(JSON.stringify(body));
 }
+async function notFound(request, response) {
+  const file = path.join(publicRoot, '404.html');
+  const info = await stat(file);
+  response.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': info.size, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
+  if (request.method === 'HEAD') return response.end();
+  createReadStream(file).on('error', () => response.destroy()).pipe(response);
+}
 const server = http.createServer(async (request, response) => {
   try {
     const url = new URL(request.url, `http://127.0.0.1:${port}`);
@@ -24,7 +32,7 @@ const server = http.createServer(async (request, response) => {
         response.setHeader('Allow', 'POST');
         return json(response, 405, { error: 'Method not allowed.' });
       }
-      if (!String(request.headers['content-type'] || '').includes('application/json')) return json(response, 415, { error: 'Please send JSON.' });
+      if (!/^application\/json(?:\s*;|\s*$)/i.test(String(request.headers['content-type'] || ''))) return json(response, 415, { error: 'Please send JSON.' });
       const chunks = [];
       let received = 0;
       for await (const chunk of request) {
@@ -35,9 +43,6 @@ const server = http.createServer(async (request, response) => {
       try { request.body = JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}'); }
       catch { return json(response, 400, { error: 'The request contains invalid JSON.' }); }
       if (!request.body || typeof request.body !== 'object' || Array.isArray(request.body)) return json(response, 400, { error: 'Please send a JSON object.' });
-      const { name, email, message } = request.body;
-      if (!name || !email || (endpoint === '/api/contact' && !message)) return json(response, 400, { error: 'Please complete all required fields.' });
-      if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_your_resend_api_key_here') return json(response, 503, { error: 'Email is not configured for this local preview. Please email info@trasiertech.com.np directly. Your form has been kept so you can copy it.' });
       response.status = code => { response.statusCode = code; return response; };
       response.json = body => { response.setHeader('Content-Type', 'application/json; charset=utf-8'); response.end(JSON.stringify(body)); };
       const { default: handler } = await import(pathToFileURL(path.join(project, `${endpoint.slice(1)}.js`)).href);
@@ -51,9 +56,9 @@ const server = http.createServer(async (request, response) => {
     let file = path.resolve(publicRoot, `.${pathname.replaceAll('\\', '/')}`);
     if (file !== publicRoot && !file.startsWith(publicRoot + path.sep)) return json(response, 403, { error: 'Forbidden.' });
     let info;
-    try { info = await stat(file); } catch { return json(response, 404, { error: 'Page not found.' }); }
-    if (info.isDirectory()) { file = path.join(file, 'index.html'); try { info = await stat(file); } catch { return json(response, 404, { error: 'Page not found.' }); } }
-    if (!info.isFile()) return json(response, 404, { error: 'Page not found.' });
+    try { info = await stat(file); } catch { return notFound(request, response); }
+    if (info.isDirectory()) { file = path.join(file, 'index.html'); try { info = await stat(file); } catch { return notFound(request, response); } }
+    if (!info.isFile()) return notFound(request, response);
     response.writeHead(200, { 'Content-Type': mimeTypes[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Content-Length': info.size, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
     if (request.method === 'HEAD') { response.end(); return; }
     const stream = createReadStream(file);
@@ -71,6 +76,7 @@ server.on('error', error => {
 });
 server.listen(port, '127.0.0.1', () => {
   console.log(`Trasier local preview: http://localhost:${port}/`);
-  console.log(process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 're_your_resend_api_key_here' ? 'Email API enabled. Submitting forms sends real email.' : 'Email is not configured. Forms show a helpful fallback without sending.');
+  try { emailConfiguration(); console.log('Email settings are present. Submitting forms sends real email.'); }
+  catch { console.log('Email is not configured. Forms show a helpful fallback without sending.'); }
   console.log('Press Ctrl+C to stop.');
 });

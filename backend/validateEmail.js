@@ -8,6 +8,18 @@ const EMAIL_RE =
 
 const domainMxCache = new Map();
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes, keeps repeat submissions from re-querying DNS
+const MAX_CACHED_DOMAINS = 256;
+const NO_RECORD_CODES = new Set(['ENODATA', 'ENOTFOUND']);
+
+async function recordsOrMissing(resolve, domain) {
+    try { return await resolve(domain); }
+    catch (error) {
+        if (NO_RECORD_CODES.has(error?.code)) return [];
+        // A timeout, refusal, or resolver failure says nothing about the address.
+        // Let the form show a temporary-service error, without poisoning the cache.
+        throw error;
+    }
+}
 
 /**
  * Confirms an email is well-formed AND that its domain has mail servers
@@ -22,35 +34,38 @@ export async function isValidEmail(email) {
 
     const domain = email.slice(email.lastIndexOf('@') + 1).toLowerCase();
 
+    for (const [name, entry] of domainMxCache) {
+        if (Date.now() - entry.at >= CACHE_TTL_MS) domainMxCache.delete(name);
+    }
+
     const cached = domainMxCache.get(domain);
     if (cached && Date.now() - cached.at < CACHE_TTL_MS) {
         return cached.ok;
     }
 
-    let ok = false;
-    try {
-        const mx = await dns.resolveMx(domain);
-        ok = Array.isArray(mx) && mx.length > 0;
-    } catch {
-        ok = false;
+    const mx = await recordsOrMissing(domain => dns.resolveMx(domain), domain);
+    // RFC 7505's explicit null MX means the domain does not accept email.
+    if (Array.isArray(mx) && mx.length === 1 && !mx[0].exchange) {
+        if (domainMxCache.size >= MAX_CACHED_DOMAINS) domainMxCache.delete(domainMxCache.keys().next().value);
+        domainMxCache.set(domain, { ok: false, at: Date.now() });
+        return false;
     }
+    let ok = Array.isArray(mx) && mx.length > 0;
 
     if (!ok) {
         // No MX record: per RFC 5321, mail can still be delivered to the
         // domain's own A/AAAA record. Try that before giving up.
-        try {
-            await dns.resolve4(domain);
-            ok = true;
-        } catch {
+        let temporaryError;
+        for (const resolve of [domain => dns.resolve4(domain), domain => dns.resolve6(domain)]) {
             try {
-                await dns.resolve6(domain);
-                ok = true;
-            } catch {
-                ok = false;
-            }
+                const addresses = await recordsOrMissing(resolve, domain);
+                if (Array.isArray(addresses) && addresses.length > 0) { ok = true; break; }
+            } catch (error) { temporaryError ||= error; }
         }
+        if (!ok && temporaryError) throw temporaryError;
     }
 
+    if (domainMxCache.size >= MAX_CACHED_DOMAINS) domainMxCache.delete(domainMxCache.keys().next().value);
     domainMxCache.set(domain, { ok, at: Date.now() });
     return ok;
 }
