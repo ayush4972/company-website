@@ -2,7 +2,7 @@ import { isValidEmail } from './validateEmail.js';
 import { readJsonBody, isHoneypot, validateSubmission, SubmissionError } from './submissionValidation.js';
 import { submissionKey, submissionLimiter } from './submissionProtection.js';
 
-const FALLBACK = 'Please email info@trasiertech.com.np directly. Your form has been kept.';
+const FALLBACK = 'Please email techtrasier@gmail.com directly. Your form has been kept.';
 
 export function createSubmissionHandler(kind, send, { validateEmail = isValidEmail, limiter = submissionLimiter, logError = console.error } = {}) {
     return async function handler(req, res) {
@@ -18,7 +18,7 @@ export function createSubmissionHandler(kind, send, { validateEmail = isValidEma
             const rate = limiter.check(req);
             if (!rate.allowed) {
                 res.setHeader('Retry-After', String(rate.retryAfter));
-                return res.status(429).json({ error: 'Too many attempts. Please wait a few minutes, or email info@trasiertech.com.np directly. Your form has been kept.' });
+                return res.status(429).json({ error: 'Too many attempts. Please wait a few minutes, or email techtrasier@gmail.com directly. Your form has been kept.' });
             }
             submission = validateSubmission(kind, body);
             if (!(await validateEmail(submission.payload.email))) throw new SubmissionError('Please provide a valid email address with a working mail domain.', 400, 'email');

@@ -46,7 +46,7 @@ for (const file of files) {
     if (/data-form-fields/.test(contents)) return match;
     const body = contents.replace(/<noscript>[\s\S]*?<\/noscript>/gi, '');
     const label = type === 'contact' ? 'Your enquiry details' : 'Your talent-list introduction';
-    return `<form id="${type}-form" method="post" action="/api/${type}">\n<p class="form-fallback" data-form-fallback>Enable JavaScript to use this form, or email <a href="mailto:info@trasiertech.com.np">info@trasiertech.com.np</a> directly.</p>\n<fieldset class="form-fields" data-form-fields disabled><legend class="visually-hidden">${label}</legend>\n<div class="form-honeypot" aria-hidden="true"><label for="${type}-website">Leave this field empty</label><input id="${type}-website" name="website" type="text" autocomplete="off" tabindex="-1" maxlength="300"></div>${body}\n</fieldset></form>`;
+    return `<form id="${type}-form" method="post" action="/api/${type}">\n<p class="form-fallback" data-form-fallback>Enable JavaScript to use this form, or email <a href="mailto:techtrasier@gmail.com">techtrasier@gmail.com</a> directly.</p>\n<fieldset class="form-fields" data-form-fields disabled><legend class="visually-hidden">${label}</legend>\n<div class="form-honeypot" aria-hidden="true"><label for="${type}-website">Leave this field empty</label><input id="${type}-website" name="website" type="text" autocomplete="off" tabindex="-1" maxlength="300"></div>${body}\n</fieldset></form>`;
   });
   html = html.replace(/^[\t ]+$/gm, '');
   if (html !== original) { await writeFile(file, html); changed++; }

@@ -48,7 +48,8 @@ test('installed Resend SDK serializes the verified sender, escaped content, and 
     assert.equal(calls[0].headers.get('idempotency-key'), 'website/contact/qa-only');
     assert.equal(calls[1].headers.get('idempotency-key'), 'website/careers/qa-only');
     assert.equal(calls[0].body.from, 'QA Test <qa@example.com>');
-    assert.equal(calls[0].body.to, 'info@trasiertech.com.np');
+    assert.equal(calls[0].body.to, 'techtrasier@gmail.com');
+    assert.equal(calls[1].body.to, 'techtrasier@gmail.com');
     assert.equal(calls[0].body.reply_to, 'visitor@example.com');
     assert.match(calls[0].body.html, /&lt;b&gt;QA&lt;\/b&gt;/);
     assert.match(calls[0].body.html, /&lt;script&gt;not HTML&lt;\/script&gt;<br \/>Second line/);

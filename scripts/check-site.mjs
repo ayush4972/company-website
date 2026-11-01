@@ -34,7 +34,7 @@ for (const [file, html] of htmlByFile) {
   for (const match of html.matchAll(/<form\b([^>]*\bid=["'](?:contact|careers)-form["'][^>]*)>([\s\S]*?)<\/form>/g)) {
     if (!/\bmethod=["']post["']/.test(match[1])) errors.push(`${label}: enquiry form must not fall back to GET`);
     if (!/<fieldset\b[^>]*\bdata-form-fields[^>]*\bdisabled/.test(match[2])) errors.push(`${label}: form must remain disabled until its submit handler is ready`);
-    if (!/data-form-fallback[\s\S]*mailto:info@trasiertech\.com\.np[\s\S]*<fieldset/.test(match[2])) errors.push(`${label}: missing usable email fallback outside disabled fields`);
+    if (!/data-form-fallback[\s\S]*mailto:techtrasier@gmail\.com[\s\S]*<fieldset/.test(match[2])) errors.push(`${label}: missing usable email fallback outside disabled fields`);
   }
   if (/cdn\.tailwindcss|gsap\.min|js\/shader\.js/.test(html)) errors.push(`${label}: legacy runtime dependency remains`);
   for (const img of html.matchAll(/<img\b[^>]*>/g)) if (!/\balt=["'][^"']*["']/.test(img[0])) errors.push(`${label}: image without alt attribute`);

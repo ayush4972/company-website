@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { deliverEmail } from './deliverEmail.js';
 
-const TO = 'info@trasiertech.com.np';
+const TO = 'techtrasier@gmail.com';
 
 function configurationError() {
     const error = new Error('Configure RESEND_API_KEY and a verified company sender in RESEND_FROM.');

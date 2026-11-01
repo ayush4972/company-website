@@ -108,7 +108,7 @@ test('uses field errors for rejected mail domains and a safe fallback for valida
     const unavailable = harness('contact', { validateEmail: async () => { throw new Error('private details'); } });
     const res = await unavailable.call(request());
     assert.equal(res.code, 503);
-    assert.match(res.body.error, /info@trasiertech\.com\.np/);
+    assert.match(res.body.error, /techtrasier@gmail\.com/);
     assert.ok(!JSON.stringify(unavailable.logs).includes('private details'));
 });
 
@@ -170,7 +170,7 @@ test('configuration/provider errors never return success or leak details', async
         await handler(request(), res);
         assert.equal(res.code, expected);
         assert.equal(res.body.ok, undefined);
-        assert.match(res.body.error, /info@trasiertech\.com\.np/);
+        assert.match(res.body.error, /techtrasier@gmail\.com/);
         assert.ok(!JSON.stringify([res.body, logs]).includes('secret key'));
     }
 });

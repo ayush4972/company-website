@@ -1,7 +1,7 @@
 /* Retry identities are kept in memory only; personal form content is never persisted. */
 function uuid() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
-  if (!globalThis.crypto?.getRandomValues) throw new Error('Secure form submission is unavailable. Please email info@trasiertech.com.np.');
+  if (!globalThis.crypto?.getRandomValues) throw new Error('Secure form submission is unavailable. Please email techtrasier@gmail.com.');
   const bytes = globalThis.crypto.getRandomValues(new Uint8Array(16));
   bytes[6] = (bytes[6] & 0x0f) | 0x40;
   bytes[8] = (bytes[8] & 0x3f) | 0x80;

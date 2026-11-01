@@ -2,7 +2,7 @@
 
 The root `api/` routes are Vercel functions. `backend/` contains the shared JSON
 validation, attachment checks, warm-instance abuse controls, and Resend delivery.
-Both forms send to `info@trasiertech.com.np`, with the visitor's address in Reply-To.
+Both forms send to `techtrasier@gmail.com`, with the visitor's address in Reply-To.
 
 ## Configure email
 

@@ -89,13 +89,13 @@ import { initDeferredCompanyScene } from './company-scene-loader.js';
       const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) {
-        if ([404, 405, 501].includes(response.status)) throw new Error('The email service is unavailable in this preview. Please email info@trasiertech.com.np directly; your form has been kept so you can copy it.');
-        throw new Error(result.error || 'Your message could not be sent. Please try again or email info@trasiertech.com.np.');
+        if ([404, 405, 501].includes(response.status)) throw new Error('The email service is unavailable in this preview. Please email techtrasier@gmail.com directly; your form has been kept so you can copy it.');
+        throw new Error(result.error || 'Your message could not be sent. Please try again or email techtrasier@gmail.com.');
       }
-      if (result.ok !== true) throw new Error('The email service did not confirm delivery. Please try again or email info@trasiertech.com.np.');
+      if (result.ok !== true) throw new Error('The email service did not confirm delivery. Please try again or email techtrasier@gmail.com.');
     } catch (error) {
-      if (error.name === 'AbortError') throw new Error('The request timed out. Please try again or email info@trasiertech.com.np.');
-      if (error instanceof TypeError) throw new Error('We could not connect. Check your connection, or email info@trasiertech.com.np. Your form has been kept.');
+      if (error.name === 'AbortError') throw new Error('The request timed out. Please try again or email techtrasier@gmail.com.');
+      if (error instanceof TypeError) throw new Error('We could not connect. Check your connection, or email techtrasier@gmail.com. Your form has been kept.');
       throw error;
     } finally { clearTimeout(timeout); }
   }
