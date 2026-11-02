@@ -94,7 +94,7 @@
   --control-cap: #fff;
   border-color: #ffffff66;
 }
-.button.button:focus-visible { outline: 3px solid #4ac4ff; outline-offset: 4px; translate: none; transform: none; }
+.button.button:focus-visible { outline: 3px solid var(--focus-color, #174f9f); outline-offset: 4px; translate: none; transform: none; }
 .button.button:disabled { box-shadow: none; }
 .button.button:disabled::before { opacity: 0; }
 .button.button:not(:disabled):active { box-shadow: 0 1px 0 #153c7112; }

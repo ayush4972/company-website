@@ -206,7 +206,7 @@ export function initCompanyScene() {
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = .9;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(32, 1, .1, 40);
     camera.position.set(4.3, 3.15, 7.8);

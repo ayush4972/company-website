@@ -25,7 +25,17 @@ for (const [file, html] of htmlByFile) {
   if (!/<main\b[^>]*\bid=["']main-content["']/.test(html)) errors.push(`${label}: missing main landmark/skip target`);
   if (!/name=["']description["']/.test(html)) errors.push(`${label}: missing meta description`);
   if (!/name=["']viewport["']/.test(html)) errors.push(`${label}: missing viewport`);
-  if (!/data-site-header/.test(html) || !/data-site-footer/.test(html)) errors.push(`${label}: missing shared navigation shell`);
+  if (!/<header\b[^>]*\bdata-site-header/.test(html) || !/<footer\b[^>]*\bdata-site-footer/.test(html)) errors.push(`${label}: navigation must be present in the delivered HTML`);
+  if (!/<details\b[^>]*class=["']mobile-menu["']/.test(html)) errors.push(`${label}: missing native mobile navigation`);
+  const sharedScript = [...html.matchAll(/<script\b[^>]*\bsrc=["'][^"']*\/js\/site\.js["'][^>]*>/g)].map(match => match[0]);
+  if (sharedScript.length !== 1 || !/\btype=["']module["']/.test(sharedScript[0])) errors.push(`${label}: expected one shared module script`);
+  if ((html.match(/href=["']\/css\/fonts\.css["']/g) || []).length !== 1) errors.push(`${label}: expected one local font stylesheet`);
+  if (/<link\b[^>]*(?:fonts\.googleapis\.com|fonts\.gstatic\.com)/.test(html)) errors.push(`${label}: external font loading remains`);
+  for (const match of html.matchAll(/<form\b([^>]*\bid=["'](?:contact|careers)-form["'][^>]*)>([\s\S]*?)<\/form>/g)) {
+    if (!/\bmethod=["']post["']/.test(match[1])) errors.push(`${label}: enquiry form must not fall back to GET`);
+    if (!/<fieldset\b[^>]*\bdata-form-fields[^>]*\bdisabled/.test(match[2])) errors.push(`${label}: form must remain disabled until its submit handler is ready`);
+    if (!/data-form-fallback[\s\S]*mailto:techtrasier@gmail\.com[\s\S]*<fieldset/.test(match[2])) errors.push(`${label}: missing usable email fallback outside disabled fields`);
+  }
   if (/cdn\.tailwindcss|gsap\.min|js\/shader\.js/.test(html)) errors.push(`${label}: legacy runtime dependency remains`);
   for (const img of html.matchAll(/<img\b[^>]*>/g)) if (!/\balt=["'][^"']*["']/.test(img[0])) errors.push(`${label}: image without alt attribute`);
   for (const match of html.matchAll(/\b(?:href|src)=["']([^"']*)["']/g)) {

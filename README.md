@@ -1,27 +1,37 @@
 # Trasier Technology website
 
-A responsive, buildless HTML/CSS/JavaScript site for Trasier Technology, Kathmandu, Nepal. The 2026 redesign adapts Open Design’s editorial token foundation into an airy blue-and-white design system: white backgrounds, powder-blue surfaces, navy text, and clear blue accents drawn from the supplied Trasier owl logo.
+A responsive HTML/CSS/JavaScript site for Trasier Technology, Kathmandu, Nepal. A small Node preparation step renders shared navigation into the static pages. The 2026 redesign adapts Open Design’s editorial token foundation into an airy blue-and-white design system: white backgrounds, powder-blue surfaces, navy text, and clear blue accents drawn from the supplied Trasier owl logo.
 
 ## Run locally
 
-Requires Node.js 22.15+ (Node.js 24 recommended).
+Requires Node.js 24.x, pinned in `package.json` for local development and Vercel functions.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open http://localhost:8000/. No build step or account is needed. Stop the server with Ctrl+C. If the port is occupied, stop the old preview or set the `PORT` environment variable before running the command.
+Open http://localhost:8000/. `npm run dev` prepares the static pages automatically; no hosting account is needed. Stop the server with Ctrl+C. If the port is occupied, stop the old preview or set the `PORT` environment variable before running the command.
 
-The header and footer use a transparent PNG version of the supplied Trasier owl logo, without a background tile. The original JPEG is retained as the source. Pages and interactions work without an email key. Styling and icons are local; the Manrope font uses Google Fonts with a system-font fallback.
+The header and footer use small, lossless WebP exports of the supplied Trasier owl logo. The full-size transparent PNG and original JPEG are retained. Pages work without an email key. Styling, icons, and licensed variable Manrope fonts are served locally; Nepali text retains the system-font fallback. Static header/footer links and the native mobile menu work without JavaScript.
 
 ## Email forms
 
 `npm run dev` serves `frontend/` and adapts the existing Vercel `/api/contact` and `/api/careers` handlers for local use. Without a configured key, form submission displays a useful email fallback and keeps the visitor’s entered text.
 
-To enable real email, copy `.env.example` to `.env` and set `RESEND_API_KEY`. Never commit the key. Restart the server after changing it. Submitting a configured form sends real email. Careers accepts an optional PDF/DOC/DOCX CV up to 3 MB. Production still uses the existing Vercel functions and `vercel.json` output directory.
+To enable real email, copy `.env.example` to `.env` and set `RESEND_API_KEY` and `RESEND_FROM`. The sender must belong to a domain verified in the same Resend account; the restricted `resend.dev` test sender is rejected. Never commit the key. Restart after changing configuration. Submitting a configured form sends real email. Careers accepts an optional original PDF/DOC/DOCX CV up to 3 MiB. The server validates fields/attachments and applies a honeypot, bounded per-instance request limits, and provider idempotency. See `backend/README.md` for operational limits.
 
-The shared Resend test sender remains unchanged; production should use a verified sender domain. See `backend/README.md`.
+Forms remain disabled until their JSON handler is attached and show a working email link otherwise. Pending submissions lock their fields; errors keep entered values. Unchanged retries reuse a submission ID, including the same CV contents, to avoid duplicate provider sends.
+
+## Prepare and deploy
+
+```sh
+npm run build
+```
+
+This idempotently prepares the checked-in HTML shell, local font links, and form fallbacks. `vercel.json` runs it before serving `frontend/`; root `api/` functions remain included. Keep Vercel's Root Directory at the repository root. Configure both email variables in the appropriate Vercel environment before relying on form delivery.
+
+To regenerate logo exports and the SVG-authored 1200×630 social card from the existing artwork, run `npm run assets`. Sharp is a development-only export dependency. Generated images are committed; the production HTML build does not need to regenerate them. The custom `404.html` preserves an HTTP 404 and is deliberately excluded from the sitemap.
 
 ## Checks
 
@@ -30,7 +40,7 @@ npm run check
 npm test
 ```
 
-The site check verifies local links/assets, metadata, main landmarks, unique page headings/IDs, image alt attributes, and removal of the previous CDN JavaScript dependencies. Email tests verify that provider rejections cannot be displayed as successful delivery. No test sends email.
+The site check verifies local links/assets, metadata, landmarks, unique headings/IDs, alt text, delivered navigation, local font loading, and safe disabled form fallbacks. Tests cover motion lifecycle, deferred 3D, retry identity, field/attachment validation, request limits, and actual SDK serialization with provider/DNS calls mocked. No test sends email.
 
 ## Structure
 
@@ -51,7 +61,8 @@ The site check verifies local links/assets, metadata, main landmarks, unique pag
 - `frontend/css/case-study.css`, `frontend/js/case-study.js` — case-study section navigation, accessible audience tabs, and five-location road-photo comparison.
 - `frontend/css/vendor/open-design-editorial.css` — Open Design editorial tokens.
 - `api/`, `backend/` — existing serverless email endpoints and shared helpers.
-- `scripts/` — dependency-free local server and site checks.
+- `scripts/` — static-page preparation, local server, site checks, and optional brand-asset exports.
+- `frontend/fonts/`, `frontend/css/fonts.css` — self-hosted variable Manrope subsets and their OFL license.
 - `DESIGN.md` — design direction and component contract.
 - `docs/sadak-sujhav-sources.md` — web research, source links, coverage caveats.
 - `docs/third-party/` — Open Design, Hyperframes, and Three.js attribution, pinned sources, and licenses.
@@ -64,4 +75,4 @@ All existing public URLs, including the four policy/account pages, are preserved
 
 [Hyperframes](https://github.com/heygen-com/hyperframes) is an HTML-to-video framework with reusable seekable scene primitives. The retained native scene code adapts its orbital and camera math. The source adaptation is `frontend/js/vendor/hyperframes-orbit.js`; its Apache license is distributed alongside the module.
 
-The current homepage uses a locally vendored, pinned [Three.js](https://threejs.org/) renderer for a company sculpture. It introduces Trasier's products, intelligence, and connected-systems capabilities before the selected-work section reveals Sadak Sujhav. The scene has semantic controls, a static vector fallback, reduced-motion support, and no continuous idle render loop. Its finite mode transitions continue during scrolling; rendering stops when settled or offscreen. The headline and background use browser-run transform animations. Other pages do not load the renderer.
+The current homepage uses a locally vendored, pinned [Three.js](https://threejs.org/) renderer for a company sculpture. It introduces Trasier's products, intelligence, and connected-systems capabilities before the selected-work section reveals Sadak Sujhav. On small screens, reduced motion, or Save-Data, a light capability module keeps the choices useful with the static SVG and does not request Three.js. Eligible desktop views defer the renderer until it approaches view and the browser is idle. Its finite transitions settle and rendering stops offscreen; other pages do not load it.

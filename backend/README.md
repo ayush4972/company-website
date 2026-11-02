@@ -1,26 +1,99 @@
 # Backend
 
-Email sending for the site, via [Resend](https://resend.com).
+The root `api/` routes are Vercel functions. `backend/` contains the shared JSON
+validation, attachment checks, warm-instance abuse controls, and Resend delivery.
+Both forms send to `techtrasier@gmail.com`, with the visitor's address in Reply-To.
 
-- `mailer.js` — shared logic for building and sending emails (contact form + careers applications).
-- Actual HTTP endpoints live in [`/api`](../api) at the project root, as Vercel serverless functions. They import from this file. Vercel auto-deploys anything in `/api` as a function, regardless of the static site's output directory.
+## Configure email
 
-## Endpoints
+1. Install dependencies at the project root with `npm ci`.
+2. Add both `RESEND_API_KEY` and `RESEND_FROM` to the Vercel environments that need
+   email (Production and, if wanted, Preview). Locally, copy `.env.example` to
+   `.env`, fill them in, and run `npm run dev`. Never commit credentials.
+3. `RESEND_FROM` must be an address on a domain verified in the same Resend account.
+   A plain address or `Company name <address>` is accepted. No sender is invented
+   or assumed verified by the code. The shared `resend.dev` test domain is rejected.
+4. Redeploy after changing production environment values. Perform a separately
+   authorized delivery check and confirm receipt in the company inbox.
 
-- `POST /api/contact` — body `{ name, email, message }`. Used by the contact form on the homepage and the dedicated Contact page.
-- `POST /api/careers` — body `{ name, email, expertise, filename, fileBase64 }`. `filename`/`fileBase64` are optional (CV attachment, base64-encoded, no data URI prefix). Used by the Careers page's CV modal.
+Missing/invalid configuration returns HTTP 503 with a direct-email fallback;
+provider rejection returns 502. The browser preserves the visitor's entered data.
+Logs contain a short error category, not message bodies, attachments, keys, or IPs.
+An accepted provider message ID confirms provider acceptance, not final inbox delivery.
 
-Both send an email to `info@trasiertech.com.np` with the submitter's email set as `Reply-To`, so replying goes straight to them.
+## JSON API contract
 
-## Setup
+Send `Content-Type: application/json` and an object, using POST:
 
-1. `npm install` at the project root (installs the `resend` package for both local dev and Vercel's build). Run `npm run dev` to start the local site and API.
-2. Set the `RESEND_API_KEY` environment variable:
-   - **Locally**: copy `.env.example` to `.env` at the project root and fill in your key. `npm run dev` reads this automatically. Production uses Vercel environment variables.
-   - **Production (Vercel)**: add `RESEND_API_KEY` under Project Settings → Environment Variables in the Vercel dashboard. Never commit the key to the repo.
+- `/api/contact`: `{ name, email, message, submissionId, website }`.
+- `/api/careers`: `{ name, email, expertise, submissionId, website, filename?, fileBase64? }`.
 
-## Notes / limits
+`submissionId` is a UUID. Keep the same ID when retrying the same form contents;
+generate a new ID when the payload changes or a completed form starts over.
+`website` is an empty honeypot field; a filled field is silently discarded without
+DNS or email work. Omission is treated as empty, but the documented client sends it.
 
-- The sender address is `onboarding@resend.dev`, Resend's shared test domain. It works without any setup, but Resend's own docs say it's for testing, not production, and delivery to arbitrary recipients isn't guaranteed long-term. For reliable production delivery, verify a real domain (e.g. a subdomain of trasier.tech) in the Resend dashboard and update `FROM` in `mailer.js`.
-- CV uploads are capped at 3MB client- and server-side, comfortably under Vercel's serverless function request body limit.
-- There's no rate limiting or spam protection on either endpoint yet. Worth adding (e.g. a honeypot field, or Vercel's rate limiting) if abuse becomes a problem.
+Required fields must be strings, are trimmed, and reject unsupported control
+characters or values beyond their limits. Name/email are limited to 200 characters;
+contact message to 5,200 (including an optional service prefix); careers background
+to 5,000. Careers background is required server-side as well as in the UI.
+Email syntax and mail-domain records are checked; a null MX is rejected and the
+DNS-result cache expires after ten minutes and holds at most 256 domains.
+Temporary DNS errors return a service error rather than labelling the visitor's
+address invalid, and are not negatively cached.
+
+Validation errors return 400 with `{ error, field? }`; non-JSON requests return
+415; oversized CVs return 413; successful provider acceptance returns `{ ok: true }`.
+All responses are marked `Cache-Control: no-store`.
+
+## CV validation
+
+CVs are optional and limited to 3 MiB. If supplied, filename and base64 data must
+both be present. Data must be nonempty canonical base64, without a data-URI prefix
+or whitespace. The original filename is bounded and rejects paths/control characters.
+Renaming a file to `.pdf`, `.doc`, or `.docx` is insufficient:
+
+- PDF checks include the version header, indirect objects, final EOF, and a bounded
+  cross-reference offset (traditional table or stream).
+- DOC checks include the compound-file header/allocation chain, Word/Table streams,
+  and the Word File Information Block identifier, including mini-stream support.
+- DOCX checks include the ZIP central directory, required Word content types and
+  document XML, CRC/length consistency, and bounded XML expansion (2 MiB per XML).
+  Encrypted or malformed ZIPs are rejected; at most 1,024 ZIP entries are inspected.
+
+These checks establish file-type plausibility and limit parser work. They are not
+a malware scanner or a full PDF/Office validator. Treat incoming attachments as
+untrusted and use the inbox provider's attachment scanning/normal staff precautions.
+
+## Abuse limits and duplicate protection
+
+Each warm process allows eight non-honeypot JSON attempts per IP per ten minutes,
+before validation/DNS/email work. On Vercel, only its `x-vercel-forwarded-for`
+header is trusted (`VERCEL=1`); local development ignores forwarded headers and
+uses the socket address. IPs are keyed through a random per-process HMAC salt;
+only opaque keys/counters remain in memory. The map holds at most 1,024 buckets;
+overflow shares a bounded bucket rather than evicting an existing limit. Blocked
+requests return 429 and `Retry-After`, while retaining the form.
+
+This is **not a distributed rate limit**: cold starts, multiple regions, and
+separate Vercel function instances have independent counters. Add Vercel Firewall
+rate limits or a shared durable limiter if traffic/abuse warrants it. The honeypot
+also cannot stop a bot that knows to leave it empty.
+
+Provider idempotency uses a SHA-256 hash of the form type, normalized payload, and
+stable submission UUID. Keys contain no names, email addresses, IPs, attachment
+content, or raw UUID. The same payload/ID can safely retry through Resend's
+24-hour deduplication window. A changed payload or ID is a new submission.
+
+## Verification
+
+`node --test tests/form-submission.test.mjs tests/email-delivery.test.mjs tests/email-validation.test.mjs`
+
+These tests mock all provider and DNS work; they never send email. They cover
+validation, honeypots, bounded rate/cache behavior, retries, configuration failures,
+and valid/malformed/oversized attachment structures. A real end-to-end delivery
+check remains separate and requires configured verified sender details.
+
+References: [Resend test-domain restrictions](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain),
+[Resend idempotency](https://resend.com/docs/dashboard/emails/idempotency-keys),
+[Vercel proxy headers](https://vercel.com/docs/headers/request-headers).

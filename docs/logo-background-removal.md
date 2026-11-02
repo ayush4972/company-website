@@ -10,7 +10,9 @@ Use case: background-extraction. Edit target: the supplied existing Trasier Tech
 
 ## Integration
 
-The shared header/footer use the PNG. CSS background, frame shadow,
+The full-size PNG remains the source for lossless 160px/320px WebP header/footer
+exports and organization metadata. Regenerate exports with `npm run assets`.
+CSS background, frame shadow,
 and corner radius are removed. `object-fit: contain` preserves the full artwork.
 The PNG's transparent corner and top-edge samples were verified (alpha 0).
 

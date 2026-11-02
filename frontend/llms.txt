@@ -2,19 +2,19 @@
 
 > Trasier Technology builds Nepal's everyday digital infrastructure — civic & govtech platforms, AI, geospatial, and data systems — based in Kathmandu, Nepal.
 
-Trasier Technology is a software company building AI, geospatial, data, and civic platforms for government and private organizations in Nepal. Its flagship product, Sadak Sujhav (सडक सुझाव), is Nepal's first integrated road complaint and maintenance platform, used by Road Division Kathmandu to let citizens report and track road damage.
+Trasier Technology is a Kathmandu-based software company building digital products, AI, geospatial, data, and civic platforms. Its product, Sadak Sujhav (सडक सुझाव), helps citizens report road damage with a photo and location and follow report updates. It was built for Road Division Kathmandu. Coverage depends on the road authority responsible for the location; reporting does not guarantee a repair.
 
 ## Company
 
 - [Homepage](https://www.trasiertech.com.np/): Overview of Trasier Technology and its work.
 - [Company](https://www.trasiertech.com.np/company.html): Who Trasier Technology is and what it builds.
 - [Leadership](https://www.trasiertech.com.np/leadership.html): The story behind the company and its founding motivation.
-- [Careers](https://www.trasiertech.com.np/careers.html): Open roles on the engineering team.
+- [Careers](https://www.trasiertech.com.np/careers.html): Current hiring status and a talent list for future opportunities. No specific roles are currently advertised.
 - [Contact](https://www.trasiertech.com.np/contact.html): How to get in touch.
 
 ## Product
 
-- [Sadak Sujhav](https://www.trasiertech.com.np/sadak-sujhav.html): Nepal's first integrated road complaint and maintenance platform, connecting citizens with municipal response.
+- [Sadak Sujhav](https://www.trasiertech.com.np/sadak-sujhav.html): How to report road damage, track updates, check coverage, and download the Android or iOS app, with published sources.
 - [Sadak Sujhav case study](https://www.trasiertech.com.np/case-study-sadak-sujhav.html): How Trasier Technology built Sadak Sujhav.
 
 ## Services
